@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -13,6 +18,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ['Cormorant Garamond', 'Georgia', 'serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +66,30 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        gold: {
+          50: "hsl(43 74% 95%)",
+          100: "hsl(43 74% 85%)",
+          200: "hsl(43 74% 75%)",
+          300: "hsl(43 74% 65%)",
+          400: "hsl(43 74% 55%)",
+          500: "hsl(43 60% 50%)",
+          600: "hsl(43 60% 40%)",
+          700: "hsl(43 50% 30%)",
+          800: "hsl(43 40% 20%)",
+          900: "hsl(43 30% 10%)",
+        },
+        onyx: {
+          50: "hsl(0 0% 20%)",
+          100: "hsl(0 0% 15%)",
+          200: "hsl(0 0% 12%)",
+          300: "hsl(0 0% 10%)",
+          400: "hsl(0 0% 8%)",
+          500: "hsl(0 0% 6%)",
+          600: "hsl(0 0% 5%)",
+          700: "hsl(0 0% 4%)",
+          800: "hsl(0 0% 3%)",
+          900: "hsl(0 0% 2%)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,25 +98,32 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "0.8" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.8s ease-out forwards",
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+        shimmer: "shimmer 3s linear infinite",
       },
     },
   },

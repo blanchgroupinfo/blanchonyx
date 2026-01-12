@@ -39,7 +39,13 @@ const Navbar = () => {
           </a>
 
           {/* Nav Links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
+            <a 
+              href="#heritage" 
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Heritage
+            </a>
             <a 
               href="#heed" 
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -57,6 +63,18 @@ const Navbar = () => {
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
               Vision
+            </a>
+            <a 
+              href="#downloads" 
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Documents
+            </a>
+            <a 
+              href="#contact" 
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Contact
             </a>
           </div>
         </div>

@@ -1,25 +1,21 @@
 import { motion } from "framer-motion";
 import blanchLogo from "@/assets/blanch-logo.png";
-
 const Footer = () => {
-  return (
-    <footer className="py-16 border-t border-border/50 relative">
+  return <footer className="py-16 border-t border-border/50 relative">
       <div className="absolute inset-0 bg-gradient-sacred pointer-events-none opacity-50" />
       
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col items-center text-center"
-        >
+        <motion.div initial={{
+        opacity: 0
+      }} whileInView={{
+        opacity: 1
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.8
+      }} className="flex flex-col items-center text-center">
           {/* Logo */}
-          <img 
-            src={blanchLogo} 
-            alt="Blanch Group" 
-            className="w-16 h-16 object-contain mb-6 opacity-80"
-          />
+          <img alt="Blanch Group" className="w-16 h-16 object-contain mb-6 opacity-80" src="/lovable-uploads/3c3fb404-1ba9-4962-9497-ce221f06a9d1.png" />
 
           {/* Name */}
           <h3 className="font-display text-2xl text-gradient-gold font-semibold mb-4">
@@ -50,8 +46,6 @@ const Footer = () => {
           </p>
         </motion.div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;

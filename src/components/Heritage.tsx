@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import { Crown, BookOpen, Star, Gem } from "lucide-react";
-
 const Heritage = () => {
-  return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
+  return <section className="py-24 md:py-32 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
       <div className="absolute top-1/4 left-0 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
@@ -11,13 +9,17 @@ const Heritage = () => {
       
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 30
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.8
+      }} className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Crown className="w-6 h-6 text-primary" />
             <span className="text-sm uppercase tracking-[0.2em] text-primary/80 font-medium">
@@ -33,20 +35,23 @@ const Heritage = () => {
           </h2>
 
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Descendants of the Royal House of Judah, Royal Priesthood of the Tribe of Levi, 
-            serving as a Sovereign Divine Law Non-Profit Trustee—rooted in the fundamental ways 
-            of life according to the Torah/Biblical teachings.
+            Descendants of the Royal House of Tribe of Judah, Royal Priesthood of the Tribe of Levi, serving as a Sovereign Divine Law Non-Profit Trustee—rooted in the fundamental ways of life according to the Torah/Biblical teachings.
           </p>
         </motion.div>
 
         {/* Scripture Quote */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="card-sacred rounded-2xl p-8 md:p-12 mb-16 text-center"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.8,
+        delay: 0.2
+      }} className="card-sacred rounded-2xl p-8 md:p-12 mb-16 text-center">
           <BookOpen className="w-10 h-10 text-primary mx-auto mb-6" />
           <blockquote className="text-xl md:text-2xl text-foreground/90 italic font-display max-w-4xl mx-auto mb-6">
             "But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people; 
@@ -58,13 +63,18 @@ const Heritage = () => {
         {/* Heritage Grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           {/* The Blanch Stone */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="card-sacred rounded-2xl p-8"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          x: -30
+        }} whileInView={{
+          opacity: 1,
+          x: 0
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.8,
+          delay: 0.3
+        }} className="card-sacred rounded-2xl p-8">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
                 <Gem className="w-7 h-7 text-primary" />
@@ -104,13 +114,18 @@ const Heritage = () => {
           </motion.div>
 
           {/* Royal Lineage */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="card-sacred rounded-2xl p-8"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          x: 30
+        }} whileInView={{
+          opacity: 1,
+          x: 0
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.8,
+          delay: 0.4
+        }} className="card-sacred rounded-2xl p-8">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
                 <Crown className="w-7 h-7 text-primary" />
@@ -150,13 +165,18 @@ const Heritage = () => {
         </div>
 
         {/* Additional Scriptures */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-center"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.8,
+        delay: 0.5
+      }} className="text-center">
           <div className="sacred-divider w-32 mx-auto mb-8" />
           <p className="text-muted-foreground italic max-w-2xl mx-auto">
             "I am black, but comely, O ye daughters of Jerusalem, as the tents of Kedar, 
@@ -165,8 +185,6 @@ const Heritage = () => {
           <cite className="text-sm text-primary/70 mt-3 block">— Song of Solomon 1:5</cite>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Heritage;

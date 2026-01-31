@@ -21,7 +21,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <img alt="Blanch Group" className="w-10 h-10 object-contain transition-transform group-hover:scale-105" src="/lovable-uploads/ab274378-1461-4a64-96b3-1050c7c1b31b.png" />
+            <img alt="Blanch Group" className="w-10 h-10 object-contain transition-transform group-hover:scale-105" src="/lovable-uploads/3d484fc9-1309-4450-94f8-e8c5ec270d7a.png" />
             <span className="font-display text-xl font-semibold text-gradient-gold text-yellow-400">
               Blanch Group
             </span>

@@ -22,7 +22,7 @@ const Navbar = () => {
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
             <img alt="Blanch Group" className="w-10 h-10 object-contain transition-transform group-hover:scale-105" src="/lovable-uploads/737af95e-dc7e-4ea5-8ae6-440fd091e7e1.png" />
-            <span className="font-display text-xl font-semibold text-gradient-gold">
+            <span className="font-display text-xl font-semibold text-gradient-gold text-yellow-400">
               Blanch Group
             </span>
           </a>

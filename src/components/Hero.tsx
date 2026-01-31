@@ -58,7 +58,7 @@ const Hero = () => {
           duration: 0.8,
           delay: 0.3
         }} className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight mb-6">
-            <span className="text-gradient-gold">Blanch Group</span>
+            <span className="text-gradient-gold text-yellow-400">Blanch Group</span>
           </motion.h1>
 
           {/* Subtitle */}

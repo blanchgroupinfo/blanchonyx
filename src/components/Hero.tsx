@@ -44,7 +44,7 @@ const Hero = () => {
           duration: 1.2,
           ease: "easeOut"
         }} className="mb-8 glow-divine">
-            <img alt="Blanch Group" className="w-32 h-32 md:w-40 md:h-40 object-contain" src="/lovable-uploads/bde02114-cc84-400e-82bd-6888041a67ab.png" />
+            <img alt="Blanch Group" className="w-32 h-32 md:w-40 md:h-40 object-contain border-0 border-transparent" src="/lovable-uploads/bde02114-cc84-400e-82bd-6888041a67ab.png" />
           </motion.div>
 
           {/* Title */}

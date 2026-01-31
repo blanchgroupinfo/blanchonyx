@@ -13,7 +13,7 @@ const Footer = () => {
         once: true
       }} transition={{
         duration: 0.8
-      }} className="flex flex-col items-center text-center">
+      }} className="flex flex-col items-center text-center text-white">
           {/* Logo */}
           <img alt="Blanch Group" className="w-16 h-16 object-contain mb-6 opacity-80" src="/lovable-uploads/3c3fb404-1ba9-4962-9497-ce221f06a9d1.png" />
 
@@ -23,7 +23,7 @@ const Footer = () => {
           </h3>
 
           {/* Tagline */}
-          <p className="text-muted-foreground mb-6 max-w-md">
+          <p className="mb-6 max-w-md text-white">
             A Sovereign Investment and Indigenous Tribal Association Trust
           </p>
 
@@ -31,12 +31,12 @@ const Footer = () => {
           <div className="sacred-divider w-24 mb-6" />
 
           {/* Blessing */}
-          <p className="text-sm text-muted-foreground/70 italic mb-6">
+          <p className="text-sm italic mb-6 text-white">
             All Blessings for Everyone
           </p>
 
           {/* Scripture */}
-          <p className="text-xs text-muted-foreground/50 max-w-lg">
+          <p className="text-xs max-w-lg text-white">
             Praise Most High AHAYAH BA SHAM YASHAYA
           </p>
 

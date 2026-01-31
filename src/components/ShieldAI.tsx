@@ -160,21 +160,21 @@ const ShieldAI = () => {
             </blockquote>
 
             <blockquote className="border-l-2 border-primary/40 pl-6 text-muted-foreground">
-              <p className="italic mb-2">
+              <p className="italic mb-2 text-white">
                 "All scripture is given by inspiration of AHAYAH, and is profitable for doctrine."
               </p>
               <cite className="text-sm text-primary/70">— 2 Timothy 3:16</cite>
             </blockquote>
 
             <blockquote className="border-l-2 border-primary/40 pl-6 text-muted-foreground">
-              <p className="italic mb-2">
+              <p className="italic mb-2 text-white">
                 "For the commandment is a lamp; and the law is light."
               </p>
               <cite className="text-sm text-primary/70">— Proverbs 6:23</cite>
             </blockquote>
 
             <blockquote className="border-l-2 border-primary/40 pl-6 text-muted-foreground">
-              <p className="italic mb-2">
+              <p className="italic mb-2 text-white">
                 "And ye shall know the truth, and the truth shall make you free."
               </p>
               <cite className="text-sm text-primary/70">— John 8:32</cite>

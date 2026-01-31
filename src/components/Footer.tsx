@@ -18,7 +18,7 @@ const Footer = () => {
           <img alt="Blanch Group" className="w-16 h-16 object-contain mb-6 opacity-80" src="/lovable-uploads/3c3fb404-1ba9-4962-9497-ce221f06a9d1.png" />
 
           {/* Name */}
-          <h3 className="font-display text-2xl text-gradient-gold font-semibold mb-4">
+          <h3 className="font-display text-2xl text-gradient-gold font-semibold mb-4 text-yellow-400">
             Blanch Group
           </h3>
 

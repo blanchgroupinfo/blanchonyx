@@ -93,7 +93,7 @@ const Hero = () => {
         }} transition={{
           duration: 1,
           delay: 0.9
-        }} className="max-w-3xl text-lg md:text-xl text-foreground/80 leading-relaxed font-light mb-12">
+        }} className="max-w-3xl text-lg md:text-xl leading-relaxed font-light mb-12 text-white">
             A Sovereign Investment and Indigenous Tribal Association Trust—an irrevocable, 
             tax-exempt charitable entity focused on technology research, financial technology 
             solutions, and educational development aimed at alleviating poverty.
@@ -110,7 +110,7 @@ const Hero = () => {
           duration: 0.8,
           delay: 1.1
         }} className="max-w-2xl border-l-2 border-primary/50 pl-6 text-muted-foreground italic">
-            <p className="text-lg mb-2">
+            <p className="text-lg mb-2 text-white">
               "But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people..."
             </p>
             <cite className="text-sm text-primary/70">— 1 Peter 2:9</cite>

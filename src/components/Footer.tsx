@@ -19,7 +19,7 @@ const Footer = () => {
 
           {/* Name */}
           <h3 className="font-display text-2xl text-gradient-gold font-semibold mb-4 text-yellow-400">
-            Blanch Group
+            Blanch Group - Forever Forward   
           </h3>
 
           {/* Tagline */}
@@ -41,7 +41,7 @@ const Footer = () => {
           </p>
 
           {/* Copyright */}
-          <p className="text-xs text-muted-foreground/40 mt-8">
+          <p className="text-xs mt-8 text-white">
             © {new Date().getFullYear()} Blanch Group. Sovereign Trust.
           </p>
         </motion.div>

@@ -34,9 +34,7 @@ const Heritage = () => {
             <span className="text-foreground">of Judah</span>
           </h2>
 
-          <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Descendants of the Royal House of Tribe of Judah, Royal Priesthood of the Tribe of Levi, serving as a Sovereign Divine Law Non-Profit Trustee—rooted in the fundamental ways of life according to the Torah/Biblical teachings.
-          </p>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-white">We are the Aboriginal Descendants of the Royal House of Tribe of Judah, Royal Priesthood of the Tribe of Levi, serving as a Sovereign Divine Law Non-Profit Trustee—rooted in the fundamental ways of life according to the Torah/Tarah/Biblical teachings.</p>
         </motion.div>
 
         {/* Scripture Quote */}
@@ -53,7 +51,7 @@ const Heritage = () => {
         delay: 0.2
       }} className="card-sacred rounded-2xl p-8 md:p-12 mb-16 text-center">
           <BookOpen className="w-10 h-10 text-primary mx-auto mb-6" />
-          <blockquote className="text-xl md:text-2xl text-foreground/90 italic font-display max-w-4xl mx-auto mb-6">
+          <blockquote className="text-xl md:text-2xl italic font-display max-w-4xl mx-auto mb-6 text-white">
             "But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people; 
             that ye should shew forth the praises of him who hath called you out of darkness into his marvellous light."
           </blockquote>
@@ -178,7 +176,7 @@ const Heritage = () => {
         delay: 0.5
       }} className="text-center">
           <div className="sacred-divider w-32 mx-auto mb-8" />
-          <p className="text-muted-foreground italic max-w-2xl mx-auto">
+          <p className="italic max-w-2xl mx-auto text-white">
             "I am black, but comely, O ye daughters of Jerusalem, as the tents of Kedar, 
             as the curtains of Solomon."
           </p>

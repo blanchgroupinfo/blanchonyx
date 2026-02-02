@@ -153,7 +153,7 @@ const ShieldAI = () => {
           
           <div className="grid md:grid-cols-2 gap-6">
             <blockquote className="border-l-2 border-primary/40 pl-6 text-muted-foreground">
-              <p className="italic mb-2">
+              <p className="italic mb-2 text-white">
                 "Thy righteousness is an everlasting righteousness, and thy law is the truth."
               </p>
               <cite className="text-sm text-primary/70">— Psalms 119:142</cite>

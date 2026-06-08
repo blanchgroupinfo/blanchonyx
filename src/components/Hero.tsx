@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import blanchLogo from "@/assets/blanch-logo.png";
+import blanchLogo from "@/assets/B logo brown.png";
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden section-pattern">
       {/* Sacred background glow */}

@@ -94,7 +94,7 @@ const Hero = () => {
           duration: 1,
           delay: 0.9
         }} className="max-w-3xl text-lg md:text-xl leading-relaxed font-light mb-12 text-white">
-            A Sovereign Investment and Indigenous Tribal Association Trust—an irrevocable, 
+           Blanch Onyx is a private membership network focused on elite collaboration, cultural leadership, strategic networking, and philanthropic development. Its managed by the Blanch Group A Sovereign Investment and Indigenous Tribal Association Trust—an irrevocable, 
             tax-exempt charitable entity focused on technology research, financial technology 
             solutions, and educational development aimed at alleviating poverty.
           </motion.p>

@@ -44,7 +44,7 @@ const Hero = () => {
           duration: 1.2,
           ease: "easeOut"
         }} className="mb-8 glow-divine">
-            <img alt="Blanch Group" className="w-32 h-32 md:w-40 md:h-40 object-contain border-0 border-transparent" src="/lovable-uploads/bde02114-cc84-400e-82bd-6888041a67ab.png" />
+            <img alt="Blanch Onyx" className="w-32 h-32 md:w-40 md:h-40 object-contain border-0 border-transparent" src="/lovable-uploads/bde02114-cc84-400e-82bd-6888041a67ab.png" />
           </motion.div>
 
           {/* Title */}
@@ -111,7 +111,7 @@ const Hero = () => {
           delay: 1.1
         }} className="max-w-2xl border-l-2 border-primary/50 pl-6 text-muted-foreground italic">
             <p className="text-lg mb-2 text-white">
-              "But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people..."
+              "But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people; that ye should shew forth the praises of him who hath called you out of darkness into his marvellous light:"
             </p>
             <cite className="text-sm text-primary/70">— 1 Peter 2:9</cite>
           </motion.blockquote>

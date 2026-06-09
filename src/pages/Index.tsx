@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Heritage from "@/components/Heritage";
 import HeedProgram from "@/components/HeedProgram";
 import ShieldAI from "@/components/ShieldAI";
+import EliteNetwork from "@/components/EliteNetwork";
 import Vision from "@/components/Vision";
 import Downloads from "@/components/Downloads";
 import Contact from "@/components/Contact";
@@ -21,6 +22,9 @@ const Index = () => {
       </section>
       <section id="shield">
         <ShieldAI />
+      </section>
+      <section id="elite-network">
+        <EliteNetwork />
       </section>
       <section id="vision">
         <Vision />

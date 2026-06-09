@@ -34,7 +34,7 @@ const Heritage = () => {
             <span className="text-foreground">of Judah</span>
           </h2>
 
-          <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-white">We are the Aboriginal Descendants of the Royal House of Tribe of Judah, Royal Priesthood of the Tribe of Levi, serving as a Sovereign Divine Law Non-Profit Trustee—rooted in the fundamental ways of life according to the Torah/Tarah/Biblical teachings.</p>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-white">We are the Aboriginal Descendants of the Royal House of Tribe of Judah (Yadah), Royal Priesthood of the Tribe of Levi (Lawaya), serving as a Sovereign Divine Law Non-Profit Trustee—rooted in the fundamental ways of life according to the Torah/Tarah/Biblical teachings. Most High AHAYAH & YASHAYA</p>
         </motion.div>
 
         {/* Scripture Quote */}
@@ -84,8 +84,8 @@ const Heritage = () => {
             </div>
             
             <p className="text-muted-foreground leading-relaxed mb-6">
-              Blanch—a Precious Jewel, Fifth Foundation Stone of New Jerusalem City of the Most High AHAYAH. 
-              The word "Blanch" derives from the Hebrew "Shoham" (שֹׁהַם), meaning to make pale or white, 
+              Blanch—a Precious Jewel, Fifth Foundation Stone of New Jerusalem (Yarawashalam) City of the Most High AHAYAH. 
+              The word "Blanch" derives from the Hebrew "Shoham/Shaham" (שֹׁהַם), meaning "onyx" or "sardonyx," a precious gemstone mentioned in the Bible as one of the foundation stones of the New Jerusalem (Yarashalam). The onyx stone symbolizes strength, protection, and divine connection, reflecting our heritage as descendants of the Royal House of Judah and our commitment to upholding sacred principles. The Blanch Stone represents our identity as a chosen generation, a royal priesthood, and a holy nation, embodying the virtues of purity, resilience, and spiritual enlightenment,
               representing purity and the sacred onyx stone.
             </p>
 
@@ -99,13 +99,13 @@ const Heritage = () => {
               <div className="flex items-start gap-3">
                 <Star className="w-4 h-4 text-primary mt-1 shrink-0" />
                 <p className="text-muted-foreground">
-                  <span className="text-foreground font-medium">Exodus 28:9</span> — "And thou shalt take two onyx stones, and grave on them the names of the children of Israel."
+                  <span className="text-foreground font-medium">Exodus 28:9</span> — "And thou shalt take two onyx stones, and grave on them the names of the children of Israel (Yasharahala)."
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <Star className="w-4 h-4 text-primary mt-1 shrink-0" />
                 <p className="text-muted-foreground">
-                  <span className="text-foreground font-medium">Revelation 21:20</span> — The sardonyx is named the fifth foundation stone of the New Jerusalem.
+                  <span className="text-foreground font-medium">Revelation 21:20</span> — The sardonyx is named the fifth foundation stone of the New Jerusalem (Yarawashalam).
                 </p>
               </div>
             </div>
@@ -149,13 +149,19 @@ const Heritage = () => {
               <div className="flex items-start gap-3">
                 <Star className="w-4 h-4 text-primary mt-1 shrink-0" />
                 <p className="text-muted-foreground">
-                  <span className="text-foreground font-medium">Deuteronomy 14:2</span> — "For thou art an holy people unto AHAYAH thy God."
+                  <span className="text-foreground font-medium">1 Peter 2:9</span> — "But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people; that ye should shew forth the praises of him who hath called you out of darkness into his marvellous light."
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <Star className="w-4 h-4 text-primary mt-1 shrink-0" />
                 <p className="text-muted-foreground">
-                  <span className="text-foreground font-medium">Isaiah 29:22</span> — "Thus saith AHAYAH, who redeemed Abraham, concerning the house of Jacob."
+                  <span className="text-foreground font-medium">Deuteronomy 14:2</span> — "For thou art an holy people unto Most High AHAYAH thy Power."
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <Star className="w-4 h-4 text-primary mt-1 shrink-0" />
+                <p className="text-muted-foreground">
+                  <span className="text-foreground font-medium">Isaiah 29:22</span> — "Thus saith Most High AHAYAH, who redeemed Abraham, concerning the house of Jacob, Jacob shall not now be ashamed, neither shall his face now wax pale."
                 </p>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import blanchLogo from "@/assets/B logo brown.png";
+import BlanchLogoBrownAnimated from "@/assets/BlanchLogoBrownAnimated.gif";
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden section-pattern">
       {/* Sacred background glow */}
@@ -44,7 +45,7 @@ const Hero = () => {
           duration: 1.2,
           ease: "easeOut"
         }} className="mb-8 glow-divine">
-            <img alt="Blanch Onyx" className="w-32 h-32 md:w-40 md:h-40 object-contain border-0 border-transparent" src="/lovable-uploads/bde02114-cc84-400e-82bd-6888041a67ab.png" />
+            <img alt="Blanch Onyx" className="w-32 h-32 md:w-40 md:h-40 object-contain border-0 border-transparent" src={BlanchLogoBrownAnimated} />
           </motion.div>
 
           {/* Title */}

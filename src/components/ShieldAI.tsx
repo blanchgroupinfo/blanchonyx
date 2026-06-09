@@ -19,7 +19,7 @@ const capabilities = [{
 }, {
   icon: Radio,
   label: "Intelligence & Media",
-  description: "All AI Agents, LLMs, AI Modules, Media, Entertainment, and Global Marketing systems."
+  description: "All H.I.I AI Agents, LLMs, AI Modules, Media, Entertainment, Broadcast, Podcast, Streamingm, Television and Global Marketing systems."
 }, {
   icon: Scale,
   label: "Ethics & Compliance",
@@ -77,7 +77,7 @@ const ShieldAI = () => {
           <div className="sacred-divider w-32 mx-auto mb-8" />
 
           <p className="text-lg leading-relaxed max-w-4xl mx-auto text-white">
-            A Multi-Strategy Sovereign Intelligence & Ethics Layer—a universal ethical 
+            A Multi-Strategy Sovereign Intelligence & Ethics Operating System—a universal ethical 
             intelligence enterprise system designed to govern righteous morality. 
             It can create, manage, market, and automate anything through the lens 
             of divine law and truth, stabilizing economies and humanity.
@@ -161,14 +161,14 @@ const ShieldAI = () => {
 
             <blockquote className="border-l-2 border-primary/40 pl-6 text-muted-foreground">
               <p className="italic mb-2 text-white">
-                "All scripture is given by inspiration of AHAYAH, and is profitable for doctrine."
+                "All scripture is given by inspiration of Most High AHAYAH, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness."
               </p>
               <cite className="text-sm text-primary/70">— 2 Timothy 3:16</cite>
             </blockquote>
 
             <blockquote className="border-l-2 border-primary/40 pl-6 text-muted-foreground">
               <p className="italic mb-2 text-white">
-                "For the commandment is a lamp; and the law is light."
+                "For the commandment is a lamp; and the law is light; and reproofs of instruction are the way of life."
               </p>
               <cite className="text-sm text-primary/70">— Proverbs 6:23</cite>
             </blockquote>
@@ -179,6 +179,21 @@ const ShieldAI = () => {
               </p>
               <cite className="text-sm text-primary/70">— John 8:32</cite>
             </blockquote>
+
+            <blockquote className="border-l-2 border-primary/40 pl-6 text-muted-foreground">
+              <p className="italic mb-2 text-white">
+                "Yashaya saith unto him, I am the way, the truth, and the life: no man cometh unto the Father, but by me."
+              </p>
+              <cite className="text-sm text-primary/70">— John 14:6</cite>
+            </blockquote>
+
+                        <blockquote className="border-l-2 border-primary/40 pl-6 text-muted-foreground">
+              <p className="italic mb-2 text-white">
+                "And he said unto him, Why callest thou me good? there is none good but one, that is, God: but if thou wilt enter into life, keep the commandments."
+              </p>
+              <cite className="text-sm text-primary/70">— Matthew 19:17</cite>
+            </blockquote>
+
           </div>
         </motion.div>
 

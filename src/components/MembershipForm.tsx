@@ -6,28 +6,49 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const MembershipForm = () => {
   const { toast } = useToast();
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
-    const data = Object.fromEntries(new FormData(e.currentTarget).entries());
-    // Local-only queue until Lovable Cloud is enabled.
-    const queue = JSON.parse(localStorage.getItem("blanch_membership_queue") || "[]");
-    queue.push({ ...data, submittedAt: new Date().toISOString() });
-    localStorage.setItem("blanch_membership_queue", JSON.stringify(queue));
-    setTimeout(() => {
-      setSubmitting(false);
+    const fd = new FormData(e.currentTarget);
+    const payload = {
+      fullName: String(fd.get("fullName") || ""),
+      email: String(fd.get("email") || ""),
+      country: String(fd.get("country") || ""),
+      lineage: String(fd.get("lineage") || ""),
+      tier: String(fd.get("tier") || "onyx") as "sardonyx" | "onyx" | "royal",
+      intent: String(fd.get("intent") || ""),
+    };
+
+    try {
+      const { data, error } = await supabase.functions.invoke(
+        "submit-membership-application",
+        { body: payload }
+      );
+      if (error || !data?.ok) throw error || new Error("Failed");
       setDone(true);
       toast({
-        title: "Application received",
-        description: "Your application is queued locally. Backend storage and confirmation emails activate when Lovable Cloud is enabled.",
+        title: "Application received in honor",
+        description: data?.emailQueued
+          ? "A confirmation email has been sent. The Council will review your application."
+          : "Your application has been securely stored. The Council will review and contact you.",
       });
-    }, 700);
+    } catch (err) {
+      console.error(err);
+      toast({
+        title: "Submission failed",
+        description: "We could not submit your application. Please try again shortly.",
+        variant: "destructive",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (done) {
@@ -102,8 +123,8 @@ const MembershipForm = () => {
       <div className="flex items-start gap-3 text-xs text-muted-foreground">
         <ShieldCheck className="w-4 h-4 text-primary mt-0.5 shrink-0" />
         <p>
-          Your submission is held in confidence. Secure cloud storage, admin review, and confirmation emails
-          activate once Lovable Cloud is enabled.
+          Your submission is held in confidence — securely stored and reviewed only by the Council.
+          A confirmation email is sent upon receipt.
         </p>
       </div>
 

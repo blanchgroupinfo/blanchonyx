@@ -16,6 +16,8 @@ import UniversalBusinessNetwork from "./pages/UniversalBusinessNetwork";
 import Marketplace from "./pages/Marketplace";
 import SocialClub from "./pages/SocialClub";
 import Press from "./pages/Press";
+import Tokens from "./pages/Tokens";
+import Coin from "./pages/Coin";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +40,8 @@ const App = () => (
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/social-club" element={<SocialClub />} />
           <Route path="/press" element={<Press />} />
+          <Route path="/tokens" element={<Tokens />} />
+          <Route path="/coin" element={<Coin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

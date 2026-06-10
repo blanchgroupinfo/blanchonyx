@@ -11,6 +11,7 @@ import Downloads from "@/components/Downloads";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScriptureBanner from "@/components/ScriptureBanner";
+import UniversalCommerce from "@/components/UniversalCommerce";
 
 const Index = () => {
   return (
@@ -48,6 +49,7 @@ const Index = () => {
         verse="The wealth of the sinner is laid up for the just"
         citation="Proverbs 13:22"
       />
+      <UniversalCommerce />
       <section id="downloads">
         <Downloads />
       </section>

@@ -49,6 +49,7 @@ const Index = () => {
         verse="The wealth of the sinner is laid up for the just"
         citation="Proverbs 13:22"
       />
+      <UniversalCommerce />
       <section id="downloads">
         <Downloads />
       </section>

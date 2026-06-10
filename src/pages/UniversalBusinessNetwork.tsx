@@ -23,13 +23,13 @@ const sectors = [
 const UniversalBusinessNetwork = () => {
   return (
     <PageShell
-      eyebrow="UBN"
+      eyebrow="Universal Business Networks"
       title={
         <>
-          <span className="text-gradient-gold">Universal Business Network</span>
+          <span className="text-gradient-gold">Universal Business Networks</span>
         </>
       }
-      subtitle="A sovereign B2B mesh connecting member enterprises, capital, and trade across the Royal Priesthood."
+      subtitle="Connect with elite business partners, industry leaders, and strategic allies across our global network ecosystem — one unified platform connecting all business types."
     >
       <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-5 mb-16">
         {benefits.map((b, i) => (

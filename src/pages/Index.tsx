@@ -11,6 +11,7 @@ import Downloads from "@/components/Downloads";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScriptureBanner from "@/components/ScriptureBanner";
+import UniversalCommerce from "@/components/UniversalCommerce";
 
 const Index = () => {
   return (

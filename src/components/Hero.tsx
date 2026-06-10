@@ -163,7 +163,7 @@ const Hero = () => {
               duration: 0.8,
               delay: 1.1,
             }}
-            className="max-w-2xl border-l-2 border-primary/50 pl-6 text-muted-foreground italic"
+            className="max-w-2xl border-l-2 border-primary/50 pl-6 text-muted-foreground italic mb-10"
           >
             <p className="text-lg mb-2 text-white">
               "But ye are a chosen generation, a royal priesthood, an holy
@@ -173,6 +173,27 @@ const Hero = () => {
             </p>
             <cite className="text-sm text-primary/70">— 1 Peter 2:9</cite>
           </motion.blockquote>
+
+          {/* Join the Network / Explore Partners CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.3 }}
+            className="flex flex-col sm:flex-row gap-4"
+          >
+            <a
+              href="/membership"
+              className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors glow-divine"
+            >
+              Join the Network
+            </a>
+            <a
+              href="/universal-business-network"
+              className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-primary/60 text-primary hover:bg-primary/10 transition-colors"
+            >
+              Explore Partners
+            </a>
+          </motion.div>
         </motion.div>
 
         {/* Scroll indicator */}

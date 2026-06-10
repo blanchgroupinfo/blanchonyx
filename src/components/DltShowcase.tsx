@@ -1,27 +1,55 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Activity, Zap, Infinity as InfinityIcon } from "lucide-react";
 import dltImg from "@/assets/blanch-onyx-dlt.png";
 
 const formatTps = (n: number) => {
-  if (n >= 1e15) return (n / 1e15).toFixed(2) + "Q";
-  if (n >= 1e12) return (n / 1e12).toFixed(2) + "T";
-  if (n >= 1e9) return (n / 1e9).toFixed(2) + "B";
-  if (n >= 1e6) return (n / 1e6).toFixed(2) + "M";
+  if (n >= 1e15) return (n / 1e15).toFixed(3) + "Q";
+  if (n >= 1e12) return (n / 1e12).toFixed(3) + "T";
+  if (n >= 1e9) return (n / 1e9).toFixed(3) + "B";
+  if (n >= 1e6) return (n / 1e6).toFixed(3) + "M";
   return n.toLocaleString();
 };
 
+// 22 nodes arranged in a sacred DAG, positioned across 8 layers
+const NODES = Array.from({ length: 22 }).map((_, i) => {
+  const layer = Math.floor(i / 3); // 0..7
+  const perLayer = layer === 7 ? 1 : 3;
+  const idxInLayer = i % 3;
+  const x = 10 + (layer / 7) * 80;
+  const y =
+    perLayer === 1
+      ? 50
+      : 18 + (idxInLayer / (perLayer - 1)) * 64;
+  return { id: i, x, y, layer };
+});
+
+// Edges between consecutive layers (DAG)
+const EDGES: { from: number; to: number }[] = [];
+NODES.forEach((n) => {
+  NODES.filter((m) => m.layer === n.layer + 1).forEach((m) => {
+    EDGES.push({ from: n.id, to: m.id });
+  });
+});
+
 const DltShowcase = () => {
-  const [tps, setTps] = useState(22.5e15);
+  // Monotonically rising counters — infinite horizontal scaling
+  const startRef = useRef(Date.now());
+  const tpsBaseRef = useRef(22.5e15);
+  const blockBaseRef = useRef(1_421_337);
+  const [tps, setTps] = useState(tpsBaseRef.current);
   const [nodes, setNodes] = useState(22);
-  const [block, setBlock] = useState(1_421_337);
+  const [block, setBlock] = useState(blockBaseRef.current);
 
   useEffect(() => {
     const i = setInterval(() => {
-      setTps(22.5e15 + Math.random() * 5e14);
-      setNodes(22 + Math.floor(Math.random() * 3));
-      setBlock((b) => b + Math.floor(Math.random() * 7) + 1);
-    }, 1200);
+      const elapsed = (Date.now() - startRef.current) / 1000;
+      // Compound growth — every second TPS scales upward, never dips.
+      const growth = 1 + elapsed * 0.0125 + Math.pow(elapsed, 1.15) * 0.0008;
+      setTps(tpsBaseRef.current * growth);
+      setNodes((n) => n + Math.floor(Math.random() * 2)); // only rises
+      setBlock((b) => b + 3 + Math.floor(Math.random() * 6));
+    }, 1000);
     return () => clearInterval(i);
   }, []);
 
@@ -53,21 +81,90 @@ const DltShowcase = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-10 items-center">
+          {/* Still photo + animated DAG overlay */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="relative"
+            className="relative aspect-square max-w-xl mx-auto w-full"
           >
             <div className="absolute inset-0 rounded-full bg-primary/20 blur-3xl animate-glow-pulse" />
-            <motion.img
+            <img
               src={dltImg}
               alt="Blanch Onyx DLT 8-Layer DAG with 22 Ancient Hebrew Nodes"
-              className="relative w-full max-w-xl mx-auto"
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 w-full h-full object-contain"
             />
+            {/* Animated DAG overlay */}
+            <svg
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              className="absolute inset-0 w-full h-full pointer-events-none"
+            >
+              <defs>
+                <linearGradient id="edge" x1="0" x2="1">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+                  <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="hsl(var(--secondary))" stopOpacity="0.1" />
+                </linearGradient>
+              </defs>
+              {EDGES.map((e, idx) => {
+                const a = NODES[e.from];
+                const b = NODES[e.to];
+                return (
+                  <line
+                    key={idx}
+                    x1={a.x}
+                    y1={a.y}
+                    x2={b.x}
+                    y2={b.y}
+                    stroke="url(#edge)"
+                    strokeWidth="0.25"
+                    strokeDasharray="1 1.5"
+                    opacity="0.6"
+                  >
+                    <animate
+                      attributeName="stroke-dashoffset"
+                      from="0"
+                      to="-10"
+                      dur={`${1.5 + (idx % 5) * 0.4}s`}
+                      repeatCount="indefinite"
+                    />
+                  </line>
+                );
+              })}
+              {NODES.map((n) => (
+                <g key={n.id}>
+                  <circle cx={n.x} cy={n.y} r="1.4" fill="hsl(var(--primary))">
+                    <animate
+                      attributeName="r"
+                      values="1.1;1.8;1.1"
+                      dur={`${2 + (n.id % 4) * 0.5}s`}
+                      repeatCount="indefinite"
+                    />
+                    <animate
+                      attributeName="opacity"
+                      values="0.6;1;0.6"
+                      dur={`${2 + (n.id % 4) * 0.5}s`}
+                      repeatCount="indefinite"
+                    />
+                  </circle>
+                  <circle cx={n.x} cy={n.y} r="0.6" fill="hsl(var(--secondary))" />
+                </g>
+              ))}
+              {/* Packets traveling along edges */}
+              {EDGES.filter((_, i) => i % 4 === 0).map((e, idx) => {
+                const a = NODES[e.from];
+                const b = NODES[e.to];
+                return (
+                  <circle key={`p${idx}`} r="0.5" fill="hsl(var(--secondary))">
+                    <animate attributeName="cx" from={a.x} to={b.x} dur={`${1.2 + (idx % 5) * 0.25}s`} repeatCount="indefinite" />
+                    <animate attributeName="cy" from={a.y} to={b.y} dur={`${1.2 + (idx % 5) * 0.25}s`} repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0;1;0" dur={`${1.2 + (idx % 5) * 0.25}s`} repeatCount="indefinite" />
+                  </circle>
+                );
+              })}
+            </svg>
           </motion.div>
 
           <div className="space-y-6">
@@ -84,58 +181,43 @@ const DltShowcase = () => {
                   <div className="absolute inset-0 w-3 h-3 rounded-full bg-secondary animate-ping" />
                 </div>
                 <span className="text-xs uppercase tracking-widest text-secondary font-semibold">
-                  Live Network · Mainnet
+                  Live Network · Mainnet · Infinite Horizontal Scaling
                 </span>
               </div>
 
               <div className="grid grid-cols-3 gap-4">
                 <div>
                   <div className="text-xs text-muted-foreground mb-1">TPS Throughput</div>
-                  <motion.div
-                    key={tps}
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="font-display text-2xl md:text-3xl text-gradient-gold font-semibold"
-                  >
+                  <div className="font-display text-2xl md:text-3xl text-gradient-gold font-semibold tabular-nums">
                     {formatTps(tps)}
-                  </motion.div>
+                  </div>
                 </div>
                 <div>
                   <div className="text-xs text-muted-foreground mb-1">Active Nodes</div>
-                  <motion.div
-                    key={nodes}
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="font-display text-2xl md:text-3xl text-gradient-gold font-semibold"
-                  >
+                  <div className="font-display text-2xl md:text-3xl text-gradient-gold font-semibold tabular-nums">
                     {nodes}
-                  </motion.div>
+                  </div>
                 </div>
                 <div>
                   <div className="text-xs text-muted-foreground mb-1">Block Height</div>
-                  <motion.div
-                    key={block}
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="font-display text-2xl md:text-3xl text-gradient-gold font-semibold"
-                  >
+                  <div className="font-display text-2xl md:text-3xl text-gradient-gold font-semibold tabular-nums">
                     {block.toLocaleString()}
-                  </motion.div>
+                  </div>
                 </div>
               </div>
 
-              {/* TPS bar */}
               <div className="mt-6">
-                <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+                <div className="h-2 w-full bg-muted rounded-full overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-secondary opacity-80" />
                   <motion.div
-                    className="h-full bg-gradient-to-r from-primary via-primary/80 to-secondary"
-                    animate={{ width: ["10%", "100%", "10%"] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute inset-y-0 w-24 bg-white/30 blur-md"
+                    animate={{ x: ["-10%", "120%"] }}
+                    transition={{ duration: 2.4, repeat: Infinity, ease: "linear" }}
                   />
                 </div>
                 <div className="flex justify-between mt-2 text-[10px] uppercase tracking-widest text-muted-foreground">
                   <span>Genesis</span>
-                  <span>22.5 Quadrillion TPS + ∞</span>
+                  <span>∞ Unlimited Horizontal Scale</span>
                 </div>
               </div>
             </motion.div>

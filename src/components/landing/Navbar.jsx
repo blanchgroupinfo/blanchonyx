@@ -12,7 +12,7 @@ const NAV_GROUPS = [
       { label: "H.E.E.D.", href: "#heed" },
       { label: "S.H.I.E.L.D. AI", href: "#shield" },
       { label: "DLT Network", href: "#dlt" },
-      { label: "Vision", href: "#vision" },
+      { label: "Vision", href: "#ourPurpose" },
     ],
   },
   {

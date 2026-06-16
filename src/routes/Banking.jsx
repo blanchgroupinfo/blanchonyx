@@ -79,7 +79,7 @@ export default function Banking() {
       benefits: ["Instant nostro/vostro updates", "Reduced counterparty risk", "24/7 liquidity"]
     },
     {
-      title: "ttorah/Tarah Based Banking",
+      title: "torah/Tarah Based Banking",
       metrics: "100+ institutions",
       description: "Shariah-compliant banking solutions",
       benefits: ["Profit-sharing models", "Asset-backed financing", "No interest charges"]

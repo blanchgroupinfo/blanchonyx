@@ -1,0 +1,49 @@
+{
+  "name": "MemberApplication",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "desired_tier": {
+      "type": "string",
+      "enum": [
+        "Founder",
+        "Royal \u00b7 Throne",
+        "Elite",
+        "Partner",
+        "Executive",
+        "Associate",
+        "Onyx \u00b7 Council",
+        "Sardonyx \u00b7 Initiate"
+      ]
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "referral": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected",
+        "under_review"
+      ],
+      "default": "pending"
+    }
+  },
+  "required": [
+    "full_name",
+    "email",
+    "desired_tier"
+  ]
+}

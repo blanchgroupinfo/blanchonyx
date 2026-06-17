@@ -1,0 +1,59 @@
+{
+  "name": "MarketplaceItem",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number"
+    },
+    "currency": {
+      "type": "string",
+      "default": "BOX"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "digital_asset",
+        "nft",
+        "token",
+        "service",
+        "media",
+        "membership_upgrade"
+      ]
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "seller_name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "available",
+        "sold",
+        "reserved"
+      ],
+      "default": "available"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "title",
+    "price"
+  ]
+}

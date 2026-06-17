@@ -1,0 +1,55 @@
+{
+  "name": "GovernanceProposal",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "passed",
+        "rejected",
+        "pending"
+      ],
+      "default": "active"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "governance",
+        "finance",
+        "technology",
+        "community",
+        "ethics"
+      ]
+    },
+    "votes_for": {
+      "type": "number",
+      "default": 0
+    },
+    "votes_against": {
+      "type": "number",
+      "default": 0
+    },
+    "votes_abstain": {
+      "type": "number",
+      "default": 0
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "proposed_by": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "description"
+  ]
+}

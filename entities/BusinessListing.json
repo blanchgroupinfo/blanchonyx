@@ -1,0 +1,53 @@
+{
+  "name": "BusinessListing",
+  "type": "object",
+  "properties": {
+    "business_name": {
+      "type": "string"
+    },
+    "owner_name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "finance",
+        "technology",
+        "health",
+        "education",
+        "commerce",
+        "media",
+        "real_estate",
+        "energy",
+        "legal",
+        "consulting"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "logo_url": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "member_tier": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean",
+      "default": false
+    },
+    "contact_email": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "business_name",
+    "category"
+  ]
+}

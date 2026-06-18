@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link } from "@tanstack/react-router";
 import { ChevronLeft } from "lucide-react";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/Footer";
 
 interface Props {
@@ -18,7 +18,10 @@ const PageShell = ({ eyebrow, title, subtitle, children }: Props) => {
       <Navbar />
       <main className="pt-32 pb-24 section-pattern">
         <div className="container mx-auto px-6">
-          <Link to="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8">
+          <Link
+            to="/"
+            className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8"
+          >
             <ChevronLeft className="w-4 h-4 mr-1" /> Back to home
           </Link>
 
@@ -33,9 +36,7 @@ const PageShell = ({ eyebrow, title, subtitle, children }: Props) => {
                 {eyebrow}
               </span>
             )}
-            <h1 className="font-display text-4xl md:text-6xl font-semibold mt-3 mb-4">
-              {title}
-            </h1>
+            <h1 className="font-display text-4xl md:text-6xl font-semibold mt-3 mb-4">{title}</h1>
             {subtitle && <p className="text-white text-lg">{subtitle}</p>}
             <div className="sacred-divider w-32 mx-auto mt-6" />
           </motion.div>

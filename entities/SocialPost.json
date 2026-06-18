@@ -1,0 +1,46 @@
+{
+  "name": "SocialPost",
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "string"
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "author_tier": {
+      "type": "string",
+      "enum": [
+        "Founder",
+        "Royal \u00b7 Throne",
+        "Elite",
+        "Partner",
+        "Executive",
+        "Associate",
+        "Onyx \u00b7 Council",
+        "Sardonyx \u00b7 Initiate"
+      ]
+    },
+    "likes": {
+      "type": "number",
+      "default": 0
+    },
+    "media_url": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "announcement",
+        "discussion",
+        "event",
+        "achievement",
+        "general"
+      ],
+      "default": "general"
+    }
+  },
+  "required": [
+    "content"
+  ]
+}

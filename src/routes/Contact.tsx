@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Mail, Send, User, MessageSquare, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -14,13 +15,13 @@ const Contact = () => {
     name: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -29,11 +30,11 @@ const Contact = () => {
     setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     setIsSubmitting(false);
     setIsSubmitted(true);
-    
+
     toast({
       title: "Message Sent",
       description: "Thank you for reaching out. We will respond soon. All Blessings.",
@@ -50,7 +51,7 @@ const Contact = () => {
     <section className="py-24 md:py-32 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-onyx-600/10 to-background" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left Content */}
@@ -76,14 +77,15 @@ const Contact = () => {
             <div className="sacred-divider w-24 mb-8" />
 
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              We welcome partnerships, inquiries, and those seeking to learn more about 
-              our mission. Your support strengthens, uplifts, and empowers our spiritual 
-              family house—fostering growth, compassion, and community.
+              We welcome partnerships, inquiries, and those seeking to learn more about our mission.
+              Your support strengthens, uplifts, and empowers our spiritual family house—fostering
+              growth, compassion, and community.
             </p>
 
             <blockquote className="border-l-2 border-primary/40 pl-6 text-muted-foreground italic mb-8">
               <p className="mb-2">
-                "Together, we inspire life, hope, and love through faith, unity, and divine purpose."
+                "Together, we inspire life, hope, and love through faith, unity, and divine
+                purpose."
               </p>
               <cite className="text-sm text-primary/70">— Praise AHAYAH</cite>
             </blockquote>
@@ -118,12 +120,17 @@ const Contact = () => {
                 >
                   <CheckCircle className="w-16 h-16 text-primary mx-auto mb-6" />
                   <h3 className="font-display text-2xl text-foreground mb-3">Message Sent</h3>
-                  <p className="text-muted-foreground">Thank you for reaching out. All Blessings for Everyone.</p>
+                  <p className="text-muted-foreground">
+                    Thank you for reaching out. All Blessings for Everyone.
+                  </p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Full Name
                     </label>
                     <div className="relative">
@@ -141,7 +148,10 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Email Address
                     </label>
                     <div className="relative">
@@ -160,7 +170,10 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="subject"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Subject
                     </label>
                     <Input
@@ -175,7 +188,10 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Message
                     </label>
                     <div className="relative">
@@ -223,5 +239,9 @@ const Contact = () => {
     </section>
   );
 };
+
+export const Route = createFileRoute('/contact')({
+  component: Contact,
+});
 
 export default Contact;

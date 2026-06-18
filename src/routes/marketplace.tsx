@@ -3,9 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { base44 } from "@/api/base44Client";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@tanstack/react-router";
-import { Package, Search, Filter, X, ExternalLink, Star, Crown, Tag, ArrowLeft, SlidersHorizontal, ChevronDown, ChevronUp } from "lucide-react";
-
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
+import { ArrowLeft, Search, Star, Package, X, SlidersHorizontal } from "lucide-react";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 const CATEGORIES = ["all", "digital_asset", "nft", "token", "service", "media", "membership_upgrade"];
 const CAT_LABELS = {
@@ -312,7 +311,3 @@ export default function Marketplace() {
     </div>
   );
 }
-
-export const Route = createFileRoute('/marketplace')({
-  component: Marketplace,
-});

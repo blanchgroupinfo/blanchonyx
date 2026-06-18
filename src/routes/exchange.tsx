@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpDown, TrendingUp, RefreshCw, Zap } from "lucide-react";
 
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 const TOKENS = ["BOX", "BNX", "BID", "BHD", "SHLD"];
 const PAIRS = [

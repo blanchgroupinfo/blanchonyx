@@ -20,7 +20,6 @@ import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as MembershipRouteImport } from './routes/membership'
-import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as HeritageJudahRouteImport } from './routes/heritage-judah'
 import { Route as HeedRouteImport } from './routes/heed'
@@ -91,11 +90,6 @@ const ProfileRoute = ProfileRouteImport.update({
 const MembershipRoute = MembershipRouteImport.update({
   id: '/membership',
   path: '/membership',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MarketplaceRoute = MarketplaceRouteImport.update({
-  id: '/marketplace',
-  path: '/marketplace',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -196,7 +190,6 @@ export interface FileRoutesByFullPath {
   '/heed': typeof HeedRoute
   '/heritage-judah': typeof HeritageJudahRoute
   '/login': typeof LoginRoute
-  '/marketplace': typeof MarketplaceRoute
   '/membership': typeof MembershipRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
@@ -226,7 +219,6 @@ export interface FileRoutesByTo {
   '/heed': typeof HeedRoute
   '/heritage-judah': typeof HeritageJudahRoute
   '/login': typeof LoginRoute
-  '/marketplace': typeof MarketplaceRoute
   '/membership': typeof MembershipRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
@@ -257,7 +249,6 @@ export interface FileRoutesById {
   '/heed': typeof HeedRoute
   '/heritage-judah': typeof HeritageJudahRoute
   '/login': typeof LoginRoute
-  '/marketplace': typeof MarketplaceRoute
   '/membership': typeof MembershipRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
@@ -289,7 +280,6 @@ export interface FileRouteTypes {
     | '/heed'
     | '/heritage-judah'
     | '/login'
-    | '/marketplace'
     | '/membership'
     | '/profile'
     | '/register'
@@ -319,7 +309,6 @@ export interface FileRouteTypes {
     | '/heed'
     | '/heritage-judah'
     | '/login'
-    | '/marketplace'
     | '/membership'
     | '/profile'
     | '/register'
@@ -349,7 +338,6 @@ export interface FileRouteTypes {
     | '/heed'
     | '/heritage-judah'
     | '/login'
-    | '/marketplace'
     | '/membership'
     | '/profile'
     | '/register'
@@ -380,7 +368,6 @@ export interface RootRouteChildren {
   HeedRoute: typeof HeedRoute
   HeritageJudahRoute: typeof HeritageJudahRoute
   LoginRoute: typeof LoginRoute
-  MarketplaceRoute: typeof MarketplaceRoute
   MembershipRoute: typeof MembershipRoute
   ProfileRoute: typeof ProfileRoute
   RegisterRoute: typeof RegisterRoute
@@ -471,13 +458,6 @@ declare module '@tanstack/react-router' {
       path: '/membership'
       fullPath: '/membership'
       preLoaderRoute: typeof MembershipRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/marketplace': {
-      id: '/marketplace'
-      path: '/marketplace'
-      fullPath: '/marketplace'
-      preLoaderRoute: typeof MarketplaceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -612,7 +592,6 @@ const rootRouteChildren: RootRouteChildren = {
   HeedRoute: HeedRoute,
   HeritageJudahRoute: HeritageJudahRoute,
   LoginRoute: LoginRoute,
-  MarketplaceRoute: MarketplaceRoute,
   MembershipRoute: MembershipRoute,
   ProfileRoute: ProfileRoute,
   RegisterRoute: RegisterRoute,

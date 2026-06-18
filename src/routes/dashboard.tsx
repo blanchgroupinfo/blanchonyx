@@ -7,7 +7,7 @@ import { useAuth } from "@/hooks/AuthContext";
 import { Shield, Vote, TrendingUp, Users, ChevronRight, CheckCircle, XCircle, Minus, Clock, Crown, Gem, Star, Package, MessageCircle, Activity, CreditCard } from "lucide-react";
 
 const DLT_IMG = "https://media.base44.com/images/public/6a286093583928e0559f9198/9777cc4f7_blanch-onyx-dl.png";
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 function LiveTPS() {
   const [tps, setTps] = useState(22.74);

@@ -5,7 +5,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Calendar, ChevronLeft, ChevronRight, Plus, Bell, Star, Clock, Users, Shield, RefreshCw, X, CheckCircle, ExternalLink } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const DAYS = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];

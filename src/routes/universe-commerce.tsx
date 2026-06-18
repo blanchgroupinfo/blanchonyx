@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Search, ChevronDown, ChevronRight, Zap, Globe, Shield, User, Network } from "lucide-react";
 
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 const MODELS = [
   { code: "A2X", label: "Account", short: "A", desc: "Account to Everything", pathways: ["A2A","A2AD","A2AG","A2AI","A2Apps","A2AV","A2B","A2C","A2D","A2DEV","A2E","A2X","A2G","A2I","A2M","A2MF","A2N","A2P"], targets: ["Account","Administration","Agent","AI","Apps","Avatar","Business","Consumer","Direct","Developer","Employee","Everything","Government","Institution","Machine","Manufacturer","Many","Prosumer"] },

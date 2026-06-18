@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { Globe, Search, Building2, ArrowLeft, ExternalLink, CheckCircle, Briefcase, Users, Zap, BookOpen, Heart, Cpu, Home, Landmark, Shield, Plus, ChevronRight, Network } from "lucide-react";
 
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 const CAT_ICONS = { finance: Landmark, technology: Cpu, health: Heart, education: BookOpen, commerce: Briefcase, media: Globe, real_estate: Home, energy: Zap, legal: Shield, consulting: Users };
 const CAT_LABELS = { finance: "Finance", technology: "Technology", health: "Health & Wellness", education: "Education", commerce: "Commerce", media: "Media", real_estate: "Real Estate", energy: "Energy", legal: "Legal", consulting: "Consulting" };
@@ -24,19 +24,24 @@ const B2B_MODELS = [
 ];
 
 const FEATURED_NETWORKS = [
-  { name: "Global Financial Alliance", desc: "Premier network of financial institutions and investment firms", category: "Banking & Finance", region: "Worldwide", members: "2,400+", cat: "finance" },
-  { name: "Smart City Consortium", desc: "Coalition of smart city developers and technology providers", category: "Urban Development", region: "North America & Europe", members: "1,850+", cat: "technology" },
   { name: "Digital Asset Exchange Network", desc: "Leading network for digital asset trading and custody solutions", category: "Digital Assets", region: "Asia Pacific", members: "3,100+", cat: "finance" },
   { name: "Healthcare Innovation Partners", desc: "Network dedicated to healthcare technology advancement", category: "Healthcare", region: "Global", members: "940+", cat: "health" },
+  { name: "Global Financial Alliance", desc: "Premier network of financial institutions and investment firms", category: "Banking & Finance", region: "Worldwide", members: "2,400+", cat: "finance" },
+  { name: "Smart City Consortium", desc: "Coalition of smart city developers and technology providers", category: "Urban Development", region: "North America & Europe", members: "1,850+", cat: "technology" },
   { name: "Sustainable Energy Coalition", desc: "Alliance for renewable energy projects and investments", category: "Energy", region: "Europe & Middle East", members: "1,200+", cat: "energy" },
   { name: "Trade & Commerce Union", desc: "Cross-border trade facilitation and commerce network", category: "Commerce", region: "Africa & Americas", members: "2,700+", cat: "commerce" },
 ];
 
 const PLAN_TIERS = [
   { name: "Free", price: "0 BOX", features: ["Business profile listing", "Directory search access", "Basic messaging", "Community events access"] },
-  { name: "Associate", price: "250 BOX/yr", features: ["All Free features", "Marketplace access", "Partner discounts", "Social feed participation"] },
+  { name: "Sardonyx - Initiate", price: "100 BOX/yr", features: ["All Free features", "Enhanced profile listing", "Priority search visibility", "Marketplace participation"] },
+  { name: "Associate", price: "250 BOX/yr", features: ["All Sardonyx features", "Marketplace access", "Partner discounts", "Social feed participation"] },
+  { name: "Executive", price: "1,000 BOX/yr", features: ["All Associate features", "Advanced analytics dashboard", "Direct partner messaging", "Event invitations"] },
   { name: "Partner", price: "2,500 BOX/yr", features: ["All Associate features", "Commerce partnerships", "Annual summit access", "Investment opportunities", "UBN Commerce pathways"] },
   { name: "Elite", price: "5,000 BOX/yr", features: ["All Partner features", "B2B corridor access", "Elite networking events", "Global merchant network", "All 380+ X2X pathways"] },
+  { name: "Onyx-Council", price: "7,500 BOX/yr", features: ["All Elite features", "Governance veto rights", "Direct Elder Council access", "Genesis NFT airdrop", "Black Card — Onyx Council Level"] },
+  { Name: "Royal - Throne", price: "10,000 BOX/yr", features: ["All Onyx-Council features", "Exclusive governance role", "Direct Royal Council access", "Genesis NFT airdrop", "Black Card — Royal Gold Level"] },
+  { name: "Founding", price: "By Invitation", features: ["All Elite features", "Governance veto rights", "Direct Elder Council access", "Genesis NFT airdrop", "Black Card — Obsidian Level"] },
 ];
 
 const CAPABILITIES = [

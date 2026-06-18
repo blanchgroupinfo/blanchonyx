@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, CreditCard, Shield, Wallet, Globe, Lock, Zap, CheckCircle, Building2, Activity, Wifi, X, ChevronRight } from "lucide-react";
 
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
-const LOGO_BLACK = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/d8b42577b_BlogoBlackandBrown.png";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
+import LOGO_BLACK from "@/assets/b-logo-black-brown.png";
 
 const CARD_TIERS = [
   {
@@ -53,7 +53,7 @@ const CARD_TIERS = [
     color: "from-zinc-900 to-neutral-900",
     accent: "text-primary",
     border: "border-primary/40",
-    logo: LOGO_BROWN,
+    logo: LOGO_BLACK,
     tagline: "The Elite Card — Distinguished Member",
     features: ["Governance Participation", "Elite Networking Events", "Business Corridor Access", "Quarterly Retreat Invitations", "Member Investment Access"],
     highlight: "text-primary",
@@ -66,7 +66,7 @@ const CARD_TIERS = [
     color: "from-zinc-900 via-stone-900 to-neutral-900",
     accent: "text-primary/70",
     border: "border-primary/20",
-    logo: LOGO_BROWN,
+    logo: LOGO_BLACK,
     tagline: "The Commerce Card — Kingdom Business",
     features: ["Business Network Listing", "Commerce Partnerships", "Annual Summit Access", "Investment Opportunities"],
     highlight: "text-primary/70",

@@ -1,3 +1,4 @@
+import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Crown, Scroll, Star } from "lucide-react";
 import PageShell from "@/components/PageShell";
@@ -107,5 +108,9 @@ const HeritageJudah = () => {
     </PageShell>
   );
 };
+
+export const Route = createFileRoute('/heritage-judah')({
+  component: HeritageJudah,
+});
 
 export default HeritageJudah;

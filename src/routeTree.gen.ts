@@ -18,6 +18,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RoyalPriesthoodRouteImport } from './routes/royal-priesthood'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as MembershipRouteImport } from './routes/membership'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
@@ -30,12 +31,12 @@ import { Route as ExchangeRouteImport } from './routes/exchange'
 import { Route as DltRouteImport } from './routes/dlt'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CreatorsCalendarRouteImport } from './routes/creators-calendar'
-import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CoinRouteImport } from './routes/coin'
 import { Route as BusinessNetworkRouteImport } from './routes/business-network'
 import { Route as BlackCardRouteImport } from './routes/black-card'
 import { Route as BankingAccountsRouteImport } from './routes/banking-accounts'
 import { Route as BankingRouteImport } from './routes/banking'
+import { Route as ContactRouteImport } from './routes/Contact'
 import { Route as IndexRouteImport } from './routes/index'
 
 const UniverseCommerceRoute = UniverseCommerceRouteImport.update({
@@ -81,6 +82,11 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropertiesRoute = PropertiesRouteImport.update({
+  id: '/properties',
+  path: '/properties',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProfileRoute = ProfileRouteImport.update({
@@ -143,11 +149,6 @@ const CreatorsCalendarRoute = CreatorsCalendarRouteImport.update({
   path: '/creators-calendar',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CoinRoute = CoinRouteImport.update({
   id: '/coin',
   path: '/coin',
@@ -173,6 +174,11 @@ const BankingRoute = BankingRouteImport.update({
   path: '/banking',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/Contact',
+  path: '/Contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -181,12 +187,12 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/Contact': typeof ContactRoute
   '/banking': typeof BankingRoute
   '/banking-accounts': typeof BankingAccountsRoute
   '/black-card': typeof BlackCardRoute
   '/business-network': typeof BusinessNetworkRoute
   '/coin': typeof CoinRoute
-  '/contact': typeof ContactRoute
   '/creators-calendar': typeof CreatorsCalendarRoute
   '/dashboard': typeof DashboardRoute
   '/dlt': typeof DltRoute
@@ -199,6 +205,7 @@ export interface FileRoutesByFullPath {
   '/marketplace': typeof MarketplaceRoute
   '/membership': typeof MembershipRoute
   '/profile': typeof ProfileRoute
+  '/properties': typeof PropertiesRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
   '/royal-priesthood': typeof RoyalPriesthoodRoute
@@ -211,12 +218,12 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/Contact': typeof ContactRoute
   '/banking': typeof BankingRoute
   '/banking-accounts': typeof BankingAccountsRoute
   '/black-card': typeof BlackCardRoute
   '/business-network': typeof BusinessNetworkRoute
   '/coin': typeof CoinRoute
-  '/contact': typeof ContactRoute
   '/creators-calendar': typeof CreatorsCalendarRoute
   '/dashboard': typeof DashboardRoute
   '/dlt': typeof DltRoute
@@ -229,6 +236,7 @@ export interface FileRoutesByTo {
   '/marketplace': typeof MarketplaceRoute
   '/membership': typeof MembershipRoute
   '/profile': typeof ProfileRoute
+  '/properties': typeof PropertiesRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
   '/royal-priesthood': typeof RoyalPriesthoodRoute
@@ -242,12 +250,12 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/Contact': typeof ContactRoute
   '/banking': typeof BankingRoute
   '/banking-accounts': typeof BankingAccountsRoute
   '/black-card': typeof BlackCardRoute
   '/business-network': typeof BusinessNetworkRoute
   '/coin': typeof CoinRoute
-  '/contact': typeof ContactRoute
   '/creators-calendar': typeof CreatorsCalendarRoute
   '/dashboard': typeof DashboardRoute
   '/dlt': typeof DltRoute
@@ -260,6 +268,7 @@ export interface FileRoutesById {
   '/marketplace': typeof MarketplaceRoute
   '/membership': typeof MembershipRoute
   '/profile': typeof ProfileRoute
+  '/properties': typeof PropertiesRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
   '/royal-priesthood': typeof RoyalPriesthoodRoute
@@ -274,12 +283,12 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/Contact'
     | '/banking'
     | '/banking-accounts'
     | '/black-card'
     | '/business-network'
     | '/coin'
-    | '/contact'
     | '/creators-calendar'
     | '/dashboard'
     | '/dlt'
@@ -292,6 +301,7 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/membership'
     | '/profile'
+    | '/properties'
     | '/register'
     | '/reset-password'
     | '/royal-priesthood'
@@ -304,12 +314,12 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/Contact'
     | '/banking'
     | '/banking-accounts'
     | '/black-card'
     | '/business-network'
     | '/coin'
-    | '/contact'
     | '/creators-calendar'
     | '/dashboard'
     | '/dlt'
@@ -322,6 +332,7 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/membership'
     | '/profile'
+    | '/properties'
     | '/register'
     | '/reset-password'
     | '/royal-priesthood'
@@ -334,12 +345,12 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/Contact'
     | '/banking'
     | '/banking-accounts'
     | '/black-card'
     | '/business-network'
     | '/coin'
-    | '/contact'
     | '/creators-calendar'
     | '/dashboard'
     | '/dlt'
@@ -352,6 +363,7 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/membership'
     | '/profile'
+    | '/properties'
     | '/register'
     | '/reset-password'
     | '/royal-priesthood'
@@ -365,12 +377,12 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
   BankingRoute: typeof BankingRoute
   BankingAccountsRoute: typeof BankingAccountsRoute
   BlackCardRoute: typeof BlackCardRoute
   BusinessNetworkRoute: typeof BusinessNetworkRoute
   CoinRoute: typeof CoinRoute
-  ContactRoute: typeof ContactRoute
   CreatorsCalendarRoute: typeof CreatorsCalendarRoute
   DashboardRoute: typeof DashboardRoute
   DltRoute: typeof DltRoute
@@ -383,6 +395,7 @@ export interface RootRouteChildren {
   MarketplaceRoute: typeof MarketplaceRoute
   MembershipRoute: typeof MembershipRoute
   ProfileRoute: typeof ProfileRoute
+  PropertiesRoute: typeof PropertiesRoute
   RegisterRoute: typeof RegisterRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   RoyalPriesthoodRoute: typeof RoyalPriesthoodRoute
@@ -457,6 +470,13 @@ declare module '@tanstack/react-router' {
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/properties': {
+      id: '/properties'
+      path: '/properties'
+      fullPath: '/properties'
+      preLoaderRoute: typeof PropertiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/profile': {
@@ -543,13 +563,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CreatorsCalendarRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/coin': {
       id: '/coin'
       path: '/coin'
@@ -585,6 +598,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BankingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/Contact': {
+      id: '/Contact'
+      path: '/Contact'
+      fullPath: '/Contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -597,12 +617,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
   BankingRoute: BankingRoute,
   BankingAccountsRoute: BankingAccountsRoute,
   BlackCardRoute: BlackCardRoute,
   BusinessNetworkRoute: BusinessNetworkRoute,
   CoinRoute: CoinRoute,
-  ContactRoute: ContactRoute,
   CreatorsCalendarRoute: CreatorsCalendarRoute,
   DashboardRoute: DashboardRoute,
   DltRoute: DltRoute,
@@ -615,6 +635,7 @@ const rootRouteChildren: RootRouteChildren = {
   MarketplaceRoute: MarketplaceRoute,
   MembershipRoute: MembershipRoute,
   ProfileRoute: ProfileRoute,
+  PropertiesRoute: PropertiesRoute,
   RegisterRoute: RegisterRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   RoyalPriesthoodRoute: RoyalPriesthoodRoute,

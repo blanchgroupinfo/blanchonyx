@@ -4,15 +4,14 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "vite dev --host 0.0.0.0 --port 3000",
-    "build": "vite build",
+    "dev": "vite dev",
+   "build": "vinxi build --preset vercel"
     "build:dev": "vite build --mode development",
-    "preview": "vite preview --host 0.0.0.0 --port 3000",
+    "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@base44/sdk": "^0.8.32",
     "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",

@@ -201,7 +201,7 @@
     line-height: 0.82;
   }
   h2 {
-    font-size: clamp(3.2rem, 7.5vw, 7.5rem);
+    font-size: clamp(3.2rem, 5vw, 5rem);
   }
   h2 em {
     color: var(--primary);
@@ -454,11 +454,13 @@
     letter-spacing: 0.15em;
   }
   .heritage-grid h3 {
-    font-size: clamp(2rem, 3.5vw, 4rem);
+    font-size: clamp(2rem, 3.2vw, 3.2rem);
     line-height: 1;
     margin: 3rem 0 1.5rem;
   }
-  .heritage-grid p,
+  .heritage-grid p {
+  text-align: justify; 
+  }
   .heritage-grid li {
     color: var(--muted-foreground);
     line-height: 1.8;
@@ -565,9 +567,28 @@
     grid-template-columns: repeat(3, 1fr);
   }
   .domain-grid article {
+    position: relative;
     padding: 2rem;
     border: 1px solid var(--border);
     margin: -1px 0 0 -1px;
+    background: linear-gradient(
+      145deg,
+      color-mix(in oklab, var(--background) 98%, var(--primary)),
+      var(--background)
+    );
+    transition:
+      background 0.35s ease,
+      box-shadow 0.35s ease;
+  }
+  .domain-grid article:hover {
+    background: linear-gradient(
+      145deg,
+      color-mix(in oklab, var(--primary) 8%, var(--background)),
+      color-mix(in oklab, var(--primary) 3%, var(--background))
+    );
+    border-color: darkgoldenrod;
+    box-shadow: var(--shadow-royal);
+    z-index: 1;
   }
   .domain-grid svg {
     color: var(--primary);
@@ -619,6 +640,7 @@
       color-mix(in oklab, var(--primary) 8%, var(--background)),
       color-mix(in oklab, var(--primary) 3%, var(--background))
     );
+    border-color:darkgoldenrod;
     box-shadow: var(--shadow-royal);
     z-index: 1;
   }
@@ -885,6 +907,7 @@
   }
   .privilege-card {
     position: relative;
+    text-align: justify;
     min-height: 12rem;
     padding: 2rem 1.75rem;
     display: flex;
@@ -906,6 +929,7 @@
       color-mix(in oklab, var(--primary) 8%, var(--background)),
       color-mix(in oklab, var(--primary) 3%, var(--background))
     );
+    border-color:darkgoldenrod;
     box-shadow: var(--shadow-royal);
     z-index: 1;
   }
@@ -921,6 +945,7 @@
     color: var(--muted-foreground);
     font-size: 0.78rem;
     line-height: 1.65;
+    text-align: justify;
   }
 
   .purpose-block {
@@ -953,6 +978,7 @@
     background: color-mix(in oklab, var(--primary) 4%, var(--background));
     box-shadow: var(--shadow-royal);
     z-index: 1;
+    border-color:darkgoldenrod;
   }
   .purpose-card svg {
     width: 1.1rem;
@@ -967,6 +993,7 @@
     color: var(--muted-foreground);
     font-size: 0.76rem;
     line-height: 1.7;
+    text-align: justify;
   }
 
   .membership-quote {

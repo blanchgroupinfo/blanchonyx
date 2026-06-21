@@ -3,6 +3,28 @@ import { useEffect, useRef, useState } from "react";
 import { Activity, Zap, Infinity as InfinityIcon } from "lucide-react";
 import dltImg from "@/assets/blanch-onyx-dlt.png";
 
+// --- Animated TPS counter ---
+const tpsSuffixes = ["Q", "Qi", "Sx", "Sp", "Oc", "No", "Dc", "Ud", "Dd"];
+function LiveTps() {
+  const [v, setV] = useState(22.5);
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => {
+      setV((cur) => {
+        const next = cur * (1.05 + Math.random() * 0.35);
+        if (next > 999) {
+          setIdx((i) => Math.min(i + 1, tpsSuffixes.length - 1));
+          return next / 1000;
+        }
+        return next;
+      });
+    }, 1100);
+    return () => clearInterval(t);
+  }, []);
+  const display = idx >= tpsSuffixes.length - 1 && v > 500 ? "∞" : v.toFixed(3);
+  return <strong>{display}<span>{display === "∞" ? "" : ` ${tpsSuffixes[idx]}`}</span></strong>;
+}
+
 const formatTps = (n: number) => {
   if (n >= 1e15) return (n / 1e15).toFixed(3) + "Q";
   if (n >= 1e12) return (n / 1e12).toFixed(3) + "T";
@@ -91,7 +113,7 @@ const DltShowcase = () => {
             transition={{ duration: 1 }}
             className="relative aspect-square max-w-xl mx-auto w-full"
           >
-            <div className="bsolute inset-0 rounded-full bg-primary/20 blur-3xl animate-glow-pulse" />
+            <div className="absolute inset-0 rounded-full bg-primary/20 blur-3xl animate-glow-pulse" />
             <img
               src={dltImg}
               alt="Blanch Onyx DLT 8-Layer DAG with 22 Ancient Hebrew Nodes"
@@ -199,14 +221,19 @@ const DltShowcase = () => {
                   <div className="w-3 h-3 rounded-full bg-secondary" />
                   <div className="absolute inset-0 w-3 h-3 rounded-full bg-secondary animate-ping" />
                 </div>
-                <span className="text-xs uppercase tracking-widest text-secondary font-semibold">
-                  Live Network · Mainnet · Infinite Horizontal Scaling
-                </span>
+                <div className="telemetry">
+                  <div className="live"><i/> Live Network <span>Mainnet</span></div>
+                  <p>Blanch Onyx Coin (BOX) the Exclusive Sovereign Live TPS Throughput · Unlimited Horizontal Scaling → ∞</p>
+                  <LiveTps />
+                  <div className="metric-row"><div><small>Active Nodes</small><b>22</b></div><div><small>Scaling</small><b>22.5 Q → ∞</b></div></div>
+                  <div className="bars">{[28,44,72,52,86,61,95,70,100,78,91,68,84,55,92,74].map((h,i)=><i key={i} style={{height:`${h}%`}}/>)}</div>
+                  <div className="network-tags"><span>No Fees</span><span>No Mining</span><span>Infinite Scale</span><span>Sovereign</span></div>
+                </div>
               </div>
 
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <div className="text-xs text-muted-foreground mb-1">TPS Throughput</div>
+                  <div className="text-xs text-muted-foreground mb-1">Blanch Coin (BC) and other Coins and Tokens TPS Throughput</div>
                   <div className="font-display text-2xl md:text-3xl text-gradient-gold font-semibold tabular-nums">
                     {formatTps(tps)}
                   </div>

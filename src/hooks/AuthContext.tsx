@@ -1,113 +1,139 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import { base44 } from '@/api/base44Client';
-import { appParams } from '@/hooks/app-params';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
+import type { User as SupabaseUser } from "@supabase/supabase-js";
 
-const AuthContext = createContext();
+import { supabase } from "@/integrations/supabase/client";
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+type AppUser = SupabaseUser & {
+  full_name?: string;
+  role?: string;
+};
+
+type AuthErrorState = {
+  type: string;
+  message: string;
+} | null;
+
+type AuthContextValue = {
+  user: AppUser | null;
+  isAuthenticated: boolean;
+  isLoadingAuth: boolean;
+  authChecked: boolean;
+  authError: AuthErrorState;
+  checkUserAuth: () => Promise<AppUser | null>;
+};
+
+const AuthContext = createContext<AuthContextValue | undefined>(undefined);
+
+function normalizeUser(user: SupabaseUser | null): AppUser | null {
+  if (!user) return null;
+
+  return {
+    ...user,
+    full_name:
+      typeof user.user_metadata?.full_name === "string"
+        ? user.user_metadata.full_name
+        : user.email,
+    role:
+      typeof user.app_metadata?.role === "string"
+        ? user.app_metadata.role
+        : typeof user.user_metadata?.role === "string"
+          ? user.user_metadata.role
+          : "member",
+  };
+}
+
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [user, setUser] = useState<AppUser | null>(null);
   const [isLoadingAuth, setIsLoadingAuth] = useState(true);
-  const [isLoadingPublicSettings, setIsLoadingPublicSettings] = useState(true);
-  const [authError, setAuthError] = useState(null);
   const [authChecked, setAuthChecked] = useState(false);
-  const [appPublicSettings, setAppPublicSettings] = useState({
-    id: "blanch-onyx",
-    public_settings: {
-      appName: "Blanch Onyx",
-      theme: "dark"
-    }
-  });
+  const [authError, setAuthError] = useState<AuthErrorState>(null);
 
-  useEffect(() => {
-    checkAppState();
+  const checkUserAuth = useCallback(async () => {
+    setIsLoadingAuth(true);
+    setAuthError(null);
+
+    const { data, error } = await supabase.auth.getUser();
+
+    if (error) {
+      const hasSession = error.message !== "Auth session missing!";
+      if (hasSession) {
+        setAuthError({ type: "auth_error", message: error.message });
+      }
+      setUser(null);
+      setAuthChecked(true);
+      setIsLoadingAuth(false);
+      return null;
+    }
+
+    const nextUser = normalizeUser(data.user);
+    setUser(nextUser);
+    setAuthChecked(true);
+    setIsLoadingAuth(false);
+    return nextUser;
   }, []);
 
-  const checkAppState = async () => {
-    try {
-      setIsLoadingPublicSettings(true);
-      setAuthError(null);
+  useEffect(() => {
+    let mounted = true;
 
-      // Instantly load simulated public settings
-      setAppPublicSettings({
-        id: "blanch-onyx",
-        public_settings: {
-          appName: "Blanch Onyx",
-          theme: "dark"
-        }
-      });
-      setIsLoadingPublicSettings(false);
+    supabase.auth.getSession().then(({ data, error }) => {
+      if (!mounted) return;
 
-      // Check user authentication
-      await checkUserAuth();
-    } catch (error) {
-      console.error('Unexpected auth state check error:', error);
-      setIsLoadingPublicSettings(false);
-      setIsLoadingAuth(false);
-    }
-  };
-
-  const checkUserAuth = async () => {
-    try {
-      setIsLoadingAuth(true);
-      
-      // Fetch user info from our self-contained mock client
-      const currentUser = await base44.auth.me();
-      if (currentUser) {
-        setUser(currentUser);
-        setIsAuthenticated(true);
-      } else {
+      if (error) {
+        setAuthError({ type: "auth_error", message: error.message });
         setUser(null);
-        setIsAuthenticated(false);
+      } else {
+        setUser(normalizeUser(data.session?.user ?? null));
+        setAuthError(null);
       }
-      
-      setIsLoadingAuth(false);
+
       setAuthChecked(true);
-    } catch (error) {
-      console.error('User auth check failed:', error);
       setIsLoadingAuth(false);
-      setIsAuthenticated(false);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(normalizeUser(session?.user ?? null));
+      setAuthError(null);
       setAuthChecked(true);
-    }
-  };
+      setIsLoadingAuth(false);
+    });
 
-  const logout = (shouldRedirect = true) => {
-    setUser(null);
-    setIsAuthenticated(false);
-    base44.auth.logout();
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
+  }, []);
 
-    if (shouldRedirect && typeof window !== 'undefined') {
-      window.location.href = "/";
-    }
-  };
-
-  const navigateToLogin = () => {
-    base44.auth.redirectToLogin();
-  };
-
-  return (
-    <AuthContext.Provider value={{ 
-      user, 
-      isAuthenticated, 
+  const value = useMemo<AuthContextValue>(
+    () => ({
+      user,
+      isAuthenticated: Boolean(user),
       isLoadingAuth,
-      isLoadingPublicSettings,
-      authError,
-      appPublicSettings,
       authChecked,
-      logout,
-      navigateToLogin,
+      authError,
       checkUserAuth,
-      checkAppState
-    }}>
-      {children}
-    </AuthContext.Provider>
+    }),
+    [authChecked, authError, checkUserAuth, isLoadingAuth, user],
   );
-};
 
-export const useAuth = () => {
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
+
+export function useAuth() {
   const context = useContext(AuthContext);
+
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
+
   return context;
-};
+}

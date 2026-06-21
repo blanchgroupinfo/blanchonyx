@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { base44 } from "@/api/base44Client";
+import { supabase } from "@/integrations/supabase/client";
 import { Heart, MessageCircle, Crown, Star, Shield, Gem, Sparkles, Users, UserCheck, Briefcase } from "lucide-react";
 
 const TIER_ICONS = {
-  "Founder": Crown,
+  Founder: Crown,
   "Royal · Throne": Gem,
-  "Elite": Star,
-  "Partner": Briefcase,
-  "Executive": Shield,
-  "Associate": UserCheck,
+  Elite: Star,
+  Partner: Briefcase,
+  Executive: Shield,
+  Associate: UserCheck,
   "Onyx · Council": Sparkles,
   "Sardonyx · Initiate": Users,
 };
 
 const TIER_COLORS = {
-  "Founder": "text-yellow-400",
+  Founder: "text-yellow-400",
   "Royal · Throne": "text-amber-300",
-  "Elite": "text-primary",
-  "Partner": "text-primary/80",
-  "Executive": "text-primary/70",
-  "Associate": "text-muted-foreground",
+  Elite: "text-primary",
+  Partner: "text-primary/80",
+  Executive: "text-primary/70",
+  Associate: "text-muted-foreground",
   "Onyx · Council": "text-primary",
   "Sardonyx · Initiate": "text-muted-foreground",
 };
@@ -84,9 +84,15 @@ export default function SocialFeedSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    base44.entities.SocialPost.list("-created_date", 5)
-      .then(setPosts)
-      .finally(() => setLoading(false));
+    supabase
+      .from("social_posts")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(5)
+      .then(({ data, error }) => {
+        if (!error && data) setPosts(data);
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -99,32 +105,23 @@ export default function SocialFeedSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-14"
         >
-          <p className="text-xs tracking-[0.3em] text-primary uppercase mb-4">Member Activity</p>
-          <h2 className="font-heading text-3xl md:text-4xl tracking-[0.1em] text-foreground mb-4">
-            Social Feed
-          </h2>
-          <p className="font-display text-base text-muted-foreground italic">
-            Latest posts and activity from the Royal Membership Network
+          <p className="text-xs tracking-[0.3em] text-primary uppercase mb-4">
+            Live from the Network
           </p>
-          <div className="w-16 h-px bg-primary/40 mx-auto mt-5" />
+          <h2 className="font-heading text-2xl md:text-3xl tracking-[0.05em] text-foreground">
+            Member Feed
+          </h2>
         </motion.div>
-
         <div className="space-y-4">
-          {loading
-            ? Array(3).fill(0).map((_, i) => (
-                <div key={i} className="bg-card border border-border/30 p-6 animate-pulse">
-                  <div className="flex gap-4">
-                    <div className="w-10 h-10 rounded-full bg-muted" />
-                    <div className="flex-1 space-y-2">
-                      <div className="h-3 bg-muted rounded w-1/3" />
-                      <div className="h-3 bg-muted rounded w-full" />
-                      <div className="h-3 bg-muted rounded w-2/3" />
-                    </div>
-                  </div>
-                </div>
-              ))
-            : posts.map((post) => <PostCard key={post.id} post={post} />)
-          }
+          {loading ? (
+            <p className="text-center text-muted-foreground text-sm">Loading feed...</p>
+          ) : posts.length === 0 ? (
+            <p className="text-center text-muted-foreground text-sm">
+              No posts yet. Be the first to share with the community.
+            </p>
+          ) : (
+            posts.map((post) => <PostCard key={post.id} post={post} />)
+          )}
         </div>
       </div>
     </section>

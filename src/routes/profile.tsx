@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { base44 } from "@/api/base44Client";
 import { useAuth } from "@/hooks/AuthContext";
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";

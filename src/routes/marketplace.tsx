@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { base44 } from "@/api/base44Client";
+import { supabase } from "@/integrations/supabase/client";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Search, Star, Package, X, SlidersHorizontal } from "lucide-react";
@@ -101,15 +101,6 @@ function ItemModal({ item, onClose }) {
         </span>
         <h2 className="font-heading text-xl tracking-[0.05em] text-foreground mb-3">{item.title}</h2>
         <p className="text-muted-foreground text-sm leading-relaxed mb-6">{item.description}</p>
-        {item.tags?.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-6">
-            {item.tags.map(tag => (
-              <span key={tag} className="text-[10px] text-muted-foreground/70 border border-border/40 px-2 py-0.5">
-                #{tag}
-              </span>
-            ))}
-          </div>
-        )}
         <div className="flex items-center justify-between border-t border-border/30 pt-5">
           <div>
             <p className="font-heading text-2xl text-primary">{item.price?.toLocaleString()} <span className="text-sm">{item.currency}</span></p>
@@ -138,14 +129,19 @@ export default function Marketplace() {
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState(null);
   const [sortBy, setSortBy] = useState("popular");
-  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [statusFilter, setStatusFilter] = useState("all");
   const [featuredOnly, setFeaturedOnly] = useState(false);
 
   useEffect(() => {
-    base44.entities.MarketplaceItem.list("-created_date", 50)
-      .then(setItems)
-      .finally(() => setLoading(false));
+    supabase
+      .from("marketplace_items")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(50)
+      .then(({ data, error }) => {
+        if (!error && data) setItems(data);
+        setLoading(false);
+      });
   }, []);
 
   const sorted = [...items].sort((a, b) => {
@@ -165,7 +161,6 @@ export default function Marketplace() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <div className="border-b border-border/30 bg-card/50 backdrop-blur-sm sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
@@ -182,132 +177,59 @@ export default function Marketplace() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-12">
-        {/* Title */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
           <p className="text-xs tracking-[0.3em] text-primary uppercase mb-3">Kingdom-Aligned Commerce</p>
           <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">Virtual Marketplace</h1>
           <p className="font-display text-lg text-muted-foreground italic max-w-2xl">
-            A sacred digital marketplace for kingdom-aligned goods, services, and creative works — facilitating righteous exchange and community prosperity.
+            A sacred digital marketplace for kingdom-aligned goods, services, and creative works.
           </p>
         </motion.div>
 
-        {/* Discount banner */}
         <div className="border border-primary/30 bg-primary/5 px-6 py-4 mb-8 flex items-center gap-3">
           <Star className="w-4 h-4 text-primary shrink-0" />
           <p className="text-sm text-foreground"><span className="text-primary font-heading">Members get Discounts</span> on Products &amp; Services with anyone on the Network and Marketplace.</p>
         </div>
 
-        {/* Search */}
-        <div className="relative mb-6">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <input
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            placeholder="Search assets, tokens, services..."
-            className="w-full pl-10 pr-4 py-3 bg-card border border-border/40 text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/40"
-          />
-        </div>
-
-        <div className="flex gap-6">
-          {/* Sidebar */}
-          <AnimatePresence>
-            {sidebarOpen && (
-              <motion.aside
-                initial={{ width: 0, opacity: 0 }}
-                animate={{ width: 220, opacity: 1 }}
-                exit={{ width: 0, opacity: 0 }}
-                className="shrink-0 overflow-hidden"
-              >
-                <div className="w-[220px] space-y-6">
-                  {/* Sort */}
-                  <div>
-                    <p className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase mb-3">Sort By</p>
-                    <div className="space-y-1">
-                      {SORT_OPTIONS.map(s => (
-                        <button key={s.value} onClick={() => setSortBy(s.value)} className={`w-full text-left px-3 py-2 text-xs transition-all ${sortBy === s.value ? "text-primary bg-primary/5 border-l-2 border-primary pl-2" : "text-muted-foreground hover:text-foreground"}`}>
-                          {s.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  {/* Category */}
-                  <div>
-                    <p className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase mb-3">Category</p>
-                    <div className="space-y-1">
-                      {CATEGORIES.map(cat => (
-                        <button key={cat} onClick={() => setCategory(cat)} className={`w-full text-left px-3 py-2 text-xs transition-all ${category === cat ? "text-primary bg-primary/5 border-l-2 border-primary pl-2" : "text-muted-foreground hover:text-foreground"}`}>
-                          {CAT_LABELS[cat]}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  {/* Status */}
-                  <div>
-                    <p className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase mb-3">Status</p>
-                    <div className="space-y-1">
-                      {["all", "available", "reserved", "sold"].map(s => (
-                        <button key={s} onClick={() => setStatusFilter(s)} className={`w-full text-left px-3 py-2 text-xs capitalize transition-all ${statusFilter === s ? "text-primary bg-primary/5 border-l-2 border-primary pl-2" : "text-muted-foreground hover:text-foreground"}`}>
-                          {s === "all" ? "All Status" : s}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  {/* Featured */}
-                  <div>
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" checked={featuredOnly} onChange={e => setFeaturedOnly(e.target.checked)} className="accent-primary w-3.5 h-3.5" />
-                      <span className="text-xs text-muted-foreground">Featured Only</span>
-                    </label>
-                  </div>
-                </div>
-              </motion.aside>
-            )}
-          </AnimatePresence>
-
-          {/* Main content */}
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center justify-between mb-4">
-              <button onClick={() => setSidebarOpen(!sidebarOpen)} className="flex items-center gap-2 text-[10px] tracking-[0.1em] uppercase text-muted-foreground hover:text-primary transition-colors border border-border/40 px-3 py-2">
-                <SlidersHorizontal className="w-3.5 h-3.5" />
-                {sidebarOpen ? "Hide Filters" : "Show Filters"}
-              </button>
-              <p className="text-[10px] text-muted-foreground">{filtered.length} items</p>
-            </div>
-
-            {loading ? (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {Array(6).fill(0).map((_, i) => (
-                  <div key={i} className="bg-card border border-border/30 animate-pulse">
-                    <div className="h-36 bg-muted" />
-                    <div className="p-5 space-y-3">
-                      <div className="h-3 bg-muted rounded w-1/3" />
-                      <div className="h-4 bg-muted rounded w-full" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <AnimatePresence mode="popLayout">
-                <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {filtered.map(item => (
-                    <ItemCard key={item.id} item={item} onClick={setSelected} />
-                  ))}
-                </motion.div>
-              </AnimatePresence>
-            )}
-            {!loading && filtered.length === 0 && (
-              <div className="text-center py-20 text-muted-foreground">
-                <Package className="w-10 h-10 mx-auto mb-3 opacity-30" />
-                <p className="font-display italic">No assets found in this category</p>
-              </div>
-            )}
+        <div className="flex flex-col md:flex-row gap-4 mb-8">
+          <div className="relative flex-1">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <input type="text" placeholder="Search marketplace..." value={search} onChange={e => setSearch(e.target.value)}
+              className="w-full pl-11 pr-4 py-3 bg-card border border-border/40 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/40" />
           </div>
+          <select value={category} onChange={e => setCategory(e.target.value)}
+            className="px-4 py-3 bg-card border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40">
+            {CATEGORIES.map(c => <option key={c} value={c}>{CAT_LABELS[c]}</option>)}
+          </select>
+          <select value={sortBy} onChange={e => setSortBy(e.target.value)}
+            className="px-4 py-3 bg-card border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40">
+            {SORT_OPTIONS.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
+          </select>
         </div>
+
+        {loading ? (
+          <div className="text-center py-20">
+            <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto" />
+            <p className="text-muted-foreground text-sm mt-4">Loading marketplace...</p>
+          </div>
+        ) : filtered.length === 0 ? (
+          <div className="text-center py-20">
+            <Package className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
+            <p className="text-muted-foreground">No items found. Try adjusting your filters.</p>
+          </div>
+        ) : (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <AnimatePresence>
+              {filtered.map(item => <ItemCard key={item.id} item={item} onClick={setSelected} />)}
+            </AnimatePresence>
+          </div>
+        )}
       </div>
 
-      <AnimatePresence>
-        {selected && <ItemModal item={selected} onClose={() => setSelected(null)} />}
-      </AnimatePresence>
+      <ItemModal item={selected} onClose={() => setSelected(null)} />
     </div>
   );
 }
+
+export const Route = createFileRoute("/marketplace")({
+  component: Marketplace,
+});

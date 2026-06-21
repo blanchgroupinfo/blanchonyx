@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { base44 } from "@/api/base44Client";
+import { supabase } from "@/integrations/supabase/client";
+import { GovernanceProposal, SocialPost, MarketplaceItem } from "@/api/dataClient";
 import { motion } from "framer-motion";
 import { useAuth } from "@/hooks/AuthContext";
 import { Shield, Vote, TrendingUp, Users, ChevronRight, CheckCircle, XCircle, Minus, Clock, Crown, Gem, Star, Package, MessageCircle, Activity, CreditCard } from "lucide-react";
 
-const DLT_IMG = "https://media.base44.com/images/public/6a286093583928e0559f9198/9777cc4f7_blanch-onyx-dl.png";
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
+
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 function LiveTPS() {
   const [tps, setTps] = useState(22.74);
@@ -144,9 +145,9 @@ export default function Dashboard() {
   const [blockHeight, setBlockHeight] = useState(1422704);
 
   useEffect(() => {
-    base44.entities.GovernanceProposal.list("-created_date", 4).then(setProposals);
-    base44.entities.SocialPost.list("-created_date", 3).then(setPosts);
-    base44.entities.MarketplaceItem.filter({ featured: true }, "-created_date", 3).then(setItems);
+    GovernanceProposal.list(4).then(setProposals).catch(() => setProposals([]));
+    SocialPost.list(3).then(setPosts).catch(() => setPosts([]));
+    MarketplaceItem.filter({ featured: true }, 3).then(setItems).catch(() => setItems([]));
     const bh = setInterval(() => setBlockHeight(h => h + Math.floor(Math.random() * 2) + 1), 2500);
     return () => clearInterval(bh);
   }, []);
@@ -160,8 +161,8 @@ export default function Dashboard() {
     if (voteType === "for") updates.votes_for = (proposal.votes_for || 0) + 1;
     if (voteType === "against") updates.votes_against = (proposal.votes_against || 0) + 1;
     if (voteType === "abstain") updates.votes_abstain = (proposal.votes_abstain || 0) + 1;
-    await base44.entities.GovernanceProposal.update(proposalId, updates);
-    base44.entities.GovernanceProposal.list("-created_date", 4).then(setProposals);
+    await GovernanceProposal.update(proposalId, updates);
+    GovernanceProposal.list(4).then(setProposals).catch(() => {});
   };
 
   return (
@@ -185,7 +186,7 @@ export default function Dashboard() {
               ← Home
             </Link>
             <button
-              onClick={() => base44.auth.logout("/")}
+              onClick={() => supabase.auth.signOut().then(() => window.location.href = "/")}
               className="text-[10px] tracking-[0.15em] uppercase text-muted-foreground hover:text-destructive transition-colors"
             >
               Sign Out

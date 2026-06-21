@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Building2, CreditCard, Send, ArrowDownLeft, ArrowUpRight, Landmark, Shield, Zap, TrendingUp, Lock, Globe, RefreshCw, ChevronRight, Wallet, CheckCircle } from "lucide-react";
 
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 const ACCOUNTS = [
   { name: "Sovereign Checking", number: "••••  ••••  4821", balance: 24850.00, currency: "USD", type: "checking", color: "from-zinc-900 to-neutral-900", accent: "text-primary", border: "border-primary/40" },

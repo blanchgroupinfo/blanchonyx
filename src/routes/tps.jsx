@@ -5,7 +5,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Activity, TrendingUp, Zap, Database, Server } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from "recharts";
 
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 // TPS always climbs — infinite horizontal scaling — never decreases
 const tpsStartRef = { current: 22.5e15 };

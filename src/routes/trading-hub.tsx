@@ -5,7 +5,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowLeft, TrendingUp, TrendingDown, BarChart2, Zap, Activity } from "lucide-react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
 
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 const PAIRS = [
   { pair: "BOX/USD", base: 22.74 },

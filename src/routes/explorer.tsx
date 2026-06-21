@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Search, Layers, Activity, Cpu, Clock, Hash } from "lucide-react";
 
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 function randHex(len = 16) {
   return Array.from({ length: len }, () => Math.floor(Math.random() * 16).toString(16)).join("");

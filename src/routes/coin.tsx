@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Coins, TrendingUp, Shield, Zap, Globe, Lock, Activity } from "lucide-react";
 
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 function LivePrice() {
   const [price, setPrice] = useState(22.74);

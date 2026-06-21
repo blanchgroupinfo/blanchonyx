@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, CreditCard, Shield, Wallet, Globe, Lock, Zap, CheckCircle, Building2, Activity, Wifi, X, ChevronRight } from "lucide-react";
 
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
-const LOGO_BLACK = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/d8b42577b_BlogoBlackandBrown.png";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
+import LOGO_BLACK from "@/assets/b-logo-black-brown.png";
 
 const CARD_TIERS = [
   {
@@ -27,7 +27,7 @@ const CARD_TIERS = [
     color: "from-black via-yellow-950 to-zinc-950",
     accent: "text-amber-300",
     border: "border-amber-400/60",
-    logo: LOGO_BROWN, // brown logo
+    logo: LOGO_BLACK, // brown logo
     tagline: "The Crown Card — Royal Authority",
     features: ["Full Governance Voting Rights", "Private Banking Access", "Summit & Retreat Priority", "Blanch Corridor Commerce", "Royal Member Directory", "Executive Concierge"],
     highlight: "text-amber-300",
@@ -35,17 +35,43 @@ const CARD_TIERS = [
     price: "10,000 BOX/yr",
   },
   {
-    name: "Onyx Gold",
+    name: "Onyx Council",
+    tier: "Onyx · Council",
+    color: "from-zinc-950 via-neutral-900 to-zinc-900",
+    accent: "text-primary",
+    border: "border-primary/30",
+    logo: LOGO_BLACK,
+    tagline: "The Council Card — Advisory Seat",
+    features: ["Council Governance Seats", "Ethical Standards Board", "Cultural Leadership Role", "Exclusive Summits", "Lifetime Recognition"],
+    highlight: "text-primary",
+    glow: "rgba(197,165,90,0.12)",
+    price: "7,500 BOX/yr",
+  },
+  {
+    name: "Onyx Elite",
     tier: "Elite",
     color: "from-zinc-900 to-neutral-900",
     accent: "text-primary",
     border: "border-primary/40",
-    logo: LOGO_BROWN,
+    logo: LOGO_BLACK,
     tagline: "The Elite Card — Distinguished Member",
     features: ["Governance Participation", "Elite Networking Events", "Business Corridor Access", "Quarterly Retreat Invitations", "Member Investment Access"],
     highlight: "text-primary",
     glow: "rgba(197,165,90,0.15)",
     price: "5,000 BOX/yr",
+  },
+  {
+    name: "Partner",
+    tier: "Partner",
+    color: "from-zinc-900 via-stone-900 to-neutral-900",
+    accent: "text-primary/70",
+    border: "border-primary/20",
+    logo: LOGO_BLACK,
+    tagline: "The Commerce Card — Kingdom Business",
+    features: ["Business Network Listing", "Commerce Partnerships", "Annual Summit Access", "Investment Opportunities"],
+    highlight: "text-primary/70",
+    glow: "rgba(197,165,90,0.08)",
+    price: "2,500 BOX/yr",
   },
   {
     name: "Onyx Executive",
@@ -74,19 +100,6 @@ const CARD_TIERS = [
     price: "250 BOX/yr",
   },
   {
-    name: "Onyx Council",
-    tier: "Onyx · Council",
-    color: "from-zinc-950 via-neutral-900 to-zinc-900",
-    accent: "text-primary",
-    border: "border-primary/30",
-    logo: LOGO_BROWN,
-    tagline: "The Council Card — Advisory Seat",
-    features: ["Council Governance Seats", "Ethical Standards Board", "Cultural Leadership Role", "Exclusive Summits", "Lifetime Recognition"],
-    highlight: "text-primary",
-    glow: "rgba(197,165,90,0.12)",
-    price: "7,500 BOX/yr",
-  },
-  {
     name: "Sardonyx",
     tier: "Sardonyx · Initiate",
     color: "from-stone-900 to-neutral-950",
@@ -98,19 +111,6 @@ const CARD_TIERS = [
     highlight: "text-stone-300",
     glow: "rgba(168,162,158,0.08)",
     price: "100 BOX/yr",
-  },
-  {
-    name: "Partner",
-    tier: "Partner",
-    color: "from-zinc-900 via-stone-900 to-neutral-900",
-    accent: "text-primary/70",
-    border: "border-primary/20",
-    logo: LOGO_BROWN,
-    tagline: "The Commerce Card — Kingdom Business",
-    features: ["Business Network Listing", "Commerce Partnerships", "Annual Summit Access", "Investment Opportunities"],
-    highlight: "text-primary/70",
-    glow: "rgba(197,165,90,0.08)",
-    price: "2,500 BOX/yr",
   },
 ];
 

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Crown, BookOpen, Star } from "lucide-react";
 
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 const ANCESTRY = [
   { name: "King David", role: "Royal House of Judah", desc: "Shepherd, warrior, and sovereign king of Israel — a man after the Most High's own heart." },

@@ -89,7 +89,7 @@ const shieldDomains = [
   [
     Network,
     "Intelligence & Media",
-    "H.I.I. agents, LLMs, broadcast, podcast, streaming, and marketing.",
+    "H.I.I. AI agents, LLMs, broadcast, podcast, streaming, and marketing.",
   ],
   [
     ShieldCheck,
@@ -137,119 +137,124 @@ const societyPrivileges: [LucideIcon, string, string][] = [
   [
     Users,
     "Exclusive Networking Events",
-    "Curated gatherings for elite collaboration and strategic relationship building.",
+    "Curated gatherings for elite collaboration and strategic relationship building. Why it matters — relationships precede ventures; access to the right room shortens decades of work."
   ],
   [
     Building2,
     "Summits & Gatherings",
-    "Annual summits, quarterly retreats, and intimate mastermind sessions.",
+    "Annual summits, quarterly retreats, and intimate mastermind sessions. Why it matters — sustained council with peers turns isolated success into generational momentum.",
   ],
   [
     Sparkles,
     "Cultural Observances",
-    "Themed events honoring Holy Days, Feasts, and divine appointments.",
+    "Themed events honoring Holy Days, Feasts, and divine appointments. Why it matters — sacred rhythm anchors the network in covenant, not in seasons of the world.",
   ],
   [
     Globe2,
     "Business Networking Access",
-    "Direct access to the Blanch Corridor ecosystem and kingdom-aligned ventures.",
+    "Direct access to the Blanch Corridor ecosystem and kingdom-aligned ventures. Why it matters — deal flow inside a vetted sovereign network compounds trust and capital alike.",
   ],
   [
     TrendingUp,
     "Luxury Lifestyle Partnerships",
-    "Preferred access to premium brands, travel, and bespoke experiences.",
+    "Preferred access to premium brands, travel, and bespoke experiences. Why it matters — stewardship of excellence reflects the dignity of a royal priesthood.",
   ],
   [
     CreditCard,
     '"Black Card" Access System',
-    "Tiered membership privileges with the Blanch Onyx Black Card.",
+    "Tiered membership privileges with the Blanch Onyx Black Card. Why it matters — a single credential moves frictionless across banking, commerce, and member-only doors.",
   ],
   [
     HandHeart,
     "Philanthropy & Community Projects",
-    "Direct involvement in humanitarian, educational, and emancipation initiatives.",
+    "Direct involvement in humanitarian, educational, and emancipation initiatives. Why it matters — kingdom influence is measured by who is lifted, not only by what is built.",
   ],
   [
     ShieldCheck,
     "Cultural & Social Elite Circle",
-    "A private membership network for cultural leadership and divine stewardship.",
+    "A private membership network for cultural leadership and divine stewardship. Why it matters — proximity to cultural stewards shapes legacy, taste, and inheritance.",
   ],
 ];
 const ourPurpose: [LucideIcon, string, string][] = [
   [
     Globe2,
     "Vision & Expansion",
-    "We are not competitors—we are bridge builders, encouraging collaboration, unity, and advancement. Our mission is to uphold Divine Law, foster truth, prosperity, peace, and to prepare a foundation for Holy Days, Feasts, and the Sabbath.",
+    "We are not competitors—we are bridge builders, encouraging collaboration, unity, and advancement. Our mission is to uphold Divine Law, foster truth, prosperity, peace, and to prepare a foundation for Holy Days, Feasts, and the Sabbath. Why it matters — bridges outlast walls; alignment to Divine Law is what gives the work permanence.",
   ],
   [
     Users,
     "Social Club",
-    "An elite private membership network for collaboration, cultural leadership, strategic networking, and philanthropic development—managed by the Blanch Group Sovereign Trust.",
+    "An elite private membership network for collaboration, cultural leadership, strategic networking, and philanthropic development—managed by the Blanch Group Sovereign Trust. Why it matters — bridges outlast walls; alignment to Divine Law is what gives the work permanence.",
   ],
   [
     Car,
     "Blanch Automotive Club",
-    "A premier automotive fellowship for enthusiasts and collectors—curated drives, exclusive events, and kingdom-aligned stewardship of exceptional vehicles.",
+    "A premier automotive fellowship for enthusiasts and collectors—curated drives, exclusive events, and kingdom-aligned stewardship of exceptional vehicles. Why it matters — bridges outlast walls; alignment to Divine Law is what gives the work permanence.",
   ],
   [
     Network,
     "Universal Business Network",
-    "A sovereign business identity and networking platform for connecting members to global commerce, kingdom-aligned partnerships, and divine economy opportunities through the Blanch Corridor.",
+    "A sovereign business identity and networking platform for connecting members to global commerce, kingdom-aligned partnerships, and divine economy opportunities through the Blanch Corridor. Why it matters — bridges outlast walls; alignment to Divine Law is what gives the work permanence.",
   ],
   [
     Store,
     "Virtual Marketplace",
-    "A sacred digital marketplace for kingdom-aligned goods, services, and creative works—facilitating righteous exchange, fair trade, and community prosperity within the Blanch ecosystem.",
+    "A sacred digital marketplace for kingdom-aligned goods, services, and creative works—facilitating righteous exchange, fair trade, and community prosperity within the Blanch ecosystem. Why it matters — every righteous transaction reroutes capital from extraction to community.",
   ],
   [
     Cpu,
-    "S.H.I.E.L.D. AI Media Content Generation",
-    "An intelligent, kingdom-aligned media engine powered by S.H.I.E.L.D. AI Guardian Prime—generating sacred content across video, audio, image, and written formats for the Blanch Onyx ecosystem. From cinematic teachings and broadcast segments to social media assets, podcasts, and educational material, S.H.I.E.L.D. AI Media Content Generation produces ethically governed, divinely stewarded media that amplifies the Gospel, supports the Blanch Corridor mission, and equips creators, ministries, and members to share truth, culture, and kingdom-aligned narratives with global audiences.",
+    "S.H.I.E.L.D. AI Creative Media Content Generation",
+    "An intelligent, kingdom-aligned media engine powered by S.H.I.E.L.D. AI Guardian Prime—generating sacred content across video, audio, image, and written formats for the Blanch Onyx ecosystem. From cinematic teachings and broadcast segments to social media assets, podcasts, and educational material, S.H.I.E.L.D. AI Media Content Generation produces ethically governed, divinely stewarded media that amplifies the Gospel, supports the Blanch Corridor mission, and equips creators, ministries, and members to share truth, culture, and kingdom-aligned narratives with global audiences. Why it matters — whoever owns the media owns the narrative; this engine returns it to the chosen.",
   ],
   [
     Building2,
     "Smart Cities",
-    "Developing eco-friendly Spiritual Family House Smart Cities as hubs for health, education, entertainment, infrastructure development, finance, philanthropy, technology, and business development. These cities will serve as models of sustainable living, innovation, and community enrichment, embodying our commitment to divine stewardship and societal advancement. They will integrate cutting-edge technology with ethical principles to create thriving, resilient communities that foster growth, well-being, and prosperity for all divine enlightenment, business, finance, entertainment, visitors, residents.",
+    "Developing eco-friendly Spiritual Family House Smart Cities as hubs for health, education, entertainment, infrastructure development, finance, philanthropy, technology, and business development. These cities will serve as models of sustainable living, innovation, and community enrichment, embodying our commitment to divine stewardship and societal advancement. They will integrate cutting-edge technology with ethical principles to create thriving, resilient communities that foster growth, well-being, and prosperity for all divine enlightenment, business, finance, entertainment, visitors, residents. Why it matters — environment shapes destiny; sovereign cities raise sovereign generations.",
   ],
   [
     Network,
     "Blanch Onyx DLT",
-    "The foundational Distributed Ledger Technology powering the Blanch Onyx ecosystem—a sovereign, transparent, and immutable ledger securing every transaction, identity, and asset across the network. Blanch Onyx DLT serves as the backbone of trust within the Blanch Corridor, enabling kingdom-aligned commerce, verifiable records, and divine stewardship of digital and physical assets. It interoperates with Blanch Network, Blanch Infinity DLT, Blanch Hadash Dabash DLT, and S.H.I.E.L.D. AI Guardian Prime DLT to deliver a unified, secure, and ethically governed distributed infrastructure for the global Blanch community.",
+    "The foundational Distributed Ledger Technology powering the Blanch Onyx ecosystem—a sovereign, transparent, and immutable ledger securing every transaction, identity, and asset across the network. Blanch Onyx DLT serves as the backbone of trust within the Blanch Corridor, enabling kingdom-aligned commerce, verifiable records, and divine stewardship of digital and physical assets. It interoperates with Blanch Network, Blanch Infinity DLT, Blanch Hadash Dabash DLT, and S.H.I.E.L.D. AI Guardian Prime DLT to deliver a unified, secure, and ethically governed distributed infrastructure for the global Blanch community. Why it matters — truth at the ledger layer protects truth at every layer above it.",
   ],
   [
     CreditCard,
     "Blanch Onyx Black Card",
-    "An exclusive sovereign Business Card and Debit Card and Standalone Electronic Wallet Card & Hardware Ledger Device—all transactions are monitored by Blanch Onyx DLT, Blanch Network, Blanch Infinity DLT, Blanch Hadash Dabash DLT, and S.H.I.E.L.D. AI Guardian Prime DLT. An access tier (not mystical authority) membership privilege system providing event and benefits access to the Blanch ecosystem—private banking, Blanch Corridor kingdom-aligned investments, and divine stewardship privileges. The Blanch Onyx Black Card is a symbol of elite membership and access to the Blanch Corridor ecosystem, offering exclusive benefits, private banking services, and kingdom-aligned investment opportunities for members of the Blanch Onyx Social Club.",
+    "An exclusive sovereign Business Card and Debit Card and Standalone Electronic Wallet Card & Hardware Ledger Device—all transactions are monitored by Blanch Onyx DLT, Blanch Network, Blanch Infinity DLT, Blanch Hadash Dabash DLT, and S.H.I.E.L.D. AI Guardian Prime DLT. An access tier (not mystical authority) membership privilege system providing event and benefits access to the Blanch ecosystem—private banking, Blanch Corridor kingdom-aligned investments, and divine stewardship privileges. The Blanch Onyx Black Card is a symbol of elite membership and access to the Blanch Corridor ecosystem, offering exclusive benefits, private banking services, and kingdom-aligned investment opportunities for members of the Blanch Onyx Social Club. Why it matters — financial sovereignty in a single instrument — the credential and the rail combined.",
   ],
   [
     TrendingUp,
     "Investment Opportunities",
-    "A sovereign investment platform providing access to kingdom-aligned ventures that benefit humanity, private equity, and divine economy opportunities—curated for members of the Blanch Onyx Social Club. Investment opportunities will focus on ventures that align with our mission and values, fostering prosperity, divine stewardship, and positive impact within the Blanch ecosystem and beyond. Members will have access to exclusive investment opportunities in ethical businesses, innovative startups, and kingdom-aligned projects that contribute to the advancement of our shared vision for a better world.",
+    "A sovereign investment platform providing access to kingdom-aligned ventures that benefit humanity, private equity, and divine economy opportunities—curated for members of the Blanch Onyx Social Club. Investment opportunities will focus on ventures that align with our mission and values, fostering prosperity, divine stewardship, and positive impact within the Blanch ecosystem and beyond. Members will have access to exclusive investment opportunities in ethical businesses, innovative startups, and kingdom-aligned projects that contribute to the advancement of our shared vision for a better world. Why it matters — pre-vetted access shortens diligence and protects covenant capital from compromise.",
   ],
   [
     Store,
     "Global Business Directory & Ethical Marketplace",
-    "A curated directory of kingdom-aligned businesses and services—connecting members to trusted providers, ethical enterprises, and divine economy opportunities worldwide. The Global Business Directory will serve as a resource for members to discover and support businesses that align with our mission and values, fostering a community of ethical commerce and divine stewardship within the Blanch ecosystem.",
+    "A curated directory of kingdom-aligned businesses and services—connecting members to trusted providers, ethical enterprises, and divine economy opportunities worldwide. The Global Business Directory will serve as a resource for members to discover and support businesses that align with our mission and values, fostering a community of ethical commerce and divine stewardship within the Blanch ecosystem. Why it matters — every transaction routed inside the network strengthens the whole network.",
   ],
   [
     Sparkles,
     "Exclusive Media, Entertainment & Special Events",
-    "VIP access to kingdom-aligned media productions, exclusive entertainment, and sacred special events—connecting culture, creativity, and divine purpose. Members will have access to exclusive media content, entertainment experiences, and special events that align with our mission and values, fostering a vibrant cultural community within the Blanch ecosystem.",
+    "VIP access to kingdom-aligned media productions, exclusive entertainment, and sacred special events—connecting culture, creativity, and divine purpose. Members will have access to exclusive media content, entertainment experiences, and special events that align with our mission and values, fostering a vibrant cultural community within the Blanch ecosystem. Why it matters — sacred culture must be experienced, not merely described; presence is the point.",
   ],
   [
     Tv,
     "Televised, Broadcast, Podcast, and Streaming Network",
-    "A sovereign broadcasting network for kingdom-aligned content—televised teachings, live-streamed events, and divine media reaching global audiences through the Blanch Corridor. Podcasts, television, and streaming content will focus on education, culture, business, philanthropy, and spiritual growth, providing members with valuable insights and entertainment that align with our mission and values.",
+    "A sovereign broadcasting network for kingdom-aligned content—televised teachings, live-streamed events, and divine media reaching global audiences through the Blanch Corridor. Podcasts, television, and streaming content will focus on education, culture, business, philanthropy, and spiritual growth, providing members with valuable insights and entertainment that align with our mission and values. Why it matters — distribution is destiny; owning the broadcast is owning the witness.",
   ],
   [
     Globe2,
     "Global Resource Economy",
-    "Building a unified network through the Blanch Corridor—connecting Business, Finance, Clean Entertainment, and Philanthropy worldwide. The Blanch Corridor will serve as a bridge for global commerce, ethical business practices, and kingdom-aligned economic opportunities, fostering prosperity and divine stewardship across nations and industries.",
+    "Building a unified network through the Blanch Corridor—connecting Business, Finance, Clean Entertainment, and Philanthropy worldwide. The Blanch Corridor will serve as a bridge for global commerce, ethical business practices, and kingdom-aligned economic opportunities, fostering prosperity and divine stewardship across nations and industries. Why it matters — coordinated resources outperform fragmented ambition by an order of magnitude",
+  ],
+  [
+    Globe2,
+    "Hologram & Metaverse",
+    "A sovereign metaverse and holographic platform for immersive experiences, virtual collaboration, and divine engagement—integrating cutting-edge technology with ethical principles to create a virtual environment that reflects our mission and values. The Hologram & Metaverse will provide members with opportunities for virtual networking, education, entertainment, and cultural experiences that align with our vision for a better world. Why it matters — the next frontier of human interaction is digital; the first movers shape the culture and the rules.",
   ],
   [
     HandHeart,
     "Philanthropy Hub",
-    "A centralized platform for kingdom-aligned charitable giving, impact investing, and community upliftment—channeling resources to alleviate poverty, advance education, and support divine causes worldwide. The Philanthropy Hub will facilitate transparent, impactful giving and foster a culture of generosity within the Blanch ecosystem with a focus on measurable outcomes and community empowerment, ensuring that resources are directed towards initiatives that align with our mission and values—Humanitarian Fund, Emancipation Bridging Fund, and Educational Development Fund.",
+    "A centralized platform for kingdom-aligned charitable giving, impact investing, and community upliftment—channeling resources to alleviate poverty, advance education, and support divine causes worldwide. The Philanthropy Hub will facilitate transparent, impactful giving and foster a culture of generosity within the Blanch ecosystem with a focus on measurable outcomes and community empowerment, ensuring that resources are directed towards initiatives that align with our mission and values—Humanitarian Fund, Emancipation Bridging Fund, and Educational Development Fund, with measurable outcomes. Why it matters — measurable giving turns generosity into compounding generational repair.",
   ],
   [
     BookOpen,
@@ -259,39 +264,39 @@ const ourPurpose: [LucideIcon, string, string][] = [
   [
     Landmark,
     "House of Prayer for All",
-    "Fostering growth, compassion, and nourishment while enriching our community with shared blessings through faith, unity, and divine purpose. 2 Timothy 3:16-17, Psalms 19:10, Acts 3:19, Psalms 119:142, Psalms 119:151, Proverbs 6:23, John 14:6, 2 Timothy 2:15, 2 John 2:6, 1 John 5:2-3, James 1:26, Isaiah 56:7, 2 Samuel 7:13, 1 Chronicles 17:12, 1 Chronicles 17:14, 1 Chronicles 22:10, 1 Corinthians 10:4, Matthew 7:24-27, Luke 6:48, Ephesians 2:19-22.",
+    "Fostering growth, compassion, and nourishment while enriching our community with shared blessings through faith, unity, and divine purpose. 2 Timothy 3:16-17, Psalms 19:10, Acts 3:19, Psalms 119:142, Psalms 119:151, Proverbs 6:23, John 14:6, 2 Timothy 2:15, 2 John 2:6, 1 John 5:2-3, James 1:26, Isaiah 56:7, 2 Samuel 7:13, 1 Chronicles 17:12, 1 Chronicles 17:14, 1 Chronicles 22:10, 1 Corinthians 10:4, Matthew 7:24-27, Luke 6:48, Ephesians 2:19-22. Why it matters — visible covenant carries unspoken authority and unites the priesthood at a glance. Why it matters — prayer is the architecture beneath every structure the network ever builds.",
   ],
   [
     Calendar,
     "Creators Calendar",
-    "Aligning sacred rhythms with creative expression—mapping Holy Days, Feasts, and divine appointments for the Royal Priesthood. Members will have access to a calendar and discounts of Holy Days, Feasts, Special Occasions and Divine appointments to align their lives with sacred rhythms and creative expression.",
+    "Aligning sacred rhythms with creative expression—mapping Holy Days, Feasts, and divine appointments for the Royal Priesthood. Members will have access to a calendar and discounts of Holy Days, Feasts, Special Occasions and Divine appointments to align their lives with sacred rhythms and creative expression. Why it matters — life ordered to the sacred calendar bears fruit the secular calendar cannot.",
   ],
   [
     ShieldCheck,
     "Kingdom of Peace",
-    "Preparing for Holy Days, the Gospel, and the coming Kingdom of Peace—the Kingdom of Jerusalem (Yarawashalam) through righteous enterprise. We are not competitors—we are bridge builders, encouraging collaboration, unity, and advancement. Our mission is to uphold Divine Law, foster truth, prosperity, peace, and to prepare a foundation for Holy Days, Feasts, and the Sabbath.",
+    "Preparing for Holy Days, the Gospel, and the coming Kingdom of Peace—the Kingdom of Jerusalem (Yarawashalam) through righteous enterprise. We are not competitors—we are bridge builders, encouraging collaboration, unity, and advancement. Our mission is to uphold Divine Law, foster truth, prosperity, peace, and to prepare a foundation for Holy Days, Feasts, and the Sabbath. Why it matters — every pillar above exists to prepare the ground for the Kingdom that is coming",
   ],
 ];
 const visions = [
   [
     "Sovereign Trade Spine",
     "Blanch Corridor",
-    "A righteous economic corridor Smart City linking sacred sites, sovereign zones, and member communities.",
+    "A righteous economic corridor Smart City linking sacred sites, sovereign zones, and member communities. Why it matters — economic spines determine who governs trade; this one is anchored in covenant.",
   ],
   [
-    "Blanch Onyx Fifth Stone, Foundation Throne City of the Most High AHAYAH",
+    "Blanch the Onyx/Shaham Foundation Fifth Stone, the Blanch Colonnade the Throne City of the Most High AHAYAH.",
     "Throne Center of the City of the Future",
-    "Eco-sovereign Richat 8-Ring architecture grounded in Tarah/Torah principles and divine, Digital Museum. Preparing for Holy Days, Sabbaths, Feasts, and the New Jerusalem (Qadash Yarawashalam)",
+    "Eco-sovereign Richat 8-Ring architecture grounded in Tarah/Torah principles and divine, Digital Museum. Preparing for Holy Days, Sabbaths, Feasts, and the New Jerusalem (Qadash Yarawashalam) Why it matters — a Throne City is a living blueprint for civilization aligned to Divine Law.",
   ],
   [
     "Health · Education · Enterprise · Development",
     "H.E.E.D. Districts",
-    "Mixed-use districts engineered to alleviate poverty and elevate the chosen generation.",
+    "Mixed-use districts engineered to alleviate poverty and elevate the chosen generation. Why it matters — poverty is engineered; so is its reversal — these districts encode the cure.",
   ],
   [
     "Autonomous · Clean · Sovereign",
     "Onyx Energy Grid",
-    "A decentralized energy mesh powering S.H.I.E.L.D. AI and Blanch Onyx DLT.",
+    "A decentralized energy mesh powering S.H.I.E.L.D. AI and Blanch Onyx DLT. Why it matters — true sovereignty requires owning your own light, power, and data.",
   ],
 ];
 const models = [
@@ -408,7 +413,7 @@ function Index() {
                 Join the Network <ArrowRight />
               </a>
             </Button>
-            <Button asChild variant="outline">
+            <Button asChild variant="">
               <a href="#vision">
                 Explore Purpose <ArrowDownRight />
               </a>
@@ -445,11 +450,17 @@ function Index() {
             <p>
               We are Aboriginal Descendants of the Royal House of the Tribe of Judah (Yadah) and
               Royal Priesthood of the Tribe of Levi (Lawaya)—rooted in the Torah and Biblical
-              teachings of Most High AHAYAH & YASHAYA.
-            </p>
+              teachings of Most High AHAYAH & YASHAYA. Our heritage is the foundation of our purpose: to uphold divine law, preserve sacred
+              knowledge, and steward the chosen generation through righteous enterprise, cultural
+              leadership, and philanthropic development.</p>
+            <ul>
+              <li><b>Jeremiah 14:2 </b> Judah mourneth, and the gates thereof languish; they are black unto the ground; and the cry of Jerusalem is gone up.</li>
+              <li><b>Job 30:30</b> My skin is black upon me, and my bones are burned with heat.</li>
+              <li><b>Song of Solomon 1:5</b> I am black, but comely, O ye daughters of Jerusalem, as the tents of Kedar, as the curtains of Solomon.</li>
+              <li><b>1 John 5:2-3</b>  By this we know that we love the children of Most High AHAYAH, when we love Most High AHAYAH, and keep his commandments. For this is the love of Most High AHAYAH, that we keep his commandments: and his commandments are not grievous.</li>
+              </ul>
             <blockquote>
-              “I am black, but comely, O ye daughters of Jerusalem, as the tents of Kedar, as the
-              curtains of Solomon.”<cite>— Song of Solomon 1:5</cite>
+              “Thou art near, O Most High AHAYAH; and all thy commandments are truth.”<cite>— Psalms 119:151</cite>
             </blockquote>
           </article>
           <article className="heritage-story">
@@ -459,9 +470,9 @@ function Index() {
             <p>
               Blanch derives from the Hebrew “Shaham/Shoham” (שֹׁהַם), meaning onyx—a precious stone
               of strength, protection, purity, and divine connection, named among the foundations of
-              New Jerusalem (Yarashalam). The Shaham/Shoham is the Guardians of Jerusalem
+              New Jerusalem (Yarawashalam). The Shaham/Shoham is the Guardians of Jerusalem
               (Yarawashalam) and The Tarah/Torah Divine Law they are Levites.
-              Blanch/Onyx/Sardonyx/Shaham/Shoham a Watchman Descendant the chosen Royal Priesthood
+              Blanch/Onyx/Sardonyx/Shaham/Shoham a Watchman Descendant the chosen Royal Priesthood.
             </p>
             <ul>
               <li>
@@ -489,7 +500,7 @@ function Index() {
               <li>
                 <b>Exodus 19:6</b> — “And ye shall be unto me a kingdom of priests, and an holy
                 nation. These are the words which thou shalt speak unto the children of Israel
-                (Yasharhala).”
+                (Yasharahala).”
               </li>
               <li>
                 <b>Deuteronomy 14:2</b> — “For thou art an holy people unto the Most High AHAYAH thy
@@ -563,7 +574,7 @@ function Index() {
         <div className="scriptural-foundation">
           <div className="scriptural-header">
             <Eyebrow>Core Scriptural Foundation</Eyebrow>
-            <h3>The Foundation of Truth</h3>
+            <h3><em>The Foundation of </em><em style={{ color: "var(--primary)", fontStyle: "italic" }}>Truth</em></h3>
           </div>
           <div className="scripture-grid">
             {scriptureFoundation.map(({ text, verse }, i) => (
@@ -628,8 +639,9 @@ function Index() {
           ))}
         </div>
 
-        <div className="privileges-block">
-          <p className="mini-label">Society Privileges</p>
+      <div style={{ marginTop: "5rem" }}>
+        <Eyebrow>Society Privileges</Eyebrow>
+        <h3 style={{ fontSize: "clamp(2rem,4vw,3.5rem)", marginTop: "1rem", lineHeight: 1 }}>Eight pillars of <em style={{ color: "var(--primary)", fontStyle: "italic" }}>access.</em></h3>
           <div className="privilege-grid">
             {societyPrivileges.map(([Icon, title, text]) => (
               <article key={title} className="privilege-card">
@@ -670,127 +682,26 @@ function Index() {
         </div>
       </section>
 
-      <section id="vision" className="vision-section section-block">
-        <div className="section-shell">
-          <div className="vision-heading">
-            <Eyebrow>Vision in Motion</Eyebrow>
-            <h2>
-              Smart Cities &<br />
-              <em>the Blanch Corridor</em>
-            </h2>
-            <p>
-              A sovereign network of sacred, sustainable cities for the Royal Priesthood and global
-              communities.
-            </p>
-          </div>
-          <div className="vision-grid">
-            {visions.map(([label, title, text], i) => (
-              <article key={title}>
-                <span>0{i + 1}</span>
-                <p className="mini-label">{label}</p>
-                <h3>{title}</h3>
-                <p>{text}</p>
-                <ArrowDownRight />
-              </article>
-            ))}
-          </div>
+    <section id="vision" className="vision-section section-block">
+      <div className="section-shell"><div className="vision-heading">
+        <Eyebrow>Vision in Motion</Eyebrow>
+        <h2>Smart Cities &<br/><em>the Blanch Corridor</em></h2>
+        <p>A sovereign network of sacred, sustainable cities for the Royal Priesthood and global communities.</p>
+      </div>
+        <div className="vision-grid">{visions.map(([label,title,text],i)=><article key={title} className="card-lift"><span>0{i+1}</span>
+        <p className="mini-label">{label}</p><h3>{title}</h3><p>{text}</p><ArrowDownRight/></article>)}</div>
         </div>
-      </section>
+        </section>
       <ScriptureBand
         text="The wealth of the sinner is laid up for the just"
         verse="Proverbs 13:22"
       />
 
-      <section id="commerce" className="section-shell section-block commerce-section">
-        <div className="commerce-heading">
-          <div>
-            <Eyebrow>Universal Commerce Models</Eyebrow>
-            <h2>
-              X2X Transaction
-              <br />
-              <em>Framework</em>
-            </h2>
-          </div>
-          <div className="commerce-stat">
-            <strong>
-              380<span>+</span>
-            </strong>
-            <p>Unique commerce pathways powering the future of global transactions.</p>
-          </div>
-        </div>
-        <div className="commerce-features">
-          {[
-            ["Instant Settlement", "Sub-second finality"],
-            ["Cross-Border Native", "Multi-currency commerce"],
-            ["AI-Orchestrated", "Optimized routing & risk"],
-            ["Identity-Verified", "Trust at every layer"],
-          ].map(([a, b]) => (
-            <div key={a}>
-              <ShieldCheck />
-              <strong>{a}</strong>
-              <span>{b}</span>
-            </div>
-          ))}
-        </div>
-        <div className="models-panel">
-          <div className="models-top">
-            <div>
-              <p className="mini-label">20 Primary X2X Models</p>
-              <h3>
-                Everything connects
-                <br />
-                to everything.
-              </h3>
-            </div>
-            <label>
-              <Search />
-              <input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search models…"
-                aria-label="Search commerce models"
-              />
-            </label>
-          </div>
-          <div className="model-grid">
-            {filteredModels.map(([code, name]) => (
-              <article key={code}>
-                <strong>{code}</strong>
-                <span>{name}</span>
-                <small>{name} to Everything</small>
-                <ChevronDown />
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section id="commerce" className="section-shell section-block commerce-section"><div className="commerce-heading"><div><Eyebrow>Universal Commerce Models</Eyebrow><h2>X2X Transaction<br/><em>Framework</em></h2></div><div className="commerce-stat"><strong>380<span>+</span></strong><p>Unique commerce pathways powering the future of global transactions.</p></div></div><div className="commerce-features">{[["Instant Settlement","Sub-second finality"],["Cross-Border Native","Multi-currency commerce"],["AI-Orchestrated","Optimized routing & risk"],["Identity-Verified","Trust at every layer"]].map(([a,b])=><div key={a}><ShieldCheck/><strong>{a}</strong><span>{b}</span></div>)}</div><div className="models-panel"><div className="models-top"><div><p className="mini-label">20 Primary X2X Models</p><h3>Everything connects<br/>to everything.</h3></div><label><Search/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search models…" aria-label="Search commerce models"/></label></div><div className="model-grid">{filteredModels.map(([code,name])=><article key={code} className="card-lift"><strong>{code}</strong><span>{name}</span><small>{name} to Everything</small><ChevronDown/></article>)}</div></div></section>
 
-      <section id="library" className="library-section section-block">
-        <div className="section-shell library-inner">
-          <div>
-            <Eyebrow>Sovereign Library</Eyebrow>
-            <h2>
-              Document
-              <br />
-              <em>Library</em>
-            </h2>
-            <p>
-              Search, browse, and download official documents of the Blanch Group Sovereign Trust.
-            </p>
-          </div>
-          <div className="document-card">
-            <BookOpen />
-            <div>
-              <p className="mini-label">Official Collection</p>
-              <h3>Foundational Documents</h3>
-              <span>Charters · Trust Records · Network Protocols</span>
-            </div>
-            <Button variant="outline" size="icon" aria-label="Download document">
-              <Download />
-            </Button>
-          </div>
-        </div>
-      </section>
+    <section id="library" className="library-section section-block"><div className="section-shell library-inner"><div><Eyebrow>Sovereign Library</Eyebrow><h2>Document<br/><em>Library</em></h2><p>Search, browse, and download official documents of the Blanch Group Sovereign Trust.</p></div><div className="document-card card-lift"><BookOpen/><div><p className="mini-label">Official Collection</p><h3>Foundational Documents</h3><span>Charters · Trust Records · Network Protocols</span></div><Button variant="outline" size="icon" aria-label="Download document"><Download/></Button></div></div></section>
+
+
       <footer id="join" className="footer">
         <div className="footer-mark">
           <img src={logoBrown} alt="Blanch Onyx mark" />

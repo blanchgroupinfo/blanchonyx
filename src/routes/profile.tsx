@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { base44 } from "@/api/base44Client";
 import { useAuth } from "@/hooks/AuthContext";
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Crown, Coins, Vote, CheckCircle, XCircle, Minus, Activity, Shield, Star } from "lucide-react";
 
-const LOGO_BROWN = "https://media.base44.com/images/public/user_68f1042648c5da44207e521e/168359697_Blogobrown.png";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 const MOCK_TRANSACTIONS = [
   { id: 1, type: "Received", amount: 500, currency: "BOX", desc: "Membership Reward", date: "2026-06-08" },

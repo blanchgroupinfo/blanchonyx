@@ -1,259 +1,349 @@
-import React from 'react';
-import { createFileRoute } from '@tanstack/react-router';
-import { motion } from 'framer-motion';
-import { Landmark, CreditCard, TrendingUp, Shield, Globe, Zap, Users, Lock } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import {
+  ArrowLeft,
+  BadgeDollarSign,
+  Banknote,
+  Building2,
+  CheckCircle,
+  Clock3,
+  CreditCard,
+  FileCheck2,
+  Globe2,
+  Landmark,
+  LineChart,
+  LockKeyhole,
+  Network,
+  ShieldCheck,
+  Sparkles,
+  Timer,
+  WalletCards,
+  Zap,
+} from "lucide-react";
 
-export default function Banking() {
-  const services = [
-    {
-      icon: CreditCard,
-      title: "Digital Banking",
-      description: "Real-time account management and instant payments",
-      features: ["Zero-fee transactions", "Instant settlements", "24/7 operations", "Multi-currency accounts"],
-      color: "from-blue-600 to-cyan-600"
-    },
-    {
-      icon: Globe,
-      title: "Cross-Border Banking",
-      description: "International transfers and currency exchange",
-      features: ["195+ countries", "150+ currencies", "Real-time conversion", "No hidden fees"],
-      color: "from-green-600 to-emerald-600"
-    },
-    {
-      icon: TrendingUp,
-      title: "Investment Banking",
-      description: "Securities, derivatives, and asset management",
-      features: ["T+0 settlement", "Smart contracts", "Automated clearing", "Real-time pricing"],
-      color: "from-purple-600 to-pink-600"
-    },
-    {
-      icon: Users,
-      title: "Corporate Banking",
-      description: "Treasury management and trade finance",
-      features: ["Cash management", "Letter of credit", "Supply chain finance", "Escrow services"],
-      color: "from-orange-600 to-red-600"
-    }
-  ];
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
-  const features = [
-    {
-      icon: Shield,
-      title: "RTGS-Grade Security",
-      description: "Bank-level security with deterministic finality and immutable audit trails"
-    },
-    {
-      icon: Zap,
-      title: "Instant Processing",
-      description: "2ms transaction finality for real-time banking operations"
-    },
-    {
-      icon: Lock,
-      title: "Regulatory Compliance",
-      description: "Built-in AML/KYC with automated compliance reporting"
-    },
-    {
-      icon: Globe,
-      title: "Global Infrastructure",
-      description: "147K+ nodes providing worldwide coverage and redundancy"
-    }
-  ];
+const NETWORK_STATS = [
+  { value: "500+", label: "Banks Connected", icon: Landmark },
+  { value: "$500T", label: "Daily Transactions", icon: BadgeDollarSign },
+  { value: "500M+", label: "Active Accounts", icon: WalletCards },
+  { value: "2ms", label: "Avg Settlement Time", icon: Timer },
+];
 
-  const useCases = [
-    {
-      title: "Retail Banking",
-      metrics: "500M+ accounts",
-      description: "Consumer banking with instant payments and zero fees",
-      benefits: ["Mobile-first experience", "Real-time balance updates", "Instant P2P transfers"]
-    },
-    {
-      title: "Commercial Banking",
-      metrics: "50K+ businesses",
-      description: "Business accounts with advanced treasury features",
-      benefits: ["Multi-user access", "Automated reconciliation", "API integration"]
-    },
-    {
-      title: "Correspondent Banking",
-      metrics: "500+ institutions",
-      description: "Inter-bank settlement and liquidity management",
-      benefits: ["Instant nostro/vostro updates", "Reduced counterparty risk", "24/7 liquidity"]
-    },
-    {
-      title: "torah/Tarah Based Banking",
-      metrics: "100+ institutions",
-      description: "Shariah-compliant banking solutions",
-      benefits: ["Profit-sharing models", "Asset-backed financing", "No interest charges"]
-    }
-  ];
+const HERO_BADGES = ["500+ Banks", "RTGS Security", "Zero Fees"];
 
-  const stats = [
-    { label: "Banks Connected", value: "500+", icon: Landmark },
-    { label: "Daily Transactions", value: "$500T+", icon: TrendingUp },
-    { label: "Active Accounts", value: "500M+", icon: Users },
-    { label: "Avg Settlement Time", value: "2ms", icon: Zap }
-  ];
+const BANKING_SERVICES = [
+  {
+    icon: CreditCard,
+    title: "Digital Banking",
+    description: "Real-time account management and instant payments",
+    points: ["Zero-fee transactions", "Instant settlements", "24/7 operations", "Multi-currency accounts"],
+  },
+  {
+    icon: Globe2,
+    title: "Cross-Border Banking",
+    description: "International transfers and currency exchange",
+    points: ["195+ countries", "150+ currencies", "Real-time conversion", "No hidden fees"],
+  },
+  {
+    icon: LineChart,
+    title: "Investment Banking",
+    description: "Securities, derivatives, and asset management",
+    points: ["T+0 settlement", "Smart contracts", "Automated clearing", "Real-time pricing"],
+  },
+  {
+    icon: Building2,
+    title: "Corporate Banking",
+    description: "Treasury management and trade finance",
+    points: ["Cash management", "Letter of credit", "Supply chain finance", "Escrow services"],
+  },
+];
 
+const SECURITY_FEATURES = [
+  {
+    icon: ShieldCheck,
+    title: "RTGS-Grade Security",
+    description: "Bank-level security with deterministic finality and immutable audit trails",
+  },
+  {
+    icon: Zap,
+    title: "Instant Processing",
+    description: "2ms transaction finality for real-time banking operations",
+  },
+  {
+    icon: FileCheck2,
+    title: "Regulatory Compliance",
+    description: "Built-in AML/KYC with automated compliance reporting",
+  },
+  {
+    icon: Network,
+    title: "Global Infrastructure",
+    description: "147K+ nodes providing worldwide coverage and redundancy",
+  },
+];
+
+const USE_CASES = [
+  {
+    title: "Retail Banking",
+    metric: "500M+ accounts",
+    description: "Consumer banking with instant payments and zero fees",
+    points: ["Mobile-first experience", "Real-time balance updates", "Instant P2P transfers"],
+  },
+  {
+    title: "Commercial Banking",
+    metric: "50K+ businesses",
+    description: "Business accounts with advanced treasury features",
+    points: ["Multi-user access", "Automated reconciliation", "API integration"],
+  },
+  {
+    title: "Correspondent Banking",
+    metric: "500+ institutions",
+    description: "Inter-bank settlement and liquidity management",
+    points: ["Instant nostro/vostro updates", "Reduced counterparty risk", "24/7 liquidity"],
+  },
+  {
+    title: "Torah/Tarah Banking",
+    metric: "100+ institutions",
+    description: "Most High AHAYAH & YASHAYA-compliant banking solutions",
+    points: ["Profit-sharing models", "Asset-backed financing", "No interest charge"],
+  },
+];
+
+function MetricCard({ stat, index }: { stat: (typeof NETWORK_STATS)[number]; index: number }) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
-      {/* Hero */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center max-w-4xl mx-auto"
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.15 + index * 0.06 }}
+      className="border border-border/40 bg-card/70 p-5"
+    >
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <p className="font-heading text-2xl text-primary">{stat.value}</p>
+          <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-white/60">{stat.label}</p>
+        </div>
+        <stat.icon className="h-5 w-5 text-primary/70" />
+      </div>
+    </motion.div>
+  );
+}
+
+function BankingPage() {
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="sticky top-0 z-40 border-b border-border/30 bg-card/50 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          <Link to="/" className="flex items-center gap-3">
+            <img src={LOGO_BROWN} alt="Blanch Onyx" className="h-9 w-auto" />
+            <div className="hidden sm:block">
+              <p className="font-heading text-xs tracking-[0.3em] text-primary">BLANCH ONYX</p>
+              <p className="text-[9px] tracking-[0.2em] text-white/40">BANKING SOLUTIONS</p>
+            </div>
+          </Link>
+          <Link
+            to="/dashboard"
+            className="flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-white transition-colors hover:text-primary"
           >
-            <Landmark className="w-20 h-20 mx-auto mb-6" />
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Banking Solutions</h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8">
-              Next-Generation Banking Infrastructure on Blanch Infinity DLT
+            <ArrowLeft className="h-3 w-3" /> Dashboard
+          </Link>
+        </div>
+      </div>
+
+      <main className="mx-auto max-w-7xl px-6 py-12">
+        <section className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}>
+            <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">Banking Solutions</p>
+            <h1 className="font-heading text-4xl tracking-[0.08em] text-foreground md:text-6xl">
+              Next-Generation Sovereign Banking Infrastructure
+            </h1>
+            <p className="mt-5 max-w-2xl font-display text-lg italic leading-relaxed text-white">
+              Real-time settlement, compliant digital banking, and institutional-grade payments on Blanch Onyx DLT.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Badge className="bg-white/20 text-white text-lg px-6 py-2">500+ Banks</Badge>
-              <Badge className="bg-white/20 text-white text-lg px-6 py-2">RTGS Security</Badge>
-              <Badge className="bg-white/20 text-white text-lg px-6 py-2">Zero Fees</Badge>
+            <div className="mt-7 flex flex-wrap gap-3">
+              {HERO_BADGES.map((badge) => (
+                <span
+                  key={badge}
+                  className="border border-primary/30 bg-primary/10 px-4 py-2 text-[10px] uppercase tracking-[0.16em] text-primary"
+                >
+                  {badge}
+                </span>
+              ))}
             </div>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Stats */}
-      <section className="py-12 bg-white border-b">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <stat.icon className="w-12 h-12 text-blue-600 mx-auto mb-3" />
-                <p className="text-3xl font-bold text-slate-900 mb-1">{stat.value}</p>
-                <p className="text-slate-600">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.12 }}
+            className="relative overflow-hidden border border-primary/20 bg-card p-6"
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Banking Services</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Comprehensive banking solutions for the digital age
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Card className="h-full hover:shadow-xl transition-all duration-300">
-                  <CardHeader>
-                    <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-full flex items-center justify-center mb-4`}>
-                      <service.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <CardTitle className="text-2xl mb-2">{service.title}</CardTitle>
-                    <p className="text-slate-600">{service.description}</p>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
-                          <span className="text-sm text-slate-600">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Card className="h-full text-center hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <feature.icon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">{feature.title}</h3>
-                    <p className="text-sm text-slate-600">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Use Cases */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-4">Banking Use Cases</h2>
-            <p className="text-xl text-blue-200">
-              Transforming traditional banking operations
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {useCases.map((useCase, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-2xl font-bold">{useCase.title}</h3>
-                  <Badge className="bg-green-500">{useCase.metrics}</Badge>
+            <div
+              className="absolute inset-0 opacity-[0.05]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(197,165,90,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(197,165,90,0.8) 1px, transparent 1px)",
+                backgroundSize: "22px 22px",
+              }}
+            />
+            <div className="relative">
+              <div className="mb-8 flex items-center justify-between border-b border-border/30 pb-5">
+                <div>
+                  <p className="font-heading text-[10px] uppercase tracking-[0.24em] text-primary">Blanch Onyx DLT</p>
+                  <p className="mt-1 text-xs text-white/50">Institutional Banking Rail</p>
                 </div>
-                <p className="text-blue-200 mb-4">{useCase.description}</p>
-                <ul className="space-y-2">
-                  {useCase.benefits.map((benefit, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm">
-                      <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
-                      <span>{benefit}</span>
-                    </li>
+                <div className="flex items-center gap-2 text-green-400">
+                  <span className="h-2 w-2 rounded-full bg-green-500" />
+                  <span className="text-[10px] uppercase tracking-[0.16em]">Live</span>
+                </div>
+              </div>
+              <div className="space-y-4">
+                {[
+                  ["Settlement Layer", "2ms finality"],
+                  ["Compliance Rail", "AML/KYC enabled"],
+                  ["Fee Model", "Zero transaction fees"],
+                  ["Security Status", "RTGS-grade"],
+                ].map(([label, value]) => (
+                  <div key={label} className="flex items-center justify-between gap-6">
+                    <span className="text-xs text-white/55">{label}</span>
+                    <span className="font-heading text-sm text-foreground">{value}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-8 border border-primary/20 bg-primary/5 p-5">
+                <div className="flex items-start gap-3">
+                  <LockKeyhole className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                  <p className="text-sm leading-relaxed text-white">
+                    Deterministic settlement and immutable audit trails support bank-grade reconciliation across retail,
+                    corporate, investment, and correspondent banking workflows.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        <section className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {NETWORK_STATS.map((stat, index) => (
+            <MetricCard key={stat.label} stat={stat} index={index} />
+          ))}
+        </section>
+
+        <section className="mt-20">
+          <div className="mb-8 text-center">
+            <p className="text-xs uppercase tracking-[0.3em] text-primary">Banking Services</p>
+            <h2 className="mt-3 font-heading text-2xl tracking-[0.1em] text-foreground md:text-3xl">
+              Comprehensive Banking Solutions
+            </h2>
+            <p className="mt-3 text-sm text-white/60">Comprehensive banking solutions for the digital age</p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {BANKING_SERVICES.map((service, index) => (
+              <motion.article
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ delay: index * 0.06 }}
+                className="border border-border/40 bg-card p-6 transition-colors hover:border-primary/30"
+              >
+                <service.icon className="mb-4 h-6 w-6 text-primary" />
+                <h3 className="font-heading text-sm tracking-[0.08em] text-foreground">{service.title}</h3>
+                <p className="mt-3 min-h-10 text-xs leading-relaxed text-white/60">{service.description}</p>
+                <div className="mt-5 space-y-2">
+                  {service.points.map((point) => (
+                    <div key={point} className="flex items-center gap-2 text-xs text-white">
+                      <CheckCircle className="h-3.5 w-3.5 shrink-0 text-primary" />
+                      <span>{point}</span>
+                    </div>
                   ))}
-                </ul>
-              </motion.div>
+                </div>
+              </motion.article>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section className="mt-20 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {SECURITY_FEATURES.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ delay: index * 0.06 }}
+              className="border border-border/30 bg-card/70 p-6"
+            >
+              <feature.icon className="mb-4 h-6 w-6 text-primary" />
+              <h3 className="font-heading text-sm tracking-[0.08em] text-foreground">{feature.title}</h3>
+              <p className="mt-3 text-xs leading-relaxed text-white/60">{feature.description}</p>
+            </motion.div>
+          ))}
+        </section>
+
+        <section className="mt-20">
+          <div className="mb-8">
+            <p className="text-xs uppercase tracking-[0.3em] text-primary">Banking Use Cases</p>
+            <h2 className="mt-3 font-heading text-2xl tracking-[0.1em] text-foreground md:text-3xl">
+              Transforming Traditional Banking Operations
+            </h2>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2">
+            {USE_CASES.map((useCase, index) => (
+              <motion.article
+                key={useCase.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ delay: index * 0.06 }}
+                className="border border-border/40 bg-card p-6"
+              >
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <h3 className="font-heading text-lg tracking-[0.06em] text-foreground">{useCase.title}</h3>
+                    <p className="mt-2 text-sm text-white/60">{useCase.description}</p>
+                  </div>
+                  <span className="shrink-0 border border-primary/25 bg-primary/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.12em] text-primary">
+                    {useCase.metric}
+                  </span>
+                </div>
+                <div className="mt-5 grid gap-2 sm:grid-cols-3">
+                  {useCase.points.map((point) => (
+                    <div key={point} className="border border-border/25 bg-background/35 p-3 text-xs leading-relaxed text-white">
+                      {point}
+                    </div>
+                  ))}
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-20 border border-primary/20 bg-primary/5 p-8 text-center md:p-12">
+          <Sparkles className="mx-auto mb-4 h-7 w-7 text-primary" />
+          <h2 className="font-heading text-2xl tracking-[0.1em] text-foreground">Deploy Banking on Blanch Infinity DLT</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/65">
+            Connect institutional banking, treasury, card, and cross-border payment operations to a zero-fee,
+            real-time settlement network.
+          </p>
+          <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+            <Link
+              to="/banking-accounts"
+              className="bg-primary px-7 py-3 font-heading text-[10px] uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              Open Banking Portal
+            </Link>
+            <Link
+              to="/contact"
+              className="border border-primary/35 px-7 py-3 font-heading text-[10px] uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary/10"
+            >
+              Contact Banking Team
+            </Link>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
 
-export const Route = createFileRoute('/banking')({
-  component: Banking,
+export const Route = createFileRoute("/banking")({
+  component: BankingPage,
 });

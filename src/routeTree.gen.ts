@@ -11,13 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UniverseCommerceRouteImport } from './routes/universe-commerce'
 import { Route as TradingHubRouteImport } from './routes/trading-hub'
-import { Route as TpsRouteImport } from './routes/tps'
 import { Route as TokensRouteImport } from './routes/tokens'
 import { Route as SocialClubRouteImport } from './routes/social-club'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RoyalPriesthoodRouteImport } from './routes/royal-priesthood'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as PropertyRouteImport } from './routes/property'
 import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as MembershipRouteImport } from './routes/membership'
@@ -36,7 +36,7 @@ import { Route as BusinessNetworkRouteImport } from './routes/business-network'
 import { Route as BlackCardRouteImport } from './routes/black-card'
 import { Route as BankingAccountsRouteImport } from './routes/banking-accounts'
 import { Route as BankingRouteImport } from './routes/banking'
-import { Route as ContactRouteImport } from './routes/Contact'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
 
 const UniverseCommerceRoute = UniverseCommerceRouteImport.update({
@@ -47,11 +47,6 @@ const UniverseCommerceRoute = UniverseCommerceRouteImport.update({
 const TradingHubRoute = TradingHubRouteImport.update({
   id: '/trading-hub',
   path: '/trading-hub',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TpsRoute = TpsRouteImport.update({
-  id: '/tps',
-  path: '/tps',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TokensRoute = TokensRouteImport.update({
@@ -82,6 +77,11 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropertyRoute = PropertyRouteImport.update({
+  id: '/property',
+  path: '/property',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PropertiesRoute = PropertiesRouteImport.update({
@@ -206,13 +206,13 @@ export interface FileRoutesByFullPath {
   '/membership': typeof MembershipRoute
   '/profile': typeof ProfileRoute
   '/properties': typeof PropertiesRoute
+  '/property': typeof PropertyRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
   '/royal-priesthood': typeof RoyalPriesthoodRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/social-club': typeof SocialClubRoute
   '/tokens': typeof TokensRoute
-  '/tps': typeof TpsRoute
   '/trading-hub': typeof TradingHubRoute
   '/universe-commerce': typeof UniverseCommerceRoute
 }
@@ -237,13 +237,13 @@ export interface FileRoutesByTo {
   '/membership': typeof MembershipRoute
   '/profile': typeof ProfileRoute
   '/properties': typeof PropertiesRoute
+  '/property': typeof PropertyRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
   '/royal-priesthood': typeof RoyalPriesthoodRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/social-club': typeof SocialClubRoute
   '/tokens': typeof TokensRoute
-  '/tps': typeof TpsRoute
   '/trading-hub': typeof TradingHubRoute
   '/universe-commerce': typeof UniverseCommerceRoute
 }
@@ -269,13 +269,13 @@ export interface FileRoutesById {
   '/membership': typeof MembershipRoute
   '/profile': typeof ProfileRoute
   '/properties': typeof PropertiesRoute
+  '/property': typeof PropertyRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
   '/royal-priesthood': typeof RoyalPriesthoodRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/social-club': typeof SocialClubRoute
   '/tokens': typeof TokensRoute
-  '/tps': typeof TpsRoute
   '/trading-hub': typeof TradingHubRoute
   '/universe-commerce': typeof UniverseCommerceRoute
 }
@@ -302,13 +302,13 @@ export interface FileRouteTypes {
     | '/membership'
     | '/profile'
     | '/properties'
+    | '/property'
     | '/register'
     | '/reset-password'
     | '/royal-priesthood'
     | '/sitemap.xml'
     | '/social-club'
     | '/tokens'
-    | '/tps'
     | '/trading-hub'
     | '/universe-commerce'
   fileRoutesByTo: FileRoutesByTo
@@ -333,13 +333,13 @@ export interface FileRouteTypes {
     | '/membership'
     | '/profile'
     | '/properties'
+    | '/property'
     | '/register'
     | '/reset-password'
     | '/royal-priesthood'
     | '/sitemap.xml'
     | '/social-club'
     | '/tokens'
-    | '/tps'
     | '/trading-hub'
     | '/universe-commerce'
   id:
@@ -364,13 +364,13 @@ export interface FileRouteTypes {
     | '/membership'
     | '/profile'
     | '/properties'
+    | '/property'
     | '/register'
     | '/reset-password'
     | '/royal-priesthood'
     | '/sitemap.xml'
     | '/social-club'
     | '/tokens'
-    | '/tps'
     | '/trading-hub'
     | '/universe-commerce'
   fileRoutesById: FileRoutesById
@@ -396,13 +396,13 @@ export interface RootRouteChildren {
   MembershipRoute: typeof MembershipRoute
   ProfileRoute: typeof ProfileRoute
   PropertiesRoute: typeof PropertiesRoute
+  PropertyRoute: typeof PropertyRoute
   RegisterRoute: typeof RegisterRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   RoyalPriesthoodRoute: typeof RoyalPriesthoodRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SocialClubRoute: typeof SocialClubRoute
   TokensRoute: typeof TokensRoute
-  TpsRoute: typeof TpsRoute
   TradingHubRoute: typeof TradingHubRoute
   UniverseCommerceRoute: typeof UniverseCommerceRoute
 }
@@ -421,13 +421,6 @@ declare module '@tanstack/react-router' {
       path: '/trading-hub'
       fullPath: '/trading-hub'
       preLoaderRoute: typeof TradingHubRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tps': {
-      id: '/tps'
-      path: '/tps'
-      fullPath: '/tps'
-      preLoaderRoute: typeof TpsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tokens': {
@@ -470,6 +463,13 @@ declare module '@tanstack/react-router' {
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/property': {
+      id: '/property'
+      path: '/property'
+      fullPath: '/property'
+      preLoaderRoute: typeof PropertyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/properties': {
@@ -636,13 +636,13 @@ const rootRouteChildren: RootRouteChildren = {
   MembershipRoute: MembershipRoute,
   ProfileRoute: ProfileRoute,
   PropertiesRoute: PropertiesRoute,
+  PropertyRoute: PropertyRoute,
   RegisterRoute: RegisterRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   RoyalPriesthoodRoute: RoyalPriesthoodRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SocialClubRoute: SocialClubRoute,
   TokensRoute: TokensRoute,
-  TpsRoute: TpsRoute,
   TradingHubRoute: TradingHubRoute,
   UniverseCommerceRoute: UniverseCommerceRoute,
 }

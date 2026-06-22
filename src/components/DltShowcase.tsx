@@ -284,7 +284,7 @@ const DltShowcase = () => {
         </div>
       </div>
     </section>
-  );
+  ); 
 };
 
 export default DltShowcase;

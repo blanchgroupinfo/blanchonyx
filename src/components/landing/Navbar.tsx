@@ -13,7 +13,7 @@ const NAV_GROUPS = [
 	  { label: "Blanch Onyx Core", href: "/blanch-onyx-core", isRoute: true },
 	  { label: "Commerce", href: "#commerce" },
 	  { label: "Heritage", href: "#heritage" },
-    { label: "H.E.E.D.", href: "#heed" },,
+    { label: "H.E.E.D.", href: "#heed" },
     { label: "DLT", href: "/#dlt" },
 	  { label: "DLT Network", href: "/dlt", isRoute: true },
 	  { label: "Explorer", href: "/explorer", isRoute: true },

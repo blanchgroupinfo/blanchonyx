@@ -30,6 +30,7 @@ import logoBlackBrown from "../assets/b-logo-black-brown.png";
 import DltShowcase from "@/components/DltShowcase";
 import Navbar from "@/components/landing/Navbar";
 import { Button } from "../components/ui/button";
+import Slideshow from "@/components/Slideshow";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -429,6 +430,11 @@ function Index() {
           <i />
         </div>
       </section>
+
+      {/* Slideshow of images and videos from src/assets/slideshow */}
+      <section id="slideshow" className="section-shell py-12 bg-background">
+        <Slideshow />
+      </section>
       <ScriptureBand
         text="But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people; that ye should shew forth the praises of him who hath called you out of darkness into his marvellous light:"
         verse="1 Peter 2:9"
@@ -526,7 +532,7 @@ function Index() {
               emerging ventures, and sustainable development.
             </p>
           </div>
-          <div className="heed-grid">
+          <div className="heed-grid-card-lift">
             {heed.map(([letter, title, text], i) => (
               <article key={title}>
                 <span>{letter}</span>

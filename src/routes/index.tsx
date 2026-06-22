@@ -434,6 +434,10 @@ function Index() {
         text="But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people; that ye should shew forth the praises of him who hath called you out of darkness into his marvellous light:"
         verse="1 Peter 2:9"
       />
+                  {/* Slideshow of images and videos placed directly under the heading */}
+            <div className="my-8 flex justify-center">
+              <Slideshow />
+            </div>
 
       <section id="heritage" className="section-shell section-block">
         <div className="section-intro">
@@ -443,10 +447,6 @@ function Index() {
             <br />
             <em>of Judah (Yadah)</em>
           </h2>
-            {/* Slideshow of images and videos placed directly under the heading */}
-            <div className="my-8 flex justify-center">
-              <Slideshow />
-            </div>
         </div>
         <div className="heritage-grid">
           <article className="lead-story">
@@ -462,6 +462,7 @@ function Index() {
               <li><b>Jeremiah 14:2 </b> Judah mourneth, and the gates thereof languish; they are black unto the ground; and the cry of Jerusalem is gone up.</li>
               <li><b>Job 30:30</b> My skin is black upon me, and my bones are burned with heat.</li>
               <li><b>Song of Solomon 1:5</b> I am black, but comely, O ye daughters of Jerusalem, as the tents of Kedar, as the curtains of Solomon.</li>
+              <li><b>Isaiah 11:11-12</b> And it shall come to pass in that day, that the Most High AHAYAH shall set his hand again the second time to recover the remnant of his people, which shall be left, from Assyria, and from Egypt, and from Pathros, and from Cush, and from Elam, and from Shinar, and from Hamath, and from the islands of the sea. And he shall set up an ensign for the nations, and shall assemble the outcasts of Israel (Yasharahala), and gather together the dispersed of Judah from the four corners of the earth.</li>
               <li><b>1 John 5:2-3</b>  By this we know that we love the children of Most High AHAYAH, when we love Most High AHAYAH, and keep his commandments. For this is the love of Most High AHAYAH, that we keep his commandments: and his commandments are not grievous.</li>
               </ul>
             <blockquote>

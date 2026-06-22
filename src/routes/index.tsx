@@ -468,6 +468,10 @@ function Index() {
             <blockquote>
               “Thou art near, O Most High AHAYAH; and all thy commandments are truth.”<cite>— Psalms 119:151</cite>
             </blockquote>
+              {/* Slideshow of images and videos placed after the scripture */}
+              <div className="my-8">
+                <Slideshow />
+              </div>
           </article>
           <article className="heritage-story">
             <span className="story-number">02</span>

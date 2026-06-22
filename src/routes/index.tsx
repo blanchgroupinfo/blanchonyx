@@ -444,11 +444,8 @@ function Index() {
             <em>of Judah (Yadah)</em>
           </h2>
             {/* Slideshow of images and videos placed after the scripture */}
-                  {/* Slideshow of images and videos from src/assets/slideshow */}
-      <section id="slideshow" className="section-shell py-12 bg-background">
-        <Slideshow />
-      </section>
-              <div className="my-8"><Slideshow /></div>
+        <Slideshow /> 
+        div className="my-8-section-shell py-12 bg-background"><Slideshow /></div>
         </div>
         <div className="heritage-grid">
           <article className="lead-story">

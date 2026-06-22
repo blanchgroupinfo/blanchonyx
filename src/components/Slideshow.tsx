@@ -49,7 +49,7 @@ export default function Slideshow() {
   const current = media[index];
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-lg shadow-lg">
+  <div className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-lg shadow-lg">
       {current.type === "image" ? (
         <img
           src={current.src}

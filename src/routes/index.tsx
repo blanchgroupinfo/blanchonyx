@@ -444,9 +444,9 @@ function Index() {
             <em>of Judah (Yadah)</em>
           </h2>
             {/* Slideshow of images and videos placed directly under the heading */}
-            <div className="my-8">
+            <div className="my-8 flex justify-center">
               <Slideshow />
-            </div>		  
+            </div>
         </div>
         <div className="heritage-grid">
           <article className="lead-story">

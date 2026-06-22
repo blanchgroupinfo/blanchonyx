@@ -445,7 +445,7 @@ function Index() {
           </h2>
             {/* Slideshow of images and videos placed after the scripture */}
         <Slideshow /> 
-        div className="my-8-section-shell py-12 bg-background"><Slideshow /></div>
+        <div className="my-8-section-shell py-12 bg-background"><Slideshow /></div>
         </div>
         <div className="heritage-grid">
           <article className="lead-story">

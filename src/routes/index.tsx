@@ -536,7 +536,7 @@ function Index() {
               emerging ventures, and sustainable development.
             </p>
           </div>
-          <div className="heed-grid-card-lift">
+          <div className="heed-grid">
             {heed.map(([letter, title, text], i) => (
               <article key={title}>
                 <span>{letter}</span>

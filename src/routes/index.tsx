@@ -446,7 +446,8 @@ function Index() {
             {/* Slideshow of images and videos placed directly under the heading */}
             <div className="my-8">
               <Slideshow />
-            </div>
+            </div>		  
+        </div>
         <div className="heritage-grid">
           <article className="lead-story">
             <span className="story-number">01</span>

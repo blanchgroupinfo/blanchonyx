@@ -19,7 +19,7 @@ const NAV_GROUPS = [
 	  { label: "Explorer", href: "/explorer", isRoute: true },
     { label: "Membership", href: "#membership" },
 	  { label: "S.H.I.E.L.D.", href: "#shield" },
-	  { label: "Smart Cities", href: "#vision" },
+	  { label: "Smart City", href: "#vision" },
 	  { label: "Technology", href: "technology", isRoute: true },
 	  { label: "TPS Live", href: "/tps", isRoute: true },
 	  { label: "Vision - Our Purpose", href: "#ourPurpose" },

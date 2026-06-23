@@ -691,7 +691,7 @@ function Index() {
     <section id="vision" className="vision-section section-block">
       <div className="section-shell"><div className="vision-heading">
         <Eyebrow>Vision in Motion</Eyebrow>
-        <h2>Smart Cities &<br/><em>the Blanch Corridor</em></h2>
+        <h2>Smart City &<br/><em>the Blanch Corridor</em></h2>
         <p>A sovereign network of sacred, sustainable cities for the Royal Priesthood and global communities.</p>
       </div>
         <div className="vision-grid">{visions.map(([label,title,text],i)=><article key={title} className="card-lift"><span>0{i+1}</span>

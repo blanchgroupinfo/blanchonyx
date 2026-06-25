@@ -319,7 +319,7 @@ function BankingPage() {
 
         <section className="mt-20 border border-primary/20 bg-primary/5 p-8 text-center md:p-12">
           <Sparkles className="mx-auto mb-4 h-7 w-7 text-primary" />
-          <h2 className="font-heading text-2xl tracking-[0.1em] text-foreground">Deploy Banking on Blanch Infinity DLT</h2>
+          <h2 className="font-heading text-2xl tracking-[0.1em] text-foreground">Deploy Banking on Blanch Onyx DLT</h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/65">
             Connect institutional banking, treasury, card, and cross-border payment operations to a zero-fee,
             real-time settlement network.

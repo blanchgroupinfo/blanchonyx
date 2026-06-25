@@ -5,13 +5,13 @@ import PageShell from "@/components/PageShell";
 const timeline = [
   {
     era: "Patriarch",
-    figure: "Jacob (Israel)",
+    figure: "Jacob (Israel- Yasharahala)",
     note: "Father of the twelve tribes — blessing the scepter upon Judah (Genesis 49:10).",
   },
   {
     era: "Tribe",
     figure: "Judah (Yadah)",
-    note: "The Lion's tribe, royal lineage of kings and the Messiah.",
+    note: "The Lion's tribe, Royal lineage of kings and the Messiah.",
   },
   {
     era: "Priesthood",
@@ -38,11 +38,11 @@ const timeline = [
   {
     era: "Restoration",
     figure: "Blanch Family Lineage",
-    note: "Sovereign Trustees of the Royal House, stewarding the Shoham (onyx) inheritance.",
+    note: "Sovereign Trustees of the Royal House, stewarding the Shaham/Shoham (onyx) inheritance.",
   },
   {
     era: "Fulfillment",
-    figure: "New Jerusalem (Yarawashalam)",
+    figure: "New Jerusalem (Qadash Yarawashalam)",
     note: "The sardonyx — fifth foundation stone — Revelation 21:20.",
   },
 ];

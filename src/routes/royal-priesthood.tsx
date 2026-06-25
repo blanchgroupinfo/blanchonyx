@@ -76,9 +76,9 @@ export default function RoyalPriesthoodPage() {
             <p className="text-xs tracking-[0.3em] text-primary uppercase mb-6">The Blanch Stone (Shoham)</p>
             <div className="border border-primary/20 bg-primary/5 p-8 mb-6">
               <p className="font-heading text-2xl text-primary mb-2">שֹׁהַם</p>
-              <p className="font-heading text-sm text-foreground mb-4">Shoham / Onyx / Sardonyx</p>
+              <p className="font-heading text-sm text-foreground mb-4">Shaham/Shoham / Onyx / Sardonyx</p>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                The word "Blanch" derives from the Hebrew "Shoham/Shaham" (שֹׁהַם), meaning "onyx" or "sardonyx" — the Fifth Foundation Stone of New Jerusalem (Yarawashalam). It symbolizes strength, protection, and divine connection.
+                The word "Blanch" derives from the Hebrew "Shoham/Shaham a Levite" (שֹׁהַם), meaning "onyx" a Precious Jewel or "sardonyx" — the Fifth Foundation Stone of New Jerusalem (Yarawashalam). It symbolizes strength, protection, and divine connection.
               </p>
             </div>
             <div className="space-y-4">
@@ -86,6 +86,7 @@ export default function RoyalPriesthoodPage() {
                 { ref: "Genesis 2:12", text: '"And the gold of that land is good: there is bdellium and the onyx stone."' },
                 { ref: "Exodus 28:9", text: '"And thou shalt take two onyx stones, and grave on them the names of the children of Israel."' },
                 { ref: "Revelation 21:20", text: "The sardonyx — fifth foundation stone of New Jerusalem (Yarawashalam)." },
+                { ref: "1 Chronicles 24:27", text: "The sons of Merari by Jaaziah; Beno, and Shoham, and Zaccur, and Ibri." },
               ].map(v => (
                 <div key={v.ref} className="flex gap-3">
                   <Star className="w-3 h-3 text-primary shrink-0 mt-1" />

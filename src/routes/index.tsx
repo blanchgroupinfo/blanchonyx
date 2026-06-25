@@ -434,10 +434,26 @@ function Index() {
         text="But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people; that ye should shew forth the praises of him who hath called you out of darkness into his marvellous light:"
         verse="1 Peter 2:9"
       />
-                  {/* Slideshow of images and videos placed directly under the heading */}
-            <div className="my-8 flex justify-center">
-              <Slideshow />
-            </div>
+      <section id="remnant" className="section-shell section-block">
+        <div className="remnant-section-gather">
+          <Eyebrow>Members are supporting the Royal Priesthood</Eyebrow>
+          <h3>Gather the Remnant <br /><em style={{ color: "var(--primary)", fontStyle: "italic" }}> Feed My Sheep</em></h3>
+            <p><b>John 21:16 </b> He saith to him again the second time, Simon, son of Jonas, lovest thou me? He saith unto him, Yea, Master; thou knowest that I love thee. He saith unto him, Feed my sheep.
+            </p> 
+          <div className="remnant-grid">
+          
+            {/* Updated container below */}
+           <div className="w-full flex flex-col items-center justify-center my-12">
+              <div className="my-8 flex justify-center">
+                <Slideshow />
+              </div>
+              <blockquote className="mt-6 text-center max-w-2xl">
+                “Feed the flock of Most High AHAYAH which is among you, taking the oversight thereof, not by constraint, but willingly; not for filthy lucre, but of a ready mind;<cite>— 1 Peter 5:2</cite>
+              </blockquote>
+           </div>
+          </div>
+        </div>
+      </section>
 
       <section id="heritage" className="section-shell section-block">
         <div className="section-intro">
@@ -449,7 +465,7 @@ function Index() {
           </h2>
         </div>
         <div className="heritage-grid">
-          <article className="lead-story">
+          <article className="lead-story bg-background transition-all duration-[350ms] ease-in-out hover:bg-[color-mix(in_oklab,var(--primary)_4%,var(--background))] hover:shadow-[var(--shadow-royal)] hover:z-10">
             <span className="story-number">01</span>
             <h3>A Sovereign Divine Law Non-Profit Trustee</h3>
             <p>
@@ -469,14 +485,14 @@ function Index() {
               “Thou art near, O Most High AHAYAH; and all thy commandments are truth.”<cite>— Psalms 119:151</cite>
             </blockquote>
           </article>
-          <article className="heritage-story">
+          <article className="heritage-story bg-background transition-all duration-[350ms] ease-in-out hover:bg-[color-mix(in_oklab,var(--primary)_4%,var(--background))] hover:shadow-[var(--shadow-royal)] hover:z-10">
             <span className="story-number">02</span>
             <p className="mini-label">The Blanch Stone</p>
             <h3>Onyx · Sardonyx · Shaham/Shoham</h3>
             <p>
               Blanch derives from the Hebrew “Shaham/Shoham” (שֹׁהַם), meaning onyx—a precious stone
               of strength, protection, purity, and divine connection, named among the foundations of
-              New Jerusalem (Yarawashalam). The Shaham/Shoham is the Guardians of Jerusalem
+              New Jerusalem (Qadash Yarawashalam). The Shaham/Shoham is the Guardians of Jerusalem
               (Yarawashalam) and The Tarah/Torah Divine Law they are Levites.
               Blanch/Onyx/Sardonyx/Shaham/Shoham a Watchman Descendant the chosen Royal Priesthood.
             </p>
@@ -494,7 +510,7 @@ function Index() {
               </li>
             </ul>
           </article>
-          <article className="heritage-story">
+          <article className="heritage-story bg-background transition-all duration-[350ms] ease-in-out hover:bg-[color-mix(in_oklab,var(--primary)_4%,var(--background))] hover:shadow-[var(--shadow-royal)] hover:z-10">
             <span className="story-number">03</span>
             <p className="mini-label">Royal Lineage</p>
             <h3>Levitical Priesthood</h3>
@@ -534,7 +550,7 @@ function Index() {
           </div>
           <div className="heed-grid">
             {heed.map(([letter, title, text], i) => (
-              <article key={title}>
+              <article key={title} className="card-lift">
                 <span>{letter}</span>
                 <div className="pillar-index">0{i + 1}</div>
                 <h3>{title}</h3>

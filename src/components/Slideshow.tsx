@@ -49,17 +49,17 @@ export default function Slideshow() {
   const current = media[index];
 
   return (
-  <div className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-lg shadow-lg">
+<div className="relative w-full-[1100px] max-w-mx-auto overflow-hidden rounded-2xl shadow-2xl">
       {current.type === "image" ? (
-        <img
+          <img
           src={current.src}
           alt="Slideshow item"
-          className="w-full h-auto object-cover"
-        />
-      ) : (
+          className="w-full-[1100px] h-object-cover"
+  />
+        ) : (
         <video
           src={current.src}
-          className="w-full h-auto object-cover"
+          className="w-full-[1100px] h-object-cover"
           autoPlay
           muted
           loop

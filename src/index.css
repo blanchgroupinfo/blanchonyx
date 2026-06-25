@@ -495,11 +495,18 @@
   .heritage-grid article {
     position: relative;
     padding: 3rem;
-    border-bottom: 1px solid var(--border);
+    border: 1px solid var(--border);
+    margin: -1px 0 0 -1px;
+    transition: all 0.35s ease;
+  }
+  .heritage-grid article:hover {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 30px color-mix(in oklab, var(--primary) 40%, transparent) !important;
+    background: color-mix(in oklab, var(--primary) 4%, var(--background)) !important;
+    z-index: 10;
   }
   .lead-story {
     grid-row: span 2;
-    border-right: 1px solid var(--border);
   }
   .story-number {
     position: absolute;
@@ -518,6 +525,7 @@
   .heritage-grid li {
     color: var(--muted-foreground);
     line-height: 1.8;
+    text-align: justify;
   }
   .lead-story blockquote {
     margin-top: 4rem;
@@ -541,17 +549,21 @@
   .heed-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    border: 1px solid color-mix(in oklab, var(--cream) 12%, transparent);
   }
   .heed-grid article {
     min-height: 27rem;
     position: relative;
     padding: 2rem;
-    border-right: 1px solid color-mix(in oklab, var(--cream) 12%, transparent);
+    border: 1px solid color-mix(in oklab, var(--cream) 12%, transparent);
+    margin: -1px 0 0 -1px;
     overflow: hidden;
+    transition: all 0.35s ease;
   }
-  .heed-grid article:last-child {
-    border: 0;
+  .heed-grid article:hover {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 30px color-mix(in oklab, var(--primary) 40%, transparent) !important;
+    background: color-mix(in oklab, var(--primary) 4%, var(--onyx)) !important;
+    z-index: 10;
   }
   .heed-grid article > span {
     position: absolute;
@@ -574,6 +586,7 @@
     color: color-mix(in oklab, var(--cream) 55%, transparent);
     line-height: 1.7;
     font-size: 0.82rem;
+    text-align: justify;
   }
   .heed-grid svg {
     position: absolute;
@@ -624,6 +637,13 @@
     padding: 2rem;
     border: 1px solid var(--border);
     margin: -1px 0 0 -1px;
+    transition: all 0.35s ease;
+  }
+  .domain-grid article:hover {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 30px color-mix(in oklab, var(--primary) 40%, transparent) !important;
+    background: color-mix(in oklab, var(--primary) 4%, var(--background)) !important;
+    z-index: 10;
   }
   .domain-grid svg {
     color: var(--primary);
@@ -636,6 +656,7 @@
     color: var(--muted-foreground);
     font-size: 0.8rem;
     line-height: 1.7;
+    text-align: justify;
   }
 
   .scriptural-foundation {
@@ -665,9 +686,7 @@
       color-mix(in oklab, var(--background) 98%, var(--primary)),
       var(--background)
     );
-    transition:
-      background 0.35s ease,
-      box-shadow 0.35s ease;
+    transition: all 0.35s ease;
   }
   .scripture-card:hover {
     background: linear-gradient(
@@ -675,8 +694,9 @@
       color-mix(in oklab, var(--primary) 8%, var(--background)),
       color-mix(in oklab, var(--primary) 3%, var(--background))
     );
-    box-shadow: var(--shadow-royal);
-    z-index: 1;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 30px color-mix(in oklab, var(--primary) 40%, transparent) !important;
+    z-index: 10;
   }
   .scripture-card::before {
     content: "\201C";
@@ -703,6 +723,7 @@
     margin: 0;
     font: italic 400 clamp(0.95rem, 1.2vw, 1.1rem)/1.7 var(--font-display);
     color: var(--foreground);
+    text-align: justify;
   }
   .scripture-card cite {
     display: block;
@@ -952,9 +973,7 @@
       color-mix(in oklab, var(--background) 98%, var(--primary)),
       var(--background)
     );
-    transition:
-      background 0.35s ease,
-      box-shadow 0.35s ease;
+    transition: all 0.35s ease;
   }
   .privilege-card:hover {
     background: linear-gradient(
@@ -962,8 +981,9 @@
       color-mix(in oklab, var(--primary) 8%, var(--background)),
       color-mix(in oklab, var(--primary) 3%, var(--background))
     );
-    box-shadow: var(--shadow-royal);
-    z-index: 1;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 30px color-mix(in oklab, var(--primary) 40%, transparent) !important;
+    z-index: 10;
   }
   .privilege-card svg {
     width: 1.15rem;
@@ -977,6 +997,7 @@
     color: var(--muted-foreground);
     font-size: 0.78rem;
     line-height: 1.65;
+    text-align: justify;
   }
 
   .purpose-block {
@@ -1001,14 +1022,13 @@
     border: 1px solid var(--border);
     margin: -1px 0 0 -1px;
     background: var(--background);
-    transition:
-      background 0.35s ease,
-      box-shadow 0.35s ease;
+    transition: all 0.35s ease;
   }
   .purpose-card:hover {
     background: color-mix(in oklab, var(--primary) 4%, var(--background));
-    box-shadow: var(--shadow-royal);
-    z-index: 1;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 30px color-mix(in oklab, var(--primary) 40%, transparent) !important;
+    z-index: 10;
   }
   .purpose-card svg {
     width: 1.1rem;
@@ -1023,6 +1043,7 @@
     color: var(--muted-foreground);
     font-size: 0.76rem;
     line-height: 1.7;
+    text-align: justify;
   }
 
   .membership-quote {
@@ -1075,8 +1096,15 @@
     min-height: 24rem;
     padding: 2rem;
     border: 1px solid color-mix(in oklab, var(--cream) 12%, transparent);
-    margin-left: -1px;
+    margin: -1px 0 0 -1px;
     position: relative;
+    transition: all 0.35s ease;
+  }
+  .vision-grid article:hover {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 30px color-mix(in oklab, var(--primary) 40%, transparent) !important;
+    background: color-mix(in oklab, var(--primary) 4%, var(--onyx)) !important;
+    z-index: 10;
   }
   .vision-grid article > span {
     color: var(--primary);
@@ -1090,6 +1118,7 @@
     color: color-mix(in oklab, var(--cream) 50%, transparent);
     font-size: 0.8rem;
     line-height: 1.7;
+    text-align: justify;
   }
   .vision-grid svg {
     position: absolute;

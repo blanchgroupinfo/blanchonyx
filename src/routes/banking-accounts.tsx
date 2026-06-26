@@ -90,7 +90,7 @@ export default function BankingPage() {
             <img src={LOGO_BROWN} alt="Blanch Onyx" className="h-9 w-auto" />
             <div className="hidden sm:block">
               <p className="font-heading text-xs tracking-[0.3em] text-primary">BLANCH ONYX</p>
-              <p className="text-[9px] tracking-[0.2em] text-white/40">PRIVATE BANKING</p>
+              <p className="text-[9px] tracking-[0.2em] text-foreground/40">PRIVATE BANKING</p>
             </div>
           </Link>
           <div className="flex items-center gap-4">
@@ -98,7 +98,7 @@ export default function BankingPage() {
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               <span className="text-[10px] tracking-wider text-green-400 uppercase hidden sm:block">Secure</span>
             </div>
-            <Link to="/dashboard" className="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-white hover:text-primary transition-colors">
+            <Link to="/dashboard" className="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-foreground hover:text-primary transition-colors">
               <ArrowLeft className="w-3 h-3" /> Dashboard
             </Link>
           </div>
@@ -110,7 +110,7 @@ export default function BankingPage() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
           <p className="text-xs tracking-[0.3em] text-primary uppercase mb-3">Blanch Onyx Private Banking</p>
           <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">Sovereign Banking</h1>
-          <p className="font-display text-lg text-white italic max-w-2xl">
+          <p className="font-display text-lg text-foreground/80 italic max-w-2xl">
             A divine financial ecosystem — private banking, DLT-powered settlement, and sovereign wealth management unified.
           </p>
         </motion.div>
@@ -122,7 +122,7 @@ export default function BankingPage() {
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`px-5 py-3 text-[10px] tracking-[0.15em] uppercase transition-all border-b-2 -mb-px ${
-                activeTab === tab ? "border-primary text-primary" : "border-transparent text-white hover:text-foreground"
+                activeTab === tab ? "border-primary text-primary" : "border-transparent text-foreground/60 hover:text-foreground"
               }`}
             >
               {tab}
@@ -148,9 +148,9 @@ export default function BankingPage() {
               transition={{ duration: 4, repeat: Infinity }}
             >
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(197,165,90,0.05)_0%,_transparent_70%)]" />
-              <p className="text-[10px] tracking-[0.3em] text-white uppercase mb-2">Total Portfolio Value</p>
+              <p className="text-[10px] tracking-[0.3em] text-foreground/60 uppercase mb-2">Total Portfolio Value</p>
               <p className="font-heading text-5xl text-primary mb-1">${(liveBalance + 88200).toLocaleString()}</p>
-              <p className="text-xs text-white">+ 12,480 BOX equivalent</p>
+              <p className="text-xs text-foreground/70">+ 12,480 BOX equivalent</p>
               <div className="flex items-center justify-center gap-2 mt-3">
                 <TrendingUp className="w-4 h-4 text-green-400" />
                 <span className="text-green-400 text-xs">+3.2% this month</span>
@@ -196,7 +196,7 @@ export default function BankingPage() {
                       </div>
                       <div>
                         <p className="text-sm text-foreground">{tx.desc}</p>
-                        <p className="text-[10px] text-white">{tx.date}</p>
+                        <p className="text-[10px] text-foreground/50">{tx.date}</p>
                       </div>
                     </div>
                     <p className={`font-heading text-sm ${tx.type === "credit" ? "text-green-400" : "text-destructive"}`}>
@@ -214,7 +214,7 @@ export default function BankingPage() {
           <div>
             <div className="flex items-center justify-between mb-6">
               <h2 className="font-heading text-sm tracking-[0.15em] uppercase text-foreground">Transaction History</h2>
-              <span className="text-[10px] text-white">{TRANSACTIONS.length} records</span>
+              <span className="text-[10px] text-foreground/50">{TRANSACTIONS.length} records</span>
             </div>
             <div className="border border-border/30 divide-y divide-border/20">
               {TRANSACTIONS.map((tx, i) => (
@@ -235,8 +235,8 @@ export default function BankingPage() {
                     <div>
                       <p className="text-sm text-foreground">{tx.desc}</p>
                       <div className="flex items-center gap-2 mt-0.5">
-                        <p className="text-[10px] text-white">{tx.date}</p>
-                        <span className="text-[9px] px-1.5 py-0.5 border border-border/30 text-white capitalize">{tx.category}</span>
+                        <p className="text-[10px] text-foreground/50">{tx.date}</p>
+                        <span className="text-[9px] px-1.5 py-0.5 border border-border/30 text-foreground/70 capitalize">{tx.category}</span>
                       </div>
                     </div>
                   </div>
@@ -244,7 +244,7 @@ export default function BankingPage() {
                     <p className={`font-heading text-sm ${tx.type === "credit" ? "text-green-400" : "text-destructive"}`}>
                       {tx.type === "credit" ? "+" : "-"}{Math.abs(tx.amount).toLocaleString()} {tx.currency}
                     </p>
-                    <p className="text-[9px] text-white capitalize">{tx.type}</p>
+                    <p className="text-[9px] text-foreground/50 capitalize">{tx.type}</p>
                   </div>
                 </motion.div>
               ))}
@@ -269,7 +269,7 @@ export default function BankingPage() {
                     <s.icon className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                   </div>
                   <h3 className="font-heading text-sm tracking-[0.05em] text-foreground mb-2">{s.label}</h3>
-                  <p className="text-xs text-white leading-relaxed">{s.desc}</p>
+                  <p className="text-xs text-foreground/60 leading-relaxed">{s.desc}</p>
                   <div className="flex items-center gap-1 text-primary text-[10px] mt-4 group-hover:gap-2 transition-all">
                     Access Service <ChevronRight className="w-3 h-3" />
                   </div>
@@ -281,7 +281,7 @@ export default function BankingPage() {
             <div className="border border-primary/20 bg-primary/5 p-8 mt-10 flex flex-col sm:flex-row items-center gap-6 justify-between">
               <div>
                 <p className="font-heading text-lg text-foreground mb-2">Blanch Corridor Access</p>
-                <p className="text-sm text-white max-w-md">Connect your banking to the sovereign commerce corridor for cross-border transactions, kingdom-aligned trade finance, and strategic investment channels.</p>
+                <p className="text-sm text-foreground/70 max-w-md">Connect your banking to the sovereign commerce corridor for cross-border transactions, kingdom-aligned trade finance, and strategic investment channels.</p>
               </div>
               <Link to="/business-network" className="shrink-0 px-8 py-3 bg-primary text-primary-foreground font-heading text-xs tracking-[0.15em] uppercase hover:bg-primary/90 transition-all">
                 Open Corridor
@@ -305,7 +305,7 @@ export default function BankingPage() {
                 >
                   <f.icon className="w-5 h-5 text-primary mb-3" />
                   <h4 className="font-heading text-sm text-foreground mb-2">{f.title}</h4>
-                  <p className="text-xs text-white leading-relaxed">{f.desc}</p>
+                  <p className="text-xs text-foreground/65 leading-relaxed">{f.desc}</p>
                 </motion.div>
               ))}
             </div>

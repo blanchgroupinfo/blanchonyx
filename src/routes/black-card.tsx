@@ -221,7 +221,7 @@ function CardModal({ tier, onClose }) {
         className="bg-card border border-border max-w-lg w-full p-8 relative"
         style={{ boxShadow: `0 20px 80px ${tier.glow}` }}
         onClick={e => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-4 right-4 text-white/40 hover:text-foreground"><X className="w-5 h-5" /></button>
+        <button onClick={onClose} className="absolute top-4 right-4 text-foreground/40 hover:text-foreground"><X className="w-5 h-5" /></button>
 
         {/* Card preview in modal */}
         <div className="mb-6">
@@ -236,15 +236,15 @@ function CardModal({ tier, onClose }) {
           </div>
         </div>
 
-        <p className="text-sm text-white mb-1">Tier: <span className="text-foreground font-heading">{tier.tier}</span></p>
-        <p className="text-sm text-white mb-5">Membership: <span className={`font-heading ${tier.accent}`}>{tier.price}</span></p>
+        <p className="text-sm text-foreground mb-1">Tier: <span className="text-foreground font-heading">{tier.tier}</span></p>
+        <p className="text-sm text-foreground mb-5">Membership: <span className={`font-heading ${tier.accent}`}>{tier.price}</span></p>
 
         <h3 className="font-heading text-xs tracking-[0.15em] text-primary uppercase mb-3">Card Benefits</h3>
         <div className="grid grid-cols-1 gap-2 mb-6">
           {tier.features.map(f => (
             <div key={f} className="flex items-center gap-2">
               <CheckCircle className="w-3 h-3 text-primary shrink-0" />
-              <span className="text-xs text-white">{f}</span>
+              <span className="text-xs text-foreground/80">{f}</span>
             </div>
           ))}
         </div>
@@ -257,7 +257,7 @@ function CardModal({ tier, onClose }) {
             { label: "Security", value: "5-Layer DLT" },
           ].map(s => (
             <div key={s.label} className="border border-border/20 p-3">
-              <p className="text-[9px] text-white/50 uppercase tracking-wider">{s.label}</p>
+              <p className="text-[9px] text-foreground/50 uppercase tracking-wider">{s.label}</p>
               <p className="text-xs text-foreground font-heading mt-0.5">{s.value}</p>
             </div>
           ))}
@@ -283,10 +283,10 @@ export default function BlackCardPage() {
             <img src={LOGO_BROWN} alt="Blanch Onyx" className="h-9 w-auto" />
             <div className="hidden sm:block">
               <p className="font-heading text-xs tracking-[0.3em] text-primary">BLANCH ONYX</p>
-              <p className="text-[9px] tracking-[0.2em] text-white/40">BLACK CARD</p>
+              <p className="text-[9px] tracking-[0.2em] text-foreground/40">BLACK CARD</p>
             </div>
           </Link>
-          <Link to="/dashboard" className="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-white hover:text-primary transition-colors">
+          <Link to="/dashboard" className="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-foreground hover:text-primary transition-colors">
             <ArrowLeft className="w-3 h-3" /> Dashboard
           </Link>
         </div>
@@ -296,10 +296,10 @@ export default function BlackCardPage() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
           <p className="text-xs tracking-[0.3em] text-primary uppercase mb-4">Sovereign Financial Identity</p>
           <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">Blanch Onyx Black Card</h1>
-          <p className="font-display text-lg text-white italic max-w-2xl mx-auto">
+          <p className="font-display text-lg text-foreground/85 italic max-w-2xl mx-auto">
             An exclusive sovereign Business Card, Debit Card, Standalone Electronic Wallet, and Hardware Ledger Device — all in one.
           </p>
-          <p className="text-xs text-white/50 mt-3">Click any card to view full details & benefits</p>
+          <p className="text-xs text-foreground/50 mt-3">Click any card to view full details & benefits</p>
           <div className="w-20 h-px bg-primary/40 mx-auto mt-6" />
         </motion.div>
 
@@ -310,7 +310,7 @@ export default function BlackCardPage() {
               <CardVisual tier={tier} onClick={() => setSelectedCard(tier)} />
               <div className="mt-3 text-center">
                 <p className="font-heading text-xs text-foreground">{tier.name}</p>
-                <p className="text-[10px] text-white/60">{tier.tier}</p>
+                <p className="text-[10px] text-foreground/60">{tier.tier}</p>
               </div>
             </motion.div>
           ))}
@@ -322,10 +322,10 @@ export default function BlackCardPage() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
           {FEATURES.map((f, i) => (
             <motion.div key={f.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 + i * 0.07 }}
-              className="border border-border/30 bg-card p-6 hover:border-primary/20 transition-all">
+              className="border border-border/30 bg-card p-6 hover:border-primary/20 transition-all card-lift">
               <f.icon className="w-5 h-5 text-primary mb-3" />
               <h4 className="font-heading text-xs text-foreground mb-2">{f.title}</h4>
-              <p className="text-white text-xs leading-relaxed">{f.desc}</p>
+              <p className="text-foreground/75 text-xs leading-relaxed">{f.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -333,7 +333,7 @@ export default function BlackCardPage() {
         {/* CTA */}
         <div className="text-center border border-primary/20 bg-primary/5 p-12">
           <p className="font-heading text-xl text-foreground mb-3">Ready to Carry Your Sovereignty?</p>
-          <p className="text-white text-sm mb-6 max-w-xl mx-auto">
+          <p className="text-foreground/80 text-sm mb-6 max-w-xl mx-auto">
             The Blanch Onyx Black Card is issued exclusively to verified members. Apply for membership to receive your card.
           </p>
           <Link to="/membership" className="px-10 py-4 bg-primary text-primary-foreground font-heading text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-all inline-block">

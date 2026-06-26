@@ -60,10 +60,10 @@ export default function UniverseCommercePage() {
             <img src={LOGO_BROWN} alt="Blanch Onyx" className="h-9 w-auto" />
             <div className="hidden sm:block">
               <p className="font-heading text-xs tracking-[0.3em] text-primary">BLANCH ONYX</p>
-              <p className="text-[9px] tracking-[0.2em] text-white/40">UNIVERSAL COMMERCE</p>
+              <p className="text-[9px] tracking-[0.2em] text-foreground/40">UNIVERSAL COMMERCE</p>
             </div>
           </Link>
-          <Link to="/dashboard" className="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-white hover:text-primary transition-colors">
+          <Link to="/dashboard" className="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-foreground hover:text-primary transition-colors">
             <ArrowLeft className="w-3 h-3" /> Dashboard
           </Link>
         </div>
@@ -75,7 +75,7 @@ export default function UniverseCommercePage() {
           <p className="text-xs tracking-[0.3em] text-primary uppercase mb-3">X2X Transaction Framework</p>
           <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">Universal Commerce Models</h1>
           <p className="font-display text-xl text-primary italic mb-2">380+ Commerce Models</p>
-          <p className="text-white text-sm max-w-3xl mx-auto leading-relaxed">
+          <p className="text-foreground/85 text-sm max-w-3xl mx-auto leading-relaxed">
             Every entity connects to every other entity. 20 primary models × 19 target connections = 380 unique commerce pathways powering the future of global transactions.
           </p>
         </motion.div>
@@ -99,9 +99,9 @@ export default function UniverseCommercePage() {
             { value: "150+", label: "Currencies" },
           ].map((s, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.07 }}
-              className="border border-border/30 bg-card p-4 text-center">
+              className="border border-border/30 bg-card p-4 text-center card-lift">
               <p className="font-heading text-lg text-primary">{s.value}</p>
-              <p className="text-[9px] tracking-[0.1em] text-white uppercase mt-1">{s.label}</p>
+              <p className="text-[9px] tracking-[0.1em] text-foreground/60 uppercase mt-1">{s.label}</p>
             </motion.div>
           ))}
         </div>
@@ -109,14 +109,14 @@ export default function UniverseCommercePage() {
         {/* X2X Infrastructure */}
         <div className="mb-12">
           <h2 className="font-heading text-xl tracking-[0.1em] text-foreground text-center mb-2">X2X Transaction Framework</h2>
-          <p className="text-white text-xs text-center mb-6">The infrastructure powering every commerce model with speed, compliance, and intelligence.</p>
+          <p className="text-foreground/60 text-xs text-center mb-6">The infrastructure powering every commerce model with speed, compliance, and intelligence.</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {INFRA.map((item, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}
-                className="border border-border/30 bg-card p-5">
+                className="border border-border/30 bg-card p-5 card-lift">
                 <item.icon className="w-5 h-5 text-primary mb-3" />
                 <h4 className="font-heading text-xs text-foreground mb-2">{item.title}</h4>
-                <p className="text-white text-xs leading-relaxed">{item.desc}</p>
+                <p className="text-foreground/80 text-xs leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -125,14 +125,14 @@ export default function UniverseCommercePage() {
         {/* 20 Primary Models */}
         <div className="mb-6">
           <h2 className="font-heading text-xl tracking-[0.1em] text-foreground mb-2">20 Primary X2X Models</h2>
-          <p className="text-white text-xs mb-6">Each model connects to all 19 other entity types, creating a fully interconnected commerce mesh.</p>
+          <p className="text-foreground/65 text-xs mb-6">Each model connects to all 19 other entity types, creating a fully interconnected commerce mesh.</p>
 
           {/* Model grid badges */}
           <div className="flex flex-wrap gap-2 mb-8">
             {MODELS.map(m => (
               <button key={m.code} onClick={() => setExpanded(expanded === m.code ? null : m.code)}
                 className={`px-3 py-1.5 text-[10px] tracking-[0.1em] font-heading border transition-all ${
-                  expanded === m.code ? "bg-primary text-primary-foreground border-primary" : "border-border/40 text-white hover:border-primary/40 hover:text-primary"
+                  expanded === m.code ? "bg-primary text-primary-foreground border-primary" : "border-border/40 text-foreground/75 hover:border-primary/40 hover:text-primary"
                 }`}>
                 {m.code}
               </button>
@@ -143,12 +143,12 @@ export default function UniverseCommercePage() {
         {/* 380+ Pathways search + accordion */}
         <div className="mb-12">
           <h2 className="font-heading text-xl tracking-[0.1em] text-foreground mb-2">380+ Commerce Pathways</h2>
-          <p className="text-white text-xs mb-5">Search or expand each primary model to explore all its target connections.</p>
+          <p className="text-foreground/60 text-xs mb-5">Search or expand each primary model to explore all its target connections.</p>
           <div className="relative mb-6">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/40" />
             <input value={search} onChange={e => setSearch(e.target.value)}
               placeholder="Search pathways… e.g. B2C, Machine, DAO"
-              className="w-full pl-10 pr-4 py-3 bg-card border border-border/40 text-foreground text-sm placeholder:text-white/40 focus:outline-none focus:border-primary/40" />
+              className="w-full pl-10 pr-4 py-3 bg-card border border-border/40 text-foreground text-sm placeholder:text-foreground/40 focus:outline-none focus:border-primary/40" />
           </div>
 
           <div className="space-y-2">
@@ -160,10 +160,10 @@ export default function UniverseCommercePage() {
                     <span className="font-heading text-primary text-sm w-16">{model.code}</span>
                     <div>
                       <span className="text-foreground text-sm">— {model.label} to …</span>
-                      <span className="text-white/50 text-[10px] ml-2">({model.pathways.length} pathways)</span>
+                      <span className="text-foreground/50 text-[10px] ml-2">({model.pathways.length} pathways)</span>
                     </div>
                   </div>
-                  <ChevronDown className={`w-4 h-4 text-white transition-transform ${expanded === model.code ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`w-4 h-4 text-foreground/60 transition-transform ${expanded === model.code ? "rotate-180" : ""}`} />
                 </button>
                 <AnimatePresence>
                   {expanded === model.code && (
@@ -173,7 +173,7 @@ export default function UniverseCommercePage() {
                         {model.pathways.map((path, j) => (
                           <div key={j} className="border border-border/20 bg-primary/5 px-2 py-1.5 text-center">
                             <p className="font-heading text-[10px] text-primary">{path}</p>
-                            <p className="text-[9px] text-white/50">{model.label} → {model.targets[j]}</p>
+                            <p className="text-[9px] text-foreground/50">{model.label} → {model.targets[j]}</p>
                           </div>
                         ))}
                       </div>
@@ -188,16 +188,16 @@ export default function UniverseCommercePage() {
         {/* Commerce Mesh summary */}
         <div className="border border-primary/20 bg-primary/5 p-10 text-center mb-8">
           <h2 className="font-heading text-2xl text-foreground mb-3">The Commerce Mesh</h2>
-          <p className="text-white text-sm max-w-2xl mx-auto mb-6">Every primary model creates 19 unique pathways. With 20 models, the Universal Commerce framework generates 380+ distinct transaction types — the most comprehensive commerce protocol ever designed.</p>
+          <p className="text-foreground/80 text-sm max-w-2xl mx-auto mb-6">Every primary model creates 19 unique pathways. With 20 models, the Universal Commerce framework generates 380+ distinct transaction types — the most comprehensive commerce protocol ever designed.</p>
           <div className="flex items-center justify-center gap-8 mb-6">
             {[{ v: "20", l: "Primary Models" }, { v: "19", l: "Target Connections" }, { v: "380+", l: "Commerce Models" }].map(s => (
               <div key={s.l}>
                 <p className="font-heading text-3xl text-primary">{s.v}</p>
-                <p className="text-xs text-white">{s.l}</p>
+                <p className="text-xs text-foreground/60">{s.l}</p>
               </div>
             ))}
           </div>
-          <blockquote className="font-display text-sm text-white italic">
+          <blockquote className="font-display text-sm text-foreground/80 italic">
             "Seest thou a man diligent in his business? he shall stand before kings." — Proverbs 22:29
           </blockquote>
         </div>

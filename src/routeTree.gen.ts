@@ -38,6 +38,7 @@ import { Route as BankingAccountsRouteImport } from './routes/banking-accounts'
 import { Route as BankingRouteImport } from './routes/banking'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as VisionRouteImport } from './routes/vision'
 
 const UniverseCommerceRoute = UniverseCommerceRouteImport.update({
   id: '/universe-commerce',
@@ -185,8 +186,15 @@ const IndexRoute = IndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 
+const VisionRoute = VisionRouteImport.update({
+  id: '/vision',
+  path: '/vision',
+  getParentRoute: () => rootRouteImport,
+} as any)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/vision': typeof VisionRoute
   '/Contact': typeof ContactRoute
   '/banking': typeof BankingRoute
   '/banking-accounts': typeof BankingAccountsRoute
@@ -218,6 +226,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/vision': typeof VisionRoute
   '/Contact': typeof ContactRoute
   '/banking': typeof BankingRoute
   '/banking-accounts': typeof BankingAccountsRoute
@@ -250,6 +259,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/vision': typeof VisionRoute
   '/Contact': typeof ContactRoute
   '/banking': typeof BankingRoute
   '/banking-accounts': typeof BankingAccountsRoute
@@ -283,6 +293,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/vision'
     | '/Contact'
     | '/banking'
     | '/banking-accounts'
@@ -314,6 +325,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/vision'
     | '/Contact'
     | '/banking'
     | '/banking-accounts'
@@ -345,6 +357,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/vision'
     | '/Contact'
     | '/banking'
     | '/banking-accounts'
@@ -377,6 +390,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  VisionRoute: typeof VisionRoute
   ContactRoute: typeof ContactRoute
   BankingRoute: typeof BankingRoute
   BankingAccountsRoute: typeof BankingAccountsRoute
@@ -409,6 +423,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vision': {
+      id: '/vision'
+      path: '/vision'
+      fullPath: '/vision'
+      preLoaderRoute: typeof VisionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/universe-commerce': {
       id: '/universe-commerce'
       path: '/universe-commerce'
@@ -617,6 +638,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  VisionRoute: VisionRoute,
   ContactRoute: ContactRoute,
   BankingRoute: BankingRoute,
   BankingAccountsRoute: BankingAccountsRoute,
@@ -651,11 +673,8 @@ export const routeTree = rootRouteImport
   ._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
+declare module '@tanstack/react-router' {
   interface Register {
-    ssr: true
     router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
   }
 }

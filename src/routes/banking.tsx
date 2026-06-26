@@ -115,12 +115,12 @@ function MetricCard({ stat, index }: { stat: (typeof NETWORK_STATS)[number]; ind
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.15 + index * 0.06 }}
-      className="border border-border/40 bg-card/70 p-5"
+      className="border border-border/40 bg-card/70 p-5 card-lift"
     >
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="font-heading text-2xl text-primary">{stat.value}</p>
-          <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-white/60">{stat.label}</p>
+          <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-foreground/60">{stat.label}</p>
         </div>
         <stat.icon className="h-5 w-5 text-primary/70" />
       </div>
@@ -137,12 +137,12 @@ function BankingPage() {
             <img src={LOGO_BROWN} alt="Blanch Onyx" className="h-9 w-auto" />
             <div className="hidden sm:block">
               <p className="font-heading text-xs tracking-[0.3em] text-primary">BLANCH ONYX</p>
-              <p className="text-[9px] tracking-[0.2em] text-white/40">BANKING SOLUTIONS</p>
+              <p className="text-[9px] tracking-[0.2em] text-foreground/40">BANKING SOLUTIONS</p>
             </div>
           </Link>
           <Link
             to="/dashboard"
-            className="flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-white transition-colors hover:text-primary"
+            className="flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-foreground transition-colors hover:text-primary"
           >
             <ArrowLeft className="h-3 w-3" /> Dashboard
           </Link>
@@ -156,7 +156,7 @@ function BankingPage() {
             <h1 className="font-heading text-4xl tracking-[0.08em] text-foreground md:text-6xl">
               Next-Generation Sovereign Banking Infrastructure
             </h1>
-            <p className="mt-5 max-w-2xl font-display text-lg italic leading-relaxed text-white">
+            <p className="mt-5 max-w-2xl font-display text-lg italic leading-relaxed text-foreground">
               Real-time settlement, compliant digital banking, and institutional-grade payments on Blanch Onyx DLT.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
@@ -189,7 +189,7 @@ function BankingPage() {
               <div className="mb-8 flex items-center justify-between border-b border-border/30 pb-5">
                 <div>
                   <p className="font-heading text-[10px] uppercase tracking-[0.24em] text-primary">Blanch Onyx DLT</p>
-                  <p className="mt-1 text-xs text-white/50">Institutional Banking Rail</p>
+                  <p className="mt-1 text-xs text-foreground/50">Institutional Banking Rail</p>
                 </div>
                 <div className="flex items-center gap-2 text-green-400">
                   <span className="h-2 w-2 rounded-full bg-green-500" />
@@ -204,7 +204,7 @@ function BankingPage() {
                   ["Security Status", "RTGS-grade"],
                 ].map(([label, value]) => (
                   <div key={label} className="flex items-center justify-between gap-6">
-                    <span className="text-xs text-white/55">{label}</span>
+                    <span className="text-xs text-foreground/60">{label}</span>
                     <span className="font-heading text-sm text-foreground">{value}</span>
                   </div>
                 ))}
@@ -212,7 +212,7 @@ function BankingPage() {
               <div className="mt-8 border border-primary/20 bg-primary/5 p-5">
                 <div className="flex items-start gap-3">
                   <LockKeyhole className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                  <p className="text-sm leading-relaxed text-white">
+                  <p className="text-sm leading-relaxed text-foreground/80">
                     Deterministic settlement and immutable audit trails support bank-grade reconciliation across retail,
                     corporate, investment, and correspondent banking workflows.
                   </p>
@@ -234,7 +234,7 @@ function BankingPage() {
             <h2 className="mt-3 font-heading text-2xl tracking-[0.1em] text-foreground md:text-3xl">
               Comprehensive Banking Solutions
             </h2>
-            <p className="mt-3 text-sm text-white/60">Comprehensive banking solutions for the digital age</p>
+            <p className="mt-3 text-sm text-foreground/60">Comprehensive banking solutions for the digital age</p>
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {BANKING_SERVICES.map((service, index) => (
@@ -244,14 +244,14 @@ function BankingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ delay: index * 0.06 }}
-                className="border border-border/40 bg-card p-6 transition-colors hover:border-primary/30"
+                className="border border-border/40 bg-card p-6 card-lift"
               >
                 <service.icon className="mb-4 h-6 w-6 text-primary" />
                 <h3 className="font-heading text-sm tracking-[0.08em] text-foreground">{service.title}</h3>
-                <p className="mt-3 min-h-10 text-xs leading-relaxed text-white/60">{service.description}</p>
+                <p className="mt-3 min-h-10 text-xs leading-relaxed text-foreground/60">{service.description}</p>
                 <div className="mt-5 space-y-2">
                   {service.points.map((point) => (
-                    <div key={point} className="flex items-center gap-2 text-xs text-white">
+                    <div key={point} className="flex items-center gap-2 text-xs text-foreground/80">
                       <CheckCircle className="h-3.5 w-3.5 shrink-0 text-primary" />
                       <span>{point}</span>
                     </div>
@@ -270,11 +270,11 @@ function BankingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: index * 0.06 }}
-              className="border border-border/30 bg-card/70 p-6"
+              className="border border-border/30 bg-card/70 p-6 card-lift"
             >
               <feature.icon className="mb-4 h-6 w-6 text-primary" />
               <h3 className="font-heading text-sm tracking-[0.08em] text-foreground">{feature.title}</h3>
-              <p className="mt-3 text-xs leading-relaxed text-white/60">{feature.description}</p>
+              <p className="mt-3 text-xs leading-relaxed text-foreground/60">{feature.description}</p>
             </motion.div>
           ))}
         </section>
@@ -294,12 +294,12 @@ function BankingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ delay: index * 0.06 }}
-                className="border border-border/40 bg-card p-6"
+                className="border border-border/40 bg-card p-6 card-lift"
               >
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <h3 className="font-heading text-lg tracking-[0.06em] text-foreground">{useCase.title}</h3>
-                    <p className="mt-2 text-sm text-white/60">{useCase.description}</p>
+                    <p className="mt-2 text-sm text-foreground/60">{useCase.description}</p>
                   </div>
                   <span className="shrink-0 border border-primary/25 bg-primary/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.12em] text-primary">
                     {useCase.metric}
@@ -307,7 +307,7 @@ function BankingPage() {
                 </div>
                 <div className="mt-5 grid gap-2 sm:grid-cols-3">
                   {useCase.points.map((point) => (
-                    <div key={point} className="border border-border/25 bg-background/35 p-3 text-xs leading-relaxed text-white">
+                    <div key={point} className="border border-border/25 bg-background/35 p-3 text-xs leading-relaxed text-foreground/85">
                       {point}
                     </div>
                   ))}
@@ -319,8 +319,8 @@ function BankingPage() {
 
         <section className="mt-20 border border-primary/20 bg-primary/5 p-8 text-center md:p-12">
           <Sparkles className="mx-auto mb-4 h-7 w-7 text-primary" />
-          <h2 className="font-heading text-2xl tracking-[0.1em] text-foreground">Deploy Banking on Blanch Infinity DLT</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/65">
+          <h2 className="font-heading text-2xl tracking-[0.1em] text-foreground">Deploy Banking on Blanch Onyx DLT</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-foreground/65">
             Connect institutional banking, treasury, card, and cross-border payment operations to a zero-fee,
             real-time settlement network.
           </p>

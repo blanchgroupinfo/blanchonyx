@@ -37,7 +37,7 @@ const PageShell = ({ eyebrow, title, subtitle, children }: Props) => {
               </span>
             )}
             <h1 className="font-display text-4xl md:text-6xl font-semibold mt-3 mb-4">{title}</h1>
-            {subtitle && <p className="text-white text-lg">{subtitle}</p>}
+            {subtitle && <p className="text-muted-foreground text-lg">{subtitle}</p>}
             <div className="sacred-divider w-32 mx-auto mt-6" />
           </motion.div>
 

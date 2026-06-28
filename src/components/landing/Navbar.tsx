@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X, Search, ChevronDown } from "lucide-react";
+import { Menu, X, Search, ChevronDown, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logoBrown from "@/assets/b-logo-brown.png";
+import { useTheme } from "@/hooks/ThemeContext";
 
 const NAV_GROUPS = [
   {
@@ -30,7 +31,7 @@ const NAV_GROUPS = [
     label: "Membership",
     links: [
       { label: "Membership Tiers", href: "/membership", isRoute: true },
-	    { label: "Respect the Real Heritage Tribe of judah", href: "/heritage-judah", isRoute: true },
+	    { label: "Heritage Royal House of judah", href: "/heritage-judah", isRoute: true },
       { label: "Royal Priesthood", href: "/royal-priesthood", isRoute: true },
       { label: "Social Club", href: "/social-club", isRoute: true },
     ],
@@ -43,11 +44,13 @@ const NAV_GROUPS = [
       { label: "Banking", href: "/banking", isRoute: true },
       { label: "Batch Processing", href: "/batch-processing", isRoute: true },
       { label: "Black Card", href: "/black-card", isRoute: true },
+      { label: "Blanch Onyx Coin (BOX)", href: "/coin", isRoute: true },
       { label: "BRICS", href: "/brics", isRoute: true },
       { label: "CBDC", href: "/cbdc", isRoute: true },
 	    { label: "Conversion History", href: "/conversion-history", isRoute: true },
       { label: "Cross-Border Settlements", href: "/cross-border-settlements", isRoute: true },
       { label: "E-Wallet", href: "/e-wallet", isRoute: true },
+      { label: "Exchange", href: "/exchange", isRoute: true },
 	    { label: "Global RTGS", href: "/global-rtgs", isRoute: true },
       { label: "Hybrid Bank Notes", href: "/hybrid-bank-notes", isRoute: true },
       { label: "Payments & Clearing", href: "/payments", isRoute: true },
@@ -92,6 +95,7 @@ const NAV_GROUPS = [
 ];
 
 export default function Navbar() {
+  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeGroup, setActiveGroup] = useState(null);
@@ -204,6 +208,19 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
             ))}
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="ml-2 p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-300"
+              title={theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? (
+                <Sun className="w-4 h-4" />
+              ) : (
+                <Moon className="w-4 h-4" />
+              )}
+            </button>
             <Link
               to="/login"
               className="ml-2 px-5 py-2 border border-primary/40 text-primary text-[11px] tracking-[0.15em] uppercase hover:bg-primary hover:text-primary-foreground transition-all duration-300"
@@ -212,10 +229,22 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile: search icon + hamburger */}
+          {/* Mobile: search icon + theme toggle + hamburger */}
           <div className="lg:hidden flex items-center gap-3">
             <button onClick={() => setSearchOpen(!searchOpen)} className="text-muted-foreground hover:text-primary transition-colors">
               <Search className="w-5 h-5" />
+            </button>
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all"
+              title={theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? (
+                <Moon className="w-5 h-5" />
+              ) : (
+                <Sun className="w-5 h-5" />
+              )}
             </button>
             <button onClick={() => setMobileOpen(!mobileOpen)} className="text-primary">
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

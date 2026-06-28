@@ -62,7 +62,7 @@ const HeritageJudah = () => {
       <div className="max-w-4xl mx-auto">
         <div className="card-sacred rounded-2xl p-8 mb-12 text-center">
           <Scroll className="w-10 h-10 text-primary mx-auto mb-4" />
-          <p className="font-display italic text-xl text-white">
+          <p className="font-display italic text-xl text-stone-900">
             "The sceptre shall not depart from Judah, nor a lawgiver from between his feet, until
             Shiloh come; and unto him shall the gathering of the people be."
           </p>
@@ -99,7 +99,7 @@ const HeritageJudah = () => {
 
         <div className="card-sacred rounded-2xl p-8 mt-12 text-center">
           <Crown className="w-10 h-10 text-primary mx-auto mb-4" />
-          <p className="font-display italic text-xl text-white">
+          <p className="font-display italic text-xl text-stone-900">
             "But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people."
           </p>
           <cite className="text-sm text-primary/80 mt-3 block">— 1 Peter 2:9</cite>

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /* eslint-disable */
 
 // @ts-nocheck
@@ -678,3 +679,5 @@ declare module '@tanstack/react-router' {
     router: Awaited<ReturnType<typeof getRouter>>
   }
 }
+=======
+>>>>>>> Stashed changes

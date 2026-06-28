@@ -162,6 +162,18 @@ export default function Navbar() {
 
           {/* Desktop nav groups */}
           <div className="hidden lg:flex items-center gap-1">
+            <Link
+              to="/"
+              className="px-3 py-2 text-[11px] tracking-[0.12em] uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              className="px-3 py-2 text-[11px] tracking-[0.12em] uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
+            >
+              About
+            </Link>
             {NAV_GROUPS.map(group => (
               <div key={group.label} className="relative">
                 <button
@@ -254,6 +266,20 @@ export default function Navbar() {
             className="fixed inset-0 z-40 bg-background/98 backdrop-blur-xl overflow-y-auto pt-24 pb-10"
           >
             <div className="px-6 space-y-2">
+              <Link
+                to="/"
+                onClick={() => setMobileOpen(false)}
+                className="block px-5 py-4 border border-border/30 font-sans text-sm tracking-[0.2em] uppercase text-foreground hover:text-primary transition-colors"
+              >
+                Home
+              </Link>
+              <Link
+                to="/about"
+                onClick={() => setMobileOpen(false)}
+                className="block px-5 py-4 border border-border/30 font-sans text-sm tracking-[0.2em] uppercase text-foreground hover:text-primary transition-colors"
+              >
+                About
+              </Link>
               {NAV_GROUPS.map(group => (
                 <div key={group.label} className="border border-border/30">
                   <button

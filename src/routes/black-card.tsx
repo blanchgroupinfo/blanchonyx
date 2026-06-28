@@ -218,58 +218,70 @@ function CardVisual({ tier, onClick }) {
 function CardModal({ tier, onClose }) {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-6"
+      className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 md:p-6 overflow-y-auto"
       onClick={onClose}>
       <motion.div initial={{ opacity: 0, y: 30, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 30 }}
-        className="bg-card border border-border max-w-lg w-full p-8 relative"
+        className="bg-card border border-border max-w-4xl w-full p-6 md:p-8 relative my-8"
         style={{ boxShadow: `0 20px 80px ${tier.glow}` }}
         onClick={e => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-4 right-4 text-foreground/40 hover:text-foreground"><X className="w-5 h-5" /></button>
+        <button onClick={onClose} className="absolute top-4 right-4 text-foreground/40 hover:text-foreground z-10"><X className="w-5 h-5" /></button>
 
-        {/* Card preview in modal */}
-        <div className="mb-6">
-          <CardVisual tier={tier} onClick={() => {}} />
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
+          {/* Left Column: Card visual and basic identification */}
+          <div className="md:col-span-5 flex flex-col space-y-4">
+            <div className="w-full">
+              <CardVisual tier={tier} onClick={() => {}} />
+            </div>
 
-        <div className="flex items-start gap-3 mb-4">
-          <img src={tier.logo} alt="" className="h-6 w-auto opacity-70" />
-          <div>
-            <h2 className="font-heading text-xl tracking-[0.05em] text-foreground">{tier.name} Card</h2>
-            <p className={`text-xs ${tier.accent} mt-0.5`}>{tier.tagline}</p>
+            <div className="pt-2 space-y-2">
+              <div className="flex items-start gap-3">
+                <img src={tier.logo} alt="" className="h-6 w-auto opacity-70 shrink-0 mt-1" />
+                <div>
+                  <h2 className="font-heading text-lg tracking-[0.05em] text-foreground leading-tight">{tier.name} Card</h2>
+                  <p className={`text-xs ${tier.accent} mt-0.5`}>{tier.tagline}</p>
+                </div>
+              </div>
+              <div className="border-t border-border/20 pt-3 space-y-1 text-xs text-foreground/80">
+                <p>Tier: <span className="text-foreground font-heading">{tier.tier}</span></p>
+                <p>Membership: <span className={`font-heading ${tier.accent}`}>{tier.price}</span></p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Card Benefits, Technical Specs, Action */}
+          <div className="md:col-span-7 flex flex-col justify-between h-full space-y-6">
+            <div>
+              <h3 className="font-heading text-xs tracking-[0.15em] text-primary uppercase mb-3">Card Benefits</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+                {tier.features.map(f => (
+                  <div key={f} className="flex items-start gap-2">
+                    <CheckCircle className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
+                    <span className="text-xs text-foreground/80 leading-normal">{f}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 mb-5 border-t border-border/30 pt-4">
+                {[
+                  { label: "RFID Chip", value: "NFC Enabled" },
+                  { label: "Network", value: "Blanch Onyx DLT" },
+                  { label: "Settlement", value: "Instant / 0 Fee" },
+                  { label: "Security", value: "5-Layer DLT" },
+                ].map(s => (
+                  <div key={s.label} className="border border-border/20 p-2.5 bg-card/40">
+                    <p className="text-[9px] text-foreground/50 uppercase tracking-wider">{s.label}</p>
+                    <p className="text-xs text-foreground font-heading mt-0.5">{s.value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <Link to="/membership" onClick={onClose}
+              className="w-full py-3.5 bg-primary text-primary-foreground font-heading text-[10px] tracking-[0.2em] uppercase hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
+              Apply for Membership <ChevronRight className="w-3 h-3" />
+            </Link>
           </div>
         </div>
-
-        <p className="text-sm text-foreground mb-1">Tier: <span className="text-foreground font-heading">{tier.tier}</span></p>
-        <p className="text-sm text-foreground mb-5">Membership: <span className={`font-heading ${tier.accent}`}>{tier.price}</span></p>
-
-        <h3 className="font-heading text-xs tracking-[0.15em] text-primary uppercase mb-3">Card Benefits</h3>
-        <div className="grid grid-cols-1 gap-2 mb-6">
-          {tier.features.map(f => (
-            <div key={f} className="flex items-center gap-2">
-              <CheckCircle className="w-3 h-3 text-primary shrink-0" />
-              <span className="text-xs text-foreground/80">{f}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-2 gap-3 mb-6 border-t border-border/30 pt-4">
-          {[
-            { label: "RFID Chip", value: "NFC Enabled" },
-            { label: "Network", value: "Blanch Onyx DLT" },
-            { label: "Settlement", value: "Instant / 0 Fee" },
-            { label: "Security", value: "5-Layer DLT" },
-          ].map(s => (
-            <div key={s.label} className="border border-border/20 p-3">
-              <p className="text-[9px] text-foreground/50 uppercase tracking-wider">{s.label}</p>
-              <p className="text-xs text-foreground font-heading mt-0.5">{s.value}</p>
-            </div>
-          ))}
-        </div>
-
-        <Link to="/membership" onClick={onClose}
-          className="w-full py-3 bg-primary text-primary-foreground font-heading text-[10px] tracking-[0.2em] uppercase hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
-          Apply for Membership <ChevronRight className="w-3 h-3" />
-        </Link>
       </motion.div>
     </motion.div>
   );

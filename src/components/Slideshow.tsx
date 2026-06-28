@@ -1,65 +1,57 @@
 import { useEffect, useState } from "react";
 
-// Load all media files from the slideshow folder using Vite's glob import.
-// This returns an object where the key is the relative path and the value is a function
-// that resolves to the module (the URL of the asset).
-const mediaModules = import.meta.glob("../assets/slideshow/*.{png,jpg,jpeg,gif,mp4}");
-
 type MediaItem = {
   src: string;
   type: "image" | "video";
 };
 
-export default function Slideshow() {
-  const [media, setMedia] = useState<MediaItem[]>([]);
-  const [index, setIndex] = useState(0);
+// Load all media files from the slideshow folder eagerly at build time.
+// This resolves them directly to their static URLs.
+const mediaModules = import.meta.glob<string>("../assets/slideshow/*.{png,jpg,jpeg,gif,mp4}", {
+  eager: true,
+  import: "default",
+});
 
-  // Load media URLs once on mount
-  useEffect(() => {
-    const load = async () => {
-      const entries = Object.entries(mediaModules);
-      const items: MediaItem[] = [];
-      for (const [path, resolver] of entries) {
-        const mod = await (resolver as () => Promise<{ default: string }> )();
-        const src = mod.default;
-        const lower = src.toLowerCase();
-        const type = lower.endsWith(".mp4") ? "video" : "image";
-        items.push({ src, type });
-      }
-      // Sort to have a deterministic order (alphabetical by path)
-      items.sort((a, b) => a.src.localeCompare(b.src));
-      setMedia(items);
-    };
-    load();
-  }, []);
+const mediaItems: MediaItem[] = Object.entries(mediaModules)
+  .map(([path, src]) => {
+    const lowerPath = path.toLowerCase();
+    const type = lowerPath.endsWith(".mp4") ? "video" : "image";
+    return { src, type };
+  })
+  .filter((item) => !!item.src)
+  // Sort to have a deterministic order (alphabetical by source)
+  .sort((a, b) => a.src.localeCompare(b.src));
+
+export default function Slideshow() {
+  const [index, setIndex] = useState(0);
 
   // Auto‑advance the slideshow every 5 seconds
   useEffect(() => {
-    if (media.length === 0) return;
+    if (mediaItems.length === 0) return;
     const timer = setInterval(() => {
-      setIndex((i) => (i + 1) % media.length);
+      setIndex((i) => (i + 1) % mediaItems.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [media]);
+  }, []);
 
-  if (media.length === 0) {
+  if (mediaItems.length === 0) {
     return null; // nothing to show yet
   }
 
-  const current = media[index];
+  const current = mediaItems[index];
 
   return (
-<div className="relative w-full-[1100px] max-w-mx-auto overflow-hidden rounded-2xl shadow-2xl">
+    <div className="relative w-full max-w-[1100px] mx-auto overflow-hidden rounded-2xl shadow-2xl aspect-video md:aspect-[16/9] bg-black/40 flex items-center justify-center">
       {current.type === "image" ? (
-          <img
+        <img
           src={current.src}
           alt="Slideshow item"
-          className="w-full-[1100px] h-object-cover"
-  />
-        ) : (
+          className="w-full h-full object-cover"
+        />
+      ) : (
         <video
           src={current.src}
-          className="w-full-[1100px] h-object-cover"
+          className="w-full h-full object-cover"
           autoPlay
           muted
           loop
@@ -68,7 +60,7 @@ export default function Slideshow() {
       )}
       {/* Simple navigation dots */}
       <div className="absolute bottom-2 left-0 right-0 flex justify-center space-x-2">
-        {media.map((_, i) => (
+        {mediaItems.map((_, i) => (
           <button
             key={i}
             onClick={() => setIndex(i)}

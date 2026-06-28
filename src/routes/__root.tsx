@@ -9,7 +9,8 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
-import appCss from "../styles.css?url";
+import appCss from "../index.css?url";
+import { ThemeProvider, useTheme } from "@/hooks/ThemeContext";
 
 
 function NotFoundComponent() {
@@ -116,9 +117,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
-function RootShell({ children }: { children: ReactNode }) {
+function RootHtml({ children }: { children: ReactNode }) {
+  const { theme } = useTheme();
   return (
-    <html lang="en">
+    <html lang="en" className={theme}>
       <head>
         <HeadContent />
       </head>
@@ -127,6 +129,14 @@ function RootShell({ children }: { children: ReactNode }) {
         <Scripts />
       </body>
     </html>
+  );
+}
+
+function RootShell({ children }: { children: ReactNode }) {
+  return (
+    <ThemeProvider>
+      <RootHtml>{children}</RootHtml>
+    </ThemeProvider>
   );
 }
 

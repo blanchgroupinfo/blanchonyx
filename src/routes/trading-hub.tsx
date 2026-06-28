@@ -5,6 +5,8 @@ import { Link } from "@tanstack/react-router";
 import { ArrowLeft, TrendingUp, TrendingDown, BarChart2, Zap, Activity } from "lucide-react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
 
+import Navbar from "@/components/landing/Navbar";
+import Footer from "@/components/Footer";
 import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 const PAIRS = [
@@ -83,29 +85,9 @@ export default function TradingHubPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="border-b border-border/30 bg-card/50 backdrop-blur-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
-            <img src={LOGO_BROWN} alt="Blanch Onyx" className="h-9 w-auto" />
-            <div className="hidden sm:block">
-              <p className="font-heading text-xs tracking-[0.3em] text-primary">BLANCH ONYX</p>
-              <p className="text-[9px] tracking-[0.2em] text-muted-foreground/60">TRADING HUB</p>
-            </div>
-          </Link>
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-[10px] text-green-400 tracking-wider uppercase">Markets Open</span>
-            </div>
-            <Link to="/exchange" className="text-[10px] tracking-[0.15em] uppercase text-muted-foreground hover:text-primary transition-colors">Exchange</Link>
-            <Link to="/dashboard" className="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-muted-foreground hover:text-primary transition-colors">
-              <ArrowLeft className="w-3 h-3" /> Dashboard
-            </Link>
-          </div>
-        </div>
-      </div>
+      <Navbar />
 
-      <div className="max-w-7xl mx-auto px-6 py-10">
+      <div className="max-w-7xl mx-auto px-6 py-10 pt-24">
         <div className="flex gap-2 flex-wrap mb-6">
           {PAIRS.map(p => (
             <button
@@ -196,6 +178,7 @@ export default function TradingHubPage() {
           {PAIRS.map(p => <PairChart key={p.pair} pair={p} />)}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

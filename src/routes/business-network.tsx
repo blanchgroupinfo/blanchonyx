@@ -3,6 +3,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@tanstack/react-router";
+
+import Navbar from "@/components/landing/Navbar";
+import Footer from "@/components/Footer";
 import { 
   Globe, 
   Search, 
@@ -230,23 +233,9 @@ export default function BusinessNetwork() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Sticky Sub-Header */}
-      <div className="border-b border-border/30 bg-card/50 backdrop-blur-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
-            <img src={LOGO_BROWN} alt="Blanch Onyx" className="h-9 w-auto" />
-            <div className="hidden sm:block">
-              <p className="font-heading text-xs tracking-[0.3em] text-primary">BLANCH ONYX</p>
-              <p className="text-[9px] tracking-[0.2em] text-muted-foreground/60">BUSINESS NETWORK</p>
-            </div>
-          </Link>
-          <Link to="/" className="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-muted-foreground hover:text-primary transition-colors">
-            <ArrowLeft className="w-3 h-3" /> Home
-          </Link>
-        </div>
-      </div>
+      <Navbar />
 
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-6 py-12 pt-24">
         {/* Core Hero Branding */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10 text-center md:text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary/20 bg-primary/5 rounded-full mb-4">
@@ -695,6 +684,7 @@ export default function BusinessNetwork() {
           </motion.div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }

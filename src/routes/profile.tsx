@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useAuth } from "@/hooks/AuthContext";
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, Crown, Coins, Vote, CheckCircle, XCircle, Minus, Activity, Shield, Star } from "lucide-react";
+import { ArrowLeft, Crown, Coins, Vote, CheckCircle, XCircle, Minus, Activity, Shield, Star, Eye, EyeOff, Copy, Check } from "lucide-react";
 
 import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
@@ -26,6 +26,27 @@ export default function MemberProfile() {
   const { user } = useAuth();
   const [boxBalance] = useState(12480);
   const [activeTab, setActiveTab] = useState("overview");
+  const [showWallet, setShowWallet] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const getWalletNumber = () => {
+    if (user?.id && typeof user.id === "string") {
+      const cleanId = user.id.replace(/[^a-zA-Z0-9]/g, "");
+      const part1 = cleanId.slice(0, 4).toUpperCase() || "8F92";
+      const part2 = cleanId.slice(4, 8).toUpperCase() || "4C1B";
+      const part3 = cleanId.slice(8, 12).toUpperCase() || "3E7A";
+      return `BNX-${part1}-${part2}-${part3}-7A3F`;
+    }
+    return "BNX-8F92-4C1B-3E7A-7A3F";
+  };
+
+  const walletNumber = getWalletNumber();
+
+  const handleCopyWallet = () => {
+    navigator.clipboard.writeText(walletNumber);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const voteIcon = (v) => v === "for" ? <CheckCircle className="w-3.5 h-3.5 text-green-400" /> : v === "against" ? <XCircle className="w-3.5 h-3.5 text-destructive" /> : <Minus className="w-3.5 h-3.5 text-muted-foreground" />;
   const voteColor = (v) => v === "for" ? "text-green-400" : v === "against" ? "text-destructive" : "text-muted-foreground";
@@ -104,17 +125,48 @@ export default function MemberProfile() {
                 <h3 className="font-heading text-sm tracking-[0.1em] text-foreground">Membership Status</h3>
               </div>
               <div className="space-y-3">
-                {[
-                  { label: "Tier", value: user?.role === "admin" ? "Council Admin" : "Associate" },
-                  { label: "Member Since", value: "January 2026" },
-                  { label: "DLT Wallet", value: "BNX-••••-••••-7A3F" },
-                  { label: "Black Card", value: "Standard Issued" },
-                ].map(item => (
-                  <div key={item.label} className="flex items-center justify-between py-2 border-b border-border/20">
-                    <span className="text-[10px] tracking-[0.1em] text-muted-foreground uppercase">{item.label}</span>
-                    <span className="text-xs text-foreground font-heading">{item.value}</span>
+                <div className="flex items-center justify-between py-2 border-b border-border/20">
+                  <span className="text-[10px] tracking-[0.1em] text-muted-foreground uppercase">Tier</span>
+                  <span className="text-xs text-foreground font-heading">{user?.role === "admin" ? "Council Admin" : "Associate"}</span>
+                </div>
+                <div className="flex items-center justify-between py-2 border-b border-border/20">
+                  <span className="text-[10px] tracking-[0.1em] text-muted-foreground uppercase">Member Since</span>
+                  <span className="text-xs text-foreground font-heading">January 2026</span>
+                </div>
+                
+                {/* Custom Blanch Onyx DLT section with interactive copy & view actions */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between py-3 border-b border-border/20 gap-3">
+                  <div className="flex flex-col">
+                    <span className="text-[10px] tracking-[0.1em] text-muted-foreground uppercase">Blanch Onyx DLT</span>
+                    <span className="text-[9px] text-primary/70 mt-0.5">
+                      Each User and admin is assigned a unique Blanch Onyx DLT Wallet Number
+                    </span>
                   </div>
-                ))}
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-foreground font-mono bg-card/60 px-2 py-1 border border-border/30 rounded">
+                      {showWallet ? walletNumber : "BNX-••••-••••-7A3F"}
+                    </span>
+                    <button 
+                      onClick={() => setShowWallet(!showWallet)}
+                      className="p-1.5 hover:text-primary hover:bg-primary/5 rounded text-muted-foreground transition-all duration-200"
+                      title={showWallet ? "Hide wallet number" : "Show wallet number"}
+                    >
+                      {showWallet ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
+                    <button 
+                      onClick={handleCopyWallet}
+                      className="p-1.5 hover:text-primary hover:bg-primary/5 rounded text-muted-foreground transition-all duration-200"
+                      title="Copy wallet number"
+                    >
+                      {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between py-2 border-b border-border/20">
+                  <span className="text-[10px] tracking-[0.1em] text-muted-foreground uppercase">Black Card</span>
+                  <span className="text-xs text-foreground font-heading">Standard Issued</span>
+                </div>
               </div>
             </div>
           </motion.div>

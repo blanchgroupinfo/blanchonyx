@@ -3,7 +3,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, Users, Heart, Calendar, Globe, Car, MessageCircle, Sparkles, Crown, Star } from "lucide-react";
+
+import Navbar from "@/components/landing/Navbar";
+import Footer from "@/components/Footer";
+import { ArrowLeft, Users, Heart, Calendar, Globe, Car, MessageCircle, Sparkles, Crown, Star, MapPin, Music, Utensils } from "lucide-react";
 
 import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
@@ -14,6 +17,10 @@ const PILLARS = [
   { icon: Heart, title: "Philanthropic Development", desc: "Channel resources to the H.E.E.D. initiatives, empowering communities worldwide." },
   { icon: Calendar, title: "Sacred Events", desc: "Exclusive summits, quarterly retreats, and intimate mastermind sessions." },
   { icon: Car, title: "Automotive Club", desc: "A premier automotive fellowship for enthusiasts and collectors — curated drives and exclusive events." },
+  { icon: Crown, title: "Sacred Convenings", desc: "Private gatherings of the Royal Priesthood for worship, counsel, and feast." },
+  { icon: MapPin, title: "Onyx Lounges", desc: "Exclusive member lounges in sovereign cities across the Blanch Corridor." },
+  { icon: Music, title: "Cultural Ceremonies", desc: "Heritage music, Levitical liturgy, and ancestral celebrations." },
+  { icon: Utensils, title: "Council Dinners", desc: "Intimate dinners with Trustees, scholars, and sovereign leaders." },
 ];
 
 export default function SocialClubPage() {
@@ -54,22 +61,9 @@ export default function SocialClubPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="border-b border-border/30 bg-card/50 backdrop-blur-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
-            <img src={LOGO_BROWN} alt="Blanch Onyx" className="h-9 w-auto" />
-            <div className="hidden sm:block">
-              <p className="font-heading text-xs tracking-[0.3em] text-primary">BLANCH ONYX</p>
-              <p className="text-[9px] tracking-[0.2em] text-muted-foreground/60">SOCIAL CLUB</p>
-            </div>
-          </Link>
-          <Link to="/dashboard" className="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-muted-foreground hover:text-primary transition-colors">
-            <ArrowLeft className="w-3 h-3" /> Dashboard
-          </Link>
-        </div>
-      </div>
+      <Navbar />
 
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="max-w-6xl mx-auto px-6 py-12 pt-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
           <p className="text-xs tracking-[0.3em] text-primary uppercase mb-4">Private Membership Network</p>
           <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">Blanch Onyx Social Club</h1>
@@ -89,6 +83,25 @@ export default function SocialClubPage() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 25 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ delay: 0.3 }}
+          className="my-20 text-center max-w-2xl mx-auto border-y border-primary/20 py-10 px-6 bg-card/10 backdrop-blur-sm relative"
+        >
+          <span className="text-3xl text-primary/40 font-serif leading-none block mb-2">“</span>
+          <p className="font-display text-lg md:text-xl text-foreground/90 italic tracking-wide leading-relaxed mb-4 px-4">
+            Behold, how good and how pleasant it is for brethren to dwell together in unity!
+          </p>
+          <div className="flex items-center justify-center gap-3">
+            <div className="w-6 h-px bg-primary/30" />
+            <p className="font-heading text-[10px] md:text-xs tracking-[0.25em] text-primary/80 uppercase">
+              Psalm 133:1
+            </p>
+            <div className="w-6 h-px bg-primary/30" />
+          </div>
+        </motion.div>
 
         <div className="max-w-3xl mx-auto">
           <h2 className="font-heading text-xl tracking-[0.1em] text-foreground mb-6">Member Feed</h2>
@@ -138,6 +151,7 @@ export default function SocialClubPage() {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -117,7 +117,7 @@ const DltShowcase = () => {
             <img
               src={dltImg}
               alt="Blanch Onyx DLT 8-Layer DAG with 22 Ancient Hebrew Nodes"
-              className="asolute inset-0 w-full h-full object-contain"
+              className="absolute inset-0 w-full h-full object-contain"
             />
             {/* Animated DAG overlay */}
             <svg

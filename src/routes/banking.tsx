@@ -21,6 +21,8 @@ import {
   Zap,
 } from "lucide-react";
 
+import Navbar from "@/components/landing/Navbar";
+import Footer from "@/components/Footer";
 import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 const NETWORK_STATS = [
@@ -131,25 +133,9 @@ function MetricCard({ stat, index }: { stat: (typeof NETWORK_STATS)[number]; ind
 function BankingPage() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="sticky top-0 z-40 border-b border-border/30 bg-card/50 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <Link to="/" className="flex items-center gap-3">
-            <img src={LOGO_BROWN} alt="Blanch Onyx" className="h-9 w-auto" />
-            <div className="hidden sm:block">
-              <p className="font-heading text-xs tracking-[0.3em] text-primary">BLANCH ONYX</p>
-              <p className="text-[9px] tracking-[0.2em] text-foreground/40">BANKING SOLUTIONS</p>
-            </div>
-          </Link>
-          <Link
-            to="/dashboard"
-            className="flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-foreground transition-colors hover:text-primary"
-          >
-            <ArrowLeft className="h-3 w-3" /> Dashboard
-          </Link>
-        </div>
-      </div>
+      <Navbar />
 
-      <main className="mx-auto max-w-7xl px-6 py-12">
+      <main className="mx-auto max-w-7xl px-6 py-12 pt-24">
         <section className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}>
             <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">Banking Solutions</p>
@@ -340,6 +326,7 @@ function BankingPage() {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 }

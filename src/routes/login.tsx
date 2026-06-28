@@ -9,6 +9,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { Mail, Lock, User, ArrowRight, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { z } from "zod";
+import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
 const authSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -188,7 +189,7 @@ const Login = () => {
       case "forgot-password":
         return "Reset Password";
       case "signup":
-        return "Join S.H.I.E.L.D. AI";
+        return "Join Blanch Onxy with S.H.I.E.L.D. AI";
       default:
         return "Welcome Back";
     }
@@ -201,7 +202,7 @@ const Login = () => {
       case "signup":
         return "Create an account to begin your journey";
       default:
-        return "Sign in to access your divine AI companion";
+        return "Sign in to access your divine AI commerce and network";
     }
   };
 
@@ -232,9 +233,9 @@ const Login = () => {
           <CardHeader className="text-center">
             <div className="flex justify-center mb-4">
               <img
-                alt="S.H.I.E.L.D. AI"
+                alt="Blanch Onyx"
                 className="w-20 h-20 rounded-xl object-contain animate-divine-pulse"
-                src="/uploads/d131cb74-5635-433f-bec8-2cd622083de8.jpg"
+                src={LOGO_BROWN}
               />
             </div>
             <CardTitle className="text-2xl font-display gradient-text">

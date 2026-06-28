@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState, useEffect, type ReactNode } from "react";
 import {
   ArrowDownRight,
@@ -29,6 +29,7 @@ import logoBrown from "../assets/b-logo-brown.png";
 import logoBlackBrown from "../assets/b-logo-black-brown.png";
 import DltShowcase from "@/components/DltShowcase";
 import Navbar from "@/components/landing/Navbar";
+import Footer from "@/components/Footer";
 import { Button } from "../components/ui/button";
 import Slideshow from "@/components/Slideshow";
 
@@ -444,7 +445,7 @@ function Index() {
           
             {/* Updated container below */}
            <div className="w-full flex flex-col items-center justify-center my-12">
-              <div className="my-8 flex justify-center">
+              <div className="my-8 w-full max-w-[1100px]">
                 <Slideshow />
               </div>
               <blockquote className="mt-6 text-center max-w-2xl">
@@ -465,7 +466,7 @@ function Index() {
           </h2>
         </div>
         <div className="heritage-grid">
-          <article className="lead-story bg-background transition-all duration-[350ms] ease-in-out hover:bg-[color-mix(in_oklab,var(--primary)_4%,var(--background))] hover:shadow-[var(--shadow-royal)] hover:z-10">
+          <article className="lead-story bg-background">
             <span className="story-number">01</span>
             <h3>A Sovereign Divine Law Non-Profit Trustee</h3>
             <p>
@@ -485,7 +486,7 @@ function Index() {
               “Thou art near, O Most High AHAYAH; and all thy commandments are truth.”<cite>— Psalms 119:151</cite>
             </blockquote>
           </article>
-          <article className="heritage-story bg-background transition-all duration-[350ms] ease-in-out hover:bg-[color-mix(in_oklab,var(--primary)_4%,var(--background))] hover:shadow-[var(--shadow-royal)] hover:z-10">
+          <article className="heritage-story bg-background">
             <span className="story-number">02</span>
             <p className="mini-label">The Blanch Stone</p>
             <h3>Onyx · Sardonyx · Shaham/Shoham</h3>
@@ -510,7 +511,7 @@ function Index() {
               </li>
             </ul>
           </article>
-          <article className="heritage-story bg-background transition-all duration-[350ms] ease-in-out hover:bg-[color-mix(in_oklab,var(--primary)_4%,var(--background))] hover:shadow-[var(--shadow-royal)] hover:z-10">
+          <article className="heritage-story bg-background">
             <span className="story-number">03</span>
             <p className="mini-label">Royal Lineage</p>
             <h3>Levitical Priesthood</h3>
@@ -724,30 +725,28 @@ function Index() {
     <section id="library" className="library-section section-block"><div className="section-shell library-inner"><div><Eyebrow>Sovereign Library</Eyebrow><h2>Document<br/><em>Library</em></h2><p>Search, browse, and download official documents of the Blanch Group Sovereign Trust.</p></div><div className="document-card card-lift"><BookOpen/><div><p className="mini-label">Official Collection</p><h3>Foundational Documents</h3><span>Charters · Trust Records · Network Protocols</span></div><Button variant="outline" size="icon" aria-label="Download document"><Download/></Button></div></div></section>
 
 
-      <footer id="join" className="footer">
-        <div className="footer-mark">
-          <img src={logoBrown} alt="Blanch Onyx mark" />
-          <p>
+      <section id="join" className="py-24 relative overflow-hidden bg-black border-t border-primary/10">
+        <div className="section-shell relative z-10 text-center max-w-4xl mx-auto space-y-8">
+          <Eyebrow>Enter the Circle</Eyebrow>
+          <h2 className="font-heading text-3xl md:text-6xl text-white tracking-wide">
+            Become part of<br />
+            <em className="text-primary not-italic">the network.</em>
+          </h2>
+          <div className="w-20 h-px bg-primary/40 mx-auto" />
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             “Together, we inspire life, hope, and love through faith, unity, and divine purpose.”
           </p>
-          <span>— Praise Most High AHAYAH BA SHAM YASHAYA</span>
+          <div className="flex justify-center">
+            <Link to="/membership">
+              <Button className="bg-primary hover:bg-primary/90 text-background font-mono text-xs font-bold uppercase tracking-wider px-6 py-3 flex items-center gap-2">
+                Request Membership <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
         </div>
-        <div className="footer-join">
-          <Eyebrow>Enter the Circle</Eyebrow>
-          <h2>
-            Become part of
-            <br />
-            <em>the network.</em>
-          </h2>
-          <Button>
-            Request Membership <ArrowRight />
-          </Button>
-        </div>
-        <div className="footer-bottom">
-          <span>Copyright © 2026 Blanch Group — Sovereign Trust</span>
-          <span>All Rights Reserved</span>
-        </div>
-      </footer>
+      </section>
+
+      <Footer />
     </main>
   );
 }

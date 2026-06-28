@@ -4,6 +4,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, CreditCard, Shield, Wallet, Globe, Lock, Zap, CheckCircle, Building2, Activity, Wifi, X, ChevronRight } from "lucide-react";
 
+import Navbar from "@/components/landing/Navbar";
+import Footer from "@/components/Footer";
+
 import LOGO_BROWN from "@/assets/b-logo-brown.png";
 import LOGO_BLACK from "@/assets/b-logo-black-brown.png";
 
@@ -277,22 +280,9 @@ export default function BlackCardPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="border-b border-border/30 bg-card/50 backdrop-blur-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
-            <img src={LOGO_BROWN} alt="Blanch Onyx" className="h-9 w-auto" />
-            <div className="hidden sm:block">
-              <p className="font-heading text-xs tracking-[0.3em] text-primary">BLANCH ONYX</p>
-              <p className="text-[9px] tracking-[0.2em] text-foreground/40">BLACK CARD</p>
-            </div>
-          </Link>
-          <Link to="/dashboard" className="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-foreground hover:text-primary transition-colors">
-            <ArrowLeft className="w-3 h-3" /> Dashboard
-          </Link>
-        </div>
-      </div>
+      <Navbar />
 
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="max-w-6xl mx-auto px-6 py-12 pt-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
           <p className="text-xs tracking-[0.3em] text-primary uppercase mb-4">Sovereign Financial Identity</p>
           <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">Blanch Onyx Black Card</h1>
@@ -345,6 +335,7 @@ export default function BlackCardPage() {
       <AnimatePresence>
         {selectedCard && <CardModal tier={selectedCard} onClose={() => setSelectedCard(null)} />}
       </AnimatePresence>
+      <Footer />
     </div>
   );
 }

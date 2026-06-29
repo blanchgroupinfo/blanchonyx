@@ -16,15 +16,55 @@ const mediaModules = import.meta.glob<string>("../assets/smart-city-slideshow/*.
 });
 
 const infoMap: Record<string, { title: string; desc: string }> = {
-  colonnade_skyline: {
+  "blanch-colonnade_skyline": {
     title: "The Colonnade Skyline & Concentric District",
     desc: "A futuristic 8-ring eco-sovereign city design under a starry desert night, where blue illumination signifies advanced intelligence, trust, and secure infrastructure.",
   },
-  grand_plaza: {
+  "blanch-colonnade-car": {
+    title: "Autonomous Mobility Corridor",
+    desc: "Custom-engineered autonomous transit vehicles moving along the solar-paved concentric rings of the Blanch Colonnade.",
+  },
+  "blanch-colonnade-praise": {
+    title: "Colonnade Gathering & Assemblies",
+    desc: "Sovereign citizens and leaders gathering at the iconic light spires of the Colonnade for joint praise and high-level trust assemblies.",
+  },
+  "blanch-corridor-colonnade": {
+    title: "The Blanch Corridor Gateway",
+    desc: "A monumental entry bridge uniting autonomous land-holdings with secure digital and physically accessible trade arteries.",
+  },
+  "blanch-onyx-black-card-gemini": {
+    title: "Sovereign Member Obsidian Card - Design I",
+    desc: "The master-crafted physical artifact of the Royal Priesthood network, acting as an immutable hardware credential.",
+  },
+  "blanch-onyx-black-card-gemiini2": {
+    title: "Sovereign Member Obsidian Card - Design II",
+    desc: "Our ultra-premium titanium member card, configured with direct-on-card physical storage and encrypted NFC synchronization.",
+  },
+  "blanch-onyx-hardware-device-copilot": {
+    title: "Blanch Onyx Hardware Node - Companion Mode",
+    desc: "A compact personal validation hardware device designed for off-grid consensus verification and secure local asset storage.",
+  },
+  "blanch-onyx-hardware-device-copilot2": {
+    title: "Blanch Onyx Hardware Node - Dual Display",
+    desc: "Our advanced dual-display companion module showing live network state, block validations, and local BOX reserve balances.",
+  },
+  "blanch-onyx-hardware-device": {
+    title: "Blanch Onyx Ledger Core Node",
+    desc: "A custom-engineered secure enclave hardware device processing real-time distributed transactions with zero external reliance.",
+  },
+  "blanch-onyx-hardware-device2": {
+    title: "Blanch Onyx Ledger Core Node - Pro Edition",
+    desc: "Enterprise-grade physical consensus hardware featuring active quantum-resistant cryptographic key generation.",
+  },
+  "blanch-onyx-standalone-wallet-key-validation": {
+    title: "Blanch Onyx Standalone Hardware Wallet",
+    desc: "Biometric-enabled standalone hardware key, ensuring complete personal custody and physical authorization of ledger state updates.",
+  },
+  "grand_plaza": {
     title: "Blanch Colonnade Grand Plaza",
     desc: "The ceremonial and cultural heart of the city—a grand plaza for conventions, major launches, and celebrations featuring synchronized fountain displays and menorah fireworks.",
   },
-  supercar_desert: {
+  "supercar_desert": {
     title: "Sovereign Mobility & Desert Outpost",
     desc: "Combining sovereign land holdings, autonomous transport, and digital identity platforms within a secure kingdom-aligned physical and digital corridor.",
   },

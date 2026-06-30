@@ -87,14 +87,14 @@ const DltShowcase = () => {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Activity className="w-5 h-5 text-primary" />
-            <span className="text-sm uppercase tracking-[0.2em] text-primary/80 font-medium">
+            <Activity className="w-5 h-5 text-[#8c5f38]" />
+            <span className="text-sm uppercase tracking-[0.2em] text-[#8c5f38] font-medium">
               Blanch Onyx DLT
             </span>
           </div>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold mb-4">
-            <span className="text-gradient-white">8-Layer DAG</span>
-            <span className="text-foreground">
+            <span className="text-white">8-Layer DAG</span>
+            <span className="text-[#8c5f38]">
               <em> · 22 Sacred Nodes</em>
             </span>
           </h2>

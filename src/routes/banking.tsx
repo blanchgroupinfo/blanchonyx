@@ -130,6 +130,15 @@ function MetricCard({ stat, index }: { stat: (typeof NETWORK_STATS)[number]; ind
   );
 }
 
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="eyebrow mb-4">
+      <span />
+      {children}
+    </div>
+  );
+}
+
 function BankingPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -138,9 +147,9 @@ function BankingPage() {
       <main className="mx-auto max-w-7xl px-6 py-12 pt-24">
         <section className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}>
-            <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">Banking Solutions</p>
+            <Eyebrow>Banking Solutions</Eyebrow>
             <h2 className="font-heading text-4xl tracking-[0.08em] text-foreground md:text-6xl">
-              Next-Generation Sovereign Banking Infrastructure
+              Next-Generation Sovereign Banking <br /><em>Infrastructure</em>
             </h2>
             <p className="mt-5 max-w-2xl font-display text-lg italic leading-relaxed text-foreground">
               Real-time settlement, compliant digital banking, and institutional-grade payments on Blanch Onyx DLT.

@@ -12,9 +12,17 @@ interface Props {
   children: ReactNode;
 }
 
+const Eyebrow = ({ children }: { children: ReactNode }) => (
+  <div className="eyebrow mb-4 justify-center">
+    <span />
+    {children}
+    <span />
+  </div>
+);
+
 const PageShell = ({ eyebrow, title, subtitle, children }: Props) => {
   return (
-    <div className="min-h-screen bg-background">
+    <div id="subpage-root" className="min-h-screen bg-background light-cream-onyx-view">
       <Navbar />
       <main className="pt-32 pb-24 section-pattern">
         <div className="container mx-auto px-6">
@@ -32,11 +40,9 @@ const PageShell = ({ eyebrow, title, subtitle, children }: Props) => {
             className="text-center mb-16 max-w-4xl mx-auto"
           >
             {eyebrow && (
-              <span className="text-sm uppercase tracking-[0.3em] text-secondary font-medium">
-                {eyebrow}
-              </span>
+              <Eyebrow>{eyebrow}</Eyebrow>
             )}
-            <h1 className="font-display text-4xl md:text-6xl font-semibold mt-3 mb-4">{title}</h1>
+            <h1 className="font-heading text-4xl md:text-6xl tracking-wide font-semibold mt-3 mb-4">{title}</h1>
             {subtitle && <p className="text-muted-foreground text-lg">{subtitle}</p>}
             <div className="sacred-divider w-32 mx-auto mt-6" />
           </motion.div>

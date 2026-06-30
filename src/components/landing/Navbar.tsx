@@ -31,9 +31,17 @@ const NAV_GROUPS = [
     label: "Membership",
     links: [
       { label: "Membership Tiers", href: "/membership", isRoute: true },
-	    { label: "Heritage Royal House of judah", href: "/heritage-judah", isRoute: true },
+      { label: "Heritage the Real Tribe of Judah", href: "/heritage-judah", isRoute: true },
       { label: "Royal Priesthood", href: "/royal-priesthood", isRoute: true },
       { label: "Social Club", href: "/social-club", isRoute: true },
+      { label: "Black Card", href: "/black-card", isRoute: true },
+      { label: "Blanch Automotive Club", href: "/social-club", isRoute: true },
+      { label: "Business Network", href: "/business-network", isRoute: true },
+      { label: "Lashawan Qadash Dress Code", href: "/marketplace", isRoute: true },
+      { label: "Marketplace", href: "/marketplace", isRoute: true },
+      { label: "S.H.I.E.L.D. AI Creative Media Content Generation", href: "/#shield", isRoute: false },
+      { label: "Smart City", href: "/vision", isRoute: true },
+      { label: "Social & Professional Network", href: "/social-club", isRoute: true },
     ],
   },
   {
@@ -64,6 +72,8 @@ const NAV_GROUPS = [
    {
     label: "Network",
     links: [
+      { label: "Corporate Events, Entertainment & Special Events", href: "/social-club", isRoute: true },
+      { label: "Social & Professional Network", href: "/social-club", isRoute: true },
       { label: "Business Network", href: "/business-network", isRoute: true },
 	    { label: "DLT Network", href: "/dlt", isRoute: true },
       { label: "Explorer", href: "/explorer", isRoute: true },
@@ -137,7 +147,7 @@ export default function Navbar() {
           <button onClick={() => scrollTo("#hero")} className="flex items-center gap-3 group shrink-0">
             <img src={logoBrown} alt="Blanch Onyx" className="w-10 h-12 object-contain group-hover:scale-105 transition-transform duration-300" />
             <div className="hidden sm:block">
-              <p className="font-heading text-xs tracking-[0.35em] text-primary leading-tight">BLANCH ONYX</p>
+              <p className="font-heading text-xs tracking-[0.35em] text-gradient-silver leading-tight">BLANCH ONYX</p>
               <p className="text-[9px] tracking-[0.2em] text-muted-foreground/70 leading-tight">SOVEREIGN SOCIAL CLUB</p>
             </div>
           </button>
@@ -196,13 +206,36 @@ export default function Navbar() {
                       exit={{ opacity: 0, y: -8 }}
                       transition={{ duration: 0.15 }}
                       onMouseLeave={() => setActiveGroup(null)}
-                      className="absolute top-full left-0 mt-1 w-48 bg-card border border-border/40 shadow-xl z-50 py-1"
+                      className={`absolute top-full mt-2 w-[320px] sm:w-[480px] md:w-[640px] bg-card/98 backdrop-blur-md border border-border/45 shadow-2xl z-50 p-5 rounded-md ${
+                        ["Finance", "Network", "Tools"].includes(group.label)
+                          ? "right-0 origin-top-right"
+                          : "left-0 origin-top-left"
+                      }`}
                     >
-                      {group.links.map(link => (
-                        link.isRoute
-                          ? <Link key={link.label} to={link.href} onClick={() => setActiveGroup(null)} className="block px-4 py-2.5 text-[11px] tracking-[0.08em] text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors">{link.label}</Link>
-                          : <button key={link.label} onClick={() => scrollTo(link.href)} className="block w-full text-left px-4 py-2.5 text-[11px] tracking-[0.08em] text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors">{link.label}</button>
-                      ))}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
+                        {group.links.map(link => (
+                          link.isRoute ? (
+                            <Link
+                              key={link.label}
+                              to={link.href}
+                              onClick={() => setActiveGroup(null)}
+                              className="block px-3.5 py-2 text-[10px] tracking-[0.08em] uppercase text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 rounded border border-transparent hover:border-primary/10 truncate"
+                              title={link.label}
+                            >
+                              {link.label}
+                            </Link>
+                          ) : (
+                            <button
+                              key={link.label}
+                              onClick={() => { scrollTo(link.href); setActiveGroup(null); }}
+                              className="block w-full text-left px-3.5 py-2 text-[10px] tracking-[0.08em] uppercase text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 rounded border border-transparent hover:border-primary/10 truncate"
+                              title={link.label}
+                            >
+                              {link.label}
+                            </button>
+                          )
+                        ))}
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>

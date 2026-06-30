@@ -64,6 +64,16 @@ const UTILITY = [
   { icon: CheckCircle, title: "Philanthropic Giving", desc: "Direct charitable contributions through the Blanch Philanthropy Hub." },
 ];
 
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="eyebrow mb-4 justify-center">
+      <span />
+      {children}
+      <span />
+    </div>
+  );
+}
+
 export default function TokensPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -71,8 +81,10 @@ export default function TokensPage() {
 
       <div className="max-w-6xl mx-auto px-6 py-12 pt-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
-          <p className="text-xs tracking-[0.3em] text-primary uppercase mb-4">Sovereign Digital Currency</p>
-          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">Blanch Onyx Tokens</h1>
+          <Eyebrow>Sovereign Digital Currency</Eyebrow>
+          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">
+            Blanch Onyx <br /><em>Tokens</em>
+          </h1>
           <p className="font-display text-lg text-muted-foreground italic max-w-2xl mx-auto">
             A multi-layered sovereign token ecosystem governing commerce, governance, infrastructure, and divine stewardship across the Blanch Corridor. The token economy of the Royal Priesthood — governance, access, and stewardship anchored on Blanch Onyx DLT.
           </p>
@@ -87,7 +99,7 @@ export default function TokensPage() {
             { title: "Real-Asset Backed", desc: "Backed by sovereign land, enterprise revenue, and divine purpose.", icon: Landmark },
             { title: "Compliance-Built", desc: "ID2X identity gating, regulatory ready across jurisdictions.", icon: Shield },
           ].map((feat) => (
-            <div key={feat.title} className="border border-primary/20 bg-card/40 p-5 rounded-lg flex flex-col items-center text-center">
+            <div key={feat.title} className="border border-border bg-card p-5 rounded-lg flex flex-col items-center text-center card-lift">
               <feat.icon className="w-6 h-6 text-primary mb-3" />
               <h3 className="font-heading text-sm text-foreground mb-1 tracking-wider">{feat.title}</h3>
               <p className="text-muted-foreground text-xs leading-relaxed">{feat.desc}</p>
@@ -103,7 +115,7 @@ export default function TokensPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.05 }}
-              className={`border p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start md:items-center ${token.color}`}
+              className={`border p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start md:items-center card-lift ${token.color}`}
             >
               <div className="text-center shrink-0 w-24">
                 <p className="font-heading text-2xl md:text-3xl text-primary">{token.symbol}</p>

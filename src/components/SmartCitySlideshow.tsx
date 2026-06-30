@@ -33,11 +33,11 @@ const infoMap: Record<string, { title: string; desc: string }> = {
     desc: "A monumental entry bridge uniting autonomous land-holdings with secure digital and physically accessible trade arteries.",
   },
   "blanch-onyx-black-card-gemini": {
-    title: "Sovereign Member Obsidian Card - Design I",
+    title: "Sovereign Member Card - Design I",
     desc: "The master-crafted physical artifact of the Royal Priesthood network, acting as an immutable hardware credential.",
   },
   "blanch-onyx-black-card-gemiini2": {
-    title: "Sovereign Member Obsidian Card - Design II",
+    title: "Sovereign Member Card - Design II",
     desc: "Our ultra-premium titanium member card, configured with direct-on-card physical storage and encrypted NFC synchronization.",
   },
   "blanch-onyx-hardware-device-copilot": {

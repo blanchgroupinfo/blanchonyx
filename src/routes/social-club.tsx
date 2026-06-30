@@ -23,6 +23,16 @@ const PILLARS = [
   { icon: Utensils, title: "Council Dinners", desc: "Intimate dinners with Trustees, scholars, and sovereign leaders." },
 ];
 
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="eyebrow mb-4 justify-center">
+      <span />
+      {children}
+      <span />
+    </div>
+  );
+}
+
 export default function SocialClubPage() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -65,8 +75,10 @@ export default function SocialClubPage() {
 
       <div className="max-w-6xl mx-auto px-6 py-12 pt-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
-          <p className="text-xs tracking-[0.3em] text-primary uppercase mb-4">Private Membership Network</p>
-          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">Blanch Onyx Social Club</h1>
+          <Eyebrow>Private Membership Network</Eyebrow>
+          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">
+            Blanch Onyx <br /><em>Social Club</em>
+          </h1>
           <p className="font-display text-lg text-muted-foreground italic max-w-2xl mx-auto">
             An elite private membership Social Club — where sovereign identity meets strategic influence.
           </p>
@@ -76,7 +88,7 @@ export default function SocialClubPage() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
           {PILLARS.map((p, i) => (
             <motion.div key={p.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.08 }}
-              className="border border-border/30 bg-card p-6 hover:border-primary/20 transition-all group">
+              className="border border-border bg-card p-6 card-lift group">
               <p.icon className="w-5 h-5 text-primary/60 mb-3 group-hover:text-primary transition-colors" />
               <h3 className="font-heading text-sm text-foreground mb-2">{p.title}</h3>
               <p className="text-muted-foreground text-xs leading-relaxed">{p.desc}</p>

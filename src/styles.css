@@ -168,6 +168,10 @@
     width: min(100% - 3rem, 1280px);
     margin-inline: auto;
   }
+    /* === Reusable hover-lift card === */
+  .card-lift { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s, background .35s; will-change: transform; }
+  .card-lift:hover { transform: translateY(-6px); box-shadow: 0 22px 45px -20px color-mix(in oklab, var(--primary) 45%, transparent); border-color: var(--primary); }
+  .justify-prose p, .justify-prose > p { text-align: justify; hyphens: auto; }
   .section-block {
     padding-block: clamp(5rem, 9vw, 9rem);
   }
@@ -411,63 +415,7 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
   }
-  .remnant-section-intro {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      align-items: end;
-      margin-bottom: 5rem;    
-      text-align: justify;
-  }
-  .remnant-section-gather .eyebrow {
-      align-self: start;
-      justify-content: justify;
-  }
-  .remnant-section-intro h2 {
-      grid-column: 2;
-      justify-content: center;
-  }
-  .remnant-section-gather h3 {
-    font-size: clamp(2rem, 5vw, 5em);
-    line-height: 1;
-    margin-top: irem;
-    margin: 3rem 0 1.5rem;
-    font-family: var(--font-display);
-    font-weight: 400;
-    line-height: 0.82; 
-  }
-  .remnant-grid h3 {
-    font-size: clamp(2rem, 3.5vw, 4rem);
-    line-height: 1;
-    margin: 3rem 0 1.5rem;
-  }
-  .remnant-section-intro p {
-      grid-column: 2;
-      max-width: 32rem;
-      margin-top: 2rem;
-      line-height: 1.7;
-      color: var(--muted-foreground);
-      margin-inline: auto;
-  }
-  .remnant-grid {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    border-top: 1px solid var(--border);
-  }
-  .remnant-grid article {
-    position: relative;
-    padding: 3rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .remnant-slideshow-wrapper {
-      width: 100%;
-      max-width: 1100px;
-      margin: 4rem auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-  }
+
   .section-intro {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -510,19 +458,27 @@
     letter-spacing: 0.15em;
   }
   .heritage-grid h3 {
-    font-size: clamp(2rem, 3.5vw, 4rem);
+    font-size: clamp(2rem, 3.2vw, 3.2rem);
     line-height: 1;
     margin: 3rem 0 1.5rem;
   }
-  .heritage-grid p,
+  .heritage-grid p {
+  text-align: justify; 
+  }
   .heritage-grid li {
     color: var(--muted-foreground);
     line-height: 1.8;
   }
   .lead-story blockquote {
     margin-top: 4rem;
-    font-size: clamp(1.5rem, 2.5vw, 2.6rem);
+    font-size: clamp(1.5rem, 2.5vw, 1.6rem);
     line-height: 1.25;
+  }
+   .lead-story ul {
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 1rem;
+    font-size: 0.78rem;
   }
   .heritage-story ul {
     margin-top: 1.5rem;
@@ -609,7 +565,7 @@
   }
   .shield-lead > p {
     max-width: 45rem;
-    font: 400 clamp(1.5rem, 2.7vw, 2.5rem)/1.35 var(--font-display);
+    font: 400 clamp(1.5rem, 2.7vw, 1.7rem)/1.35 var(--font-display);
   }
   .shield-lead blockquote {
     color: var(--muted-foreground);
@@ -621,9 +577,28 @@
     grid-template-columns: repeat(3, 1fr);
   }
   .domain-grid article {
+    position: relative;
     padding: 2rem;
     border: 1px solid var(--border);
     margin: -1px 0 0 -1px;
+    background: linear-gradient(
+      145deg,
+      color-mix(in oklab, var(--background) 98%, var(--primary)),
+      var(--background)
+    );
+    transition:
+      background 0.35s ease,
+      box-shadow 0.35s ease;
+  }
+  .domain-grid article:hover {
+    background: linear-gradient(
+      145deg,
+      color-mix(in oklab, var(--primary) 8%, var(--background)),
+      color-mix(in oklab, var(--primary) 3%, var(--background))
+    );
+    border-color: darkgoldenrod;
+    box-shadow: var(--shadow-royal);
+    z-index: 1;
   }
   .domain-grid svg {
     color: var(--primary);
@@ -637,7 +612,6 @@
     font-size: 0.8rem;
     line-height: 1.7;
   }
-
   .scriptural-foundation {
     margin-top: 5rem;
     padding-top: 4rem;
@@ -675,6 +649,7 @@
       color-mix(in oklab, var(--primary) 8%, var(--background)),
       color-mix(in oklab, var(--primary) 3%, var(--background))
     );
+    border-color:darkgoldenrod;
     box-shadow: var(--shadow-royal);
     z-index: 1;
   }
@@ -941,6 +916,7 @@
   }
   .privilege-card {
     position: relative;
+    text-align: justify;
     min-height: 12rem;
     padding: 2rem 1.75rem;
     display: flex;
@@ -962,6 +938,7 @@
       color-mix(in oklab, var(--primary) 8%, var(--background)),
       color-mix(in oklab, var(--primary) 3%, var(--background))
     );
+    border-color:darkgoldenrod;
     box-shadow: var(--shadow-royal);
     z-index: 1;
   }
@@ -977,6 +954,7 @@
     color: var(--muted-foreground);
     font-size: 0.78rem;
     line-height: 1.65;
+    text-align: justify;
   }
 
   .purpose-block {
@@ -1009,6 +987,7 @@
     background: color-mix(in oklab, var(--primary) 4%, var(--background));
     box-shadow: var(--shadow-royal);
     z-index: 1;
+    border-color:darkgoldenrod;
   }
   .purpose-card svg {
     width: 1.1rem;
@@ -1023,6 +1002,7 @@
     color: var(--muted-foreground);
     font-size: 0.76rem;
     line-height: 1.7;
+    text-align: justify;
   }
 
   .membership-quote {
@@ -1428,8 +1408,6 @@
     border-right: 0;
     border-bottom: 1px solid var(--border);
   }
-    border-bottom: 1px solid var(--border);
-  }
   .privilege-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1461,8 +1439,9 @@
   .library-inner {
     gap: 3rem;
   }
+}
 
-  @media (max-width: 560px) {
+@media (max-width: 560px) {
   .brand span {
     display: none;
   }

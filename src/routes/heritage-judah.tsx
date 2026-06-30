@@ -54,7 +54,7 @@ const HeritageJudah = () => {
       eyebrow="Lineage of the Royal House"
       title={
         <>
-          <span className="text-gradient-gold">Royal House</span> of Judah
+          Royal House <br /><em>of Judah</em>
         </>
       }
       subtitle="A scripture-anchored heritage timeline of the Tribe of Judah, the Levitical Priesthood, and the Blanch family lineage."

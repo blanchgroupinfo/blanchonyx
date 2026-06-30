@@ -27,6 +27,16 @@ function useLivePrice(base) {
   return price;
 }
 
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="eyebrow mb-4 justify-center">
+      <span />
+      {children}
+      <span />
+    </div>
+  );
+}
+
 export default function ExchangePage() {
   const [fromToken, setFromToken] = useState("BOX");
   const [toToken, setToToken] = useState("BNX");
@@ -47,14 +57,16 @@ export default function ExchangePage() {
 
       <div className="max-w-5xl mx-auto px-6 py-12 pt-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
-          <p className="text-xs tracking-[0.3em] text-primary uppercase mb-3">Sovereign Token Exchange</p>
-          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">Blanch Exchange</h1>
+          <Eyebrow>Sovereign Token Exchange</Eyebrow>
+          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">
+            Blanch <br /><em>Exchange</em>
+          </h1>
           <p className="font-display text-lg text-muted-foreground italic">Zero-fee sovereign token swaps on the Blanch Onyx DLT</p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Swap panel */}
-          <div className="border border-primary/20 bg-card p-8">
+          <div className="border border-border bg-card p-8 card-lift">
             <h2 className="font-heading text-sm tracking-[0.15em] uppercase text-foreground mb-6">Swap Tokens</h2>
             <div className="space-y-4">
               <div className="border border-border/40 bg-background p-4">
@@ -116,7 +128,7 @@ export default function ExchangePage() {
             <h2 className="font-heading text-sm tracking-[0.15em] uppercase text-foreground mb-4">Live Pairs</h2>
             <div className="space-y-2">
               {PAIRS.map(p => (
-                <div key={p.pair} className="border border-border/30 bg-card p-4 flex items-center justify-between hover:border-primary/20 transition-all">
+                <div key={p.pair} className="border border-border bg-card p-4 flex items-center justify-between card-lift">
                   <span className="font-heading text-sm text-foreground">{p.pair}</span>
                   <div className="text-right">
                     <p className="font-heading text-sm text-primary tabular-nums">{p.price.toFixed(4)}</p>

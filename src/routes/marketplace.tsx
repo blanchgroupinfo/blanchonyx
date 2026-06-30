@@ -25,7 +25,8 @@ import {
   Hammer,
   Sprout,
   Shirt,
-  Gem
+  Gem,
+  Plus
 } from "lucide-react";
 import LOGO_BROWN from "@/assets/b-logo-brown.png";
 
@@ -447,6 +448,15 @@ const SORT_OPTIONS = [
   { value: "newest", label: "Newest" },
 ];
 
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="eyebrow mb-4 justify-start">
+      <span />
+      {children}
+    </div>
+  );
+}
+
 export default function Marketplace() {
   const [items, setItems] = useState<any[]>(STATIC_MARKETPLACE_ITEMS);
   const [loading, setLoading] = useState(true);
@@ -456,6 +466,43 @@ export default function Marketplace() {
   const [sortBy, setSortBy] = useState("popular");
   const [statusFilter, setStatusFilter] = useState("all");
   const [featuredOnly, setFeaturedOnly] = useState(false);
+
+  // New Asset Form State
+  const [isAddAssetOpen, setIsAddAssetOpen] = useState(false);
+  const [newAssetTitle, setNewAssetTitle] = useState("");
+  const [newAssetDesc, setNewAssetDesc] = useState("");
+  const [newAssetPrice, setNewAssetPrice] = useState("");
+  const [newAssetCategory, setNewAssetCategory] = useState("digital_asset");
+  const [newAssetSeller, setNewAssetSeller] = useState("");
+
+  const handleAddAsset = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newAssetTitle || !newAssetDesc || !newAssetPrice) return;
+
+    const newItem = {
+      id: `custom-asset-${Date.now()}`,
+      title: newAssetTitle,
+      description: newAssetDesc,
+      price: parseFloat(newAssetPrice) || 0,
+      currency: "BOX",
+      status: "available",
+      featured: false,
+      category: newAssetCategory,
+      seller_name: newAssetSeller || "Sovereign Partner",
+      image_url: null,
+      created_at: new Date().toISOString()
+    };
+
+    setItems(prev => [newItem, ...prev]);
+    setIsAddAssetOpen(false);
+
+    // Reset fields
+    setNewAssetTitle("");
+    setNewAssetDesc("");
+    setNewAssetPrice("");
+    setNewAssetCategory("digital_asset");
+    setNewAssetSeller("");
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -507,8 +554,10 @@ export default function Marketplace() {
 
       <div className="max-w-7xl mx-auto px-6 py-12 pt-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-          <p className="text-xs tracking-[0.3em] text-primary uppercase mb-3">Kingdom-Aligned Commerce</p>
-          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">Virtual Marketplace</h1>
+          <Eyebrow>Kingdom-Aligned Commerce</Eyebrow>
+          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">
+            Virtual <br /><em>Marketplace</em>
+          </h1>
           <p className="font-display text-lg text-muted-foreground italic max-w-2xl">
             A sacred digital marketplace for kingdom-aligned goods, services, and creative works — righteous exchange, fair trade, and community prosperity. A A sacred digital marketplace for kingdom-aligned goods, services, and creative works. A sovereign marketplace of righteous goods, sacred crafts, and member enterprises — settled on Blanch Onyx DLT.
           </p>
@@ -586,6 +635,12 @@ export default function Marketplace() {
               >
                 Contact Marketplace Listing
               </Link>
+              <button
+                onClick={() => setIsAddAssetOpen(true)}
+                className="px-5 py-3 bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 font-heading text-xs tracking-[0.15em] uppercase transition-all text-center flex items-center justify-center gap-1.5"
+              >
+                <Plus className="w-4 h-4" /> Add an Asset, Product, or Service
+              </button>
             </div>
           </motion.div>
         </motion.div>
@@ -631,6 +686,120 @@ export default function Marketplace() {
       </div>
 
       <ItemModal item={selected} onClose={() => setSelected(null)} />
+
+      {/* Add Asset Modal */}
+      <AnimatePresence>
+        {isAddAssetOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsAddAssetOpen(false)}
+              className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+            />
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="bg-card border border-border w-full max-w-lg p-6 md:p-8 relative z-10 shadow-2xl rounded-sm"
+            >
+              <button 
+                onClick={() => setIsAddAssetOpen(false)}
+                className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              
+              <div className="mb-6">
+                <p className="text-[10px] tracking-[0.3em] text-primary uppercase font-mono mb-1">Add to Marketplace</p>
+                <h3 className="font-heading text-2xl text-foreground">Add Asset, Product, or Service</h3>
+              </div>
+              
+              <form onSubmit={handleAddAsset} className="space-y-4">
+                <div>
+                  <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Asset Title / Name</label>
+                  <input 
+                    type="text" 
+                    required
+                    value={newAssetTitle}
+                    onChange={e => setNewAssetTitle(e.target.value)}
+                    placeholder="e.g. Pure Frankincense Resin"
+                    className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm"
+                  />
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Category</label>
+                    <select 
+                      value={newAssetCategory}
+                      onChange={e => setNewAssetCategory(e.target.value)}
+                      className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm cursor-pointer"
+                    >
+                      {Object.keys(CAT_LABELS).filter(k => k !== "all").map(key => (
+                        <option key={key} value={key}>{CAT_LABELS[key]}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Price (BOX)</label>
+                    <input 
+                      type="number" 
+                      required
+                      min="1"
+                      value={newAssetPrice}
+                      onChange={e => setNewAssetPrice(e.target.value)}
+                      placeholder="e.g. 150"
+                      className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Seller Name / Provider</label>
+                  <input 
+                    type="text" 
+                    value={newAssetSeller}
+                    onChange={e => setNewAssetSeller(e.target.value)}
+                    placeholder="e.g. Judah Apothecary"
+                    className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Description</label>
+                  <textarea 
+                    required
+                    rows={3}
+                    value={newAssetDesc}
+                    onChange={e => setNewAssetDesc(e.target.value)}
+                    placeholder="Describe the asset, its features, compliance standards, and Kingdom-aligned value..."
+                    className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm resize-none"
+                  />
+                </div>
+                
+                <div className="flex gap-3 pt-4">
+                  <button 
+                    type="button"
+                    onClick={() => setIsAddAssetOpen(false)}
+                    className="flex-1 py-3 border border-border hover:bg-muted text-foreground font-heading text-xs tracking-[0.15em] uppercase transition-all rounded-sm"
+                  >
+                    Cancel
+                  </button>
+                  <button 
+                    type="submit"
+                    className="flex-1 py-3 bg-primary hover:bg-primary/95 text-primary-foreground font-heading text-xs tracking-[0.15em] uppercase transition-all rounded-sm"
+                  >
+                    List Asset
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
       <Footer />
     </div>
   );

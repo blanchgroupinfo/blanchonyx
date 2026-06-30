@@ -178,18 +178,18 @@ export default function Dashboard() {
       <!-- Background -->
       <rect width="800" height="600" fill="#0b0b0c" />
       <rect x="20" y="20" width="760" height="560" fill="none" stroke="#b87d4b" stroke-width="2" />
-      <rect x="25" y="25" width="750" height="550" fill="none" stroke="#d99c62" stroke-width="1" stroke-dasharray="10,5" />
+      <rect x="25" y="25" width="750" height="550" fill="none" stroke="#8c5f38" stroke-width="1" stroke-dasharray="10,5" />
       
       <!-- Watermark / Crest -->
       <path d="M400 150 L440 220 L360 220 Z M400 170 L420 210 L380 210 Z" fill="#b87d4b" opacity="0.1" />
       
       <!-- Logo & Header -->
-      <text x="400" y="80" font-family="'Times New Roman', serif" font-size="20" fill="#d99c62" font-weight="bold" letter-spacing="4" text-anchor="middle">BLANCH ONYX TRUST</text>
+      <text x="400" y="80" font-family="'Times New Roman', serif" font-size="20" fill="#8c5f38" font-weight="bold" letter-spacing="4" text-anchor="middle">BLANCH ONYX TRUST</text>
       <text x="400" y="110" font-family="'Times New Roman', serif" font-size="10" fill="#b87d4b" letter-spacing="6" text-anchor="middle">SOVEREIGN DECENTRALIZED COVENANT</text>
       
       <!-- Certificate Title -->
       <text x="400" y="180" font-family="'Times New Roman', serif" font-size="28" fill="#ffffff" font-weight="bold" letter-spacing="2" text-anchor="middle">CERTIFICATE OF STANDING</text>
-      <text x="400" y="210" font-family="sans-serif" font-size="12" fill="#d99c62" letter-spacing="3" text-anchor="middle">OFFICIAL CIRCLE AGENT APPOINTMENT</text>
+      <text x="400" y="210" font-family="sans-serif" font-size="12" fill="#8c5f38" letter-spacing="3" text-anchor="middle">OFFICIAL CIRCLE AGENT APPOINTMENT</text>
       
       <!-- Recipient -->
       <text x="400" y="260" font-family="sans-serif" font-size="14" fill="#a0a0a5" text-anchor="middle">This certifies that the accredited representative</text>
@@ -197,7 +197,7 @@ export default function Dashboard() {
       
       <!-- Appointment Statement -->
       <text x="400" y="360" font-family="sans-serif" font-size="13" fill="#a0a0a5" text-anchor="middle">has been duly commissioned as an active and registered Circle Agent of the</text>
-      <text x="400" y="380" font-family="sans-serif" font-size="13" fill="#d99c62" font-weight="bold" text-anchor="middle">BLANCH NETWORK &amp; BLANCH ONYX DLT</text>
+      <text x="400" y="380" font-family="sans-serif" font-size="13" fill="#8c5f38" font-weight="bold" text-anchor="middle">BLANCH NETWORK &amp; BLANCH ONYX DLT</text>
       
       <!-- Details Box -->
       <rect x="150" y="420" width="500" height="70" fill="#141416" stroke="#b87d4b" stroke-width="0.5" />
@@ -218,9 +218,9 @@ export default function Dashboard() {
       <text x="545" y="555" font-family="sans-serif" font-size="9" fill="#88888d" text-anchor="middle">DLT Registrar Seal</text>
       
       <!-- Digital Seal Graphic -->
-      <circle cx="400" cy="535" r="22" fill="none" stroke="#d99c62" stroke-width="1" />
-      <circle cx="400" cy="535" r="18" fill="none" stroke="#d99c62" stroke-width="0.5" stroke-dasharray="3,1" />
-      <text x="400" y="538" font-family="sans-serif" font-size="8" fill="#d99c62" text-anchor="middle" font-weight="bold">VALID</text>
+      <circle cx="400" cy="535" r="22" fill="none" stroke="#8c5f38" stroke-width="1" />
+      <circle cx="400" cy="535" r="18" fill="none" stroke="#8c5f38" stroke-width="0.5" stroke-dasharray="3,1" />
+      <text x="400" y="538" font-family="sans-serif" font-size="8" fill="#8c5f38" text-anchor="middle" font-weight="bold">VALID</text>
     </svg>`;
 
     const blob = new Blob([svgContent], { type: "image/svg+xml;charset=utf-8" });
@@ -621,11 +621,11 @@ export default function Dashboard() {
               {/* Certificate Design */}
               <div className="border border-[#b87d4b]/60 p-6 md:p-10 relative bg-black/40">
                 {/* Thin dashed inner border */}
-                <div className="absolute inset-2 border border-[#d99c62]/30 border-dashed pointer-events-none" />
+                <div className="absolute inset-2 border border-[#8c5f38]/30 border-dashed pointer-events-none" />
 
                 <Crown className="w-10 h-10 text-primary mx-auto mb-4" />
 
-                <h3 className="font-heading text-lg tracking-[0.2em] text-[#d99c62] uppercase mb-1">
+                <h3 className="font-heading text-lg tracking-[0.2em] text-[#8c5f38] uppercase mb-1">
                   BLANCH ONYX TRUST
                 </h3>
                 <p className="text-[8px] tracking-[0.3em] text-muted-foreground/60 uppercase mb-8">
@@ -635,7 +635,7 @@ export default function Dashboard() {
                 <h2 className="font-heading text-xl md:text-2xl tracking-[0.1em] text-foreground font-bold mb-1">
                   CERTIFICATE OF STANDING
                 </h2>
-                <p className="text-[10px] tracking-[0.15em] text-[#d99c62] uppercase mb-6">
+                <p className="text-[10px] tracking-[0.15em] text-[#8c5f38] uppercase mb-6">
                   OFFICIAL CIRCLE AGENT APPOINTMENT
                 </p>
 
@@ -649,7 +649,7 @@ export default function Dashboard() {
 
                 <p className="text-xs text-muted-foreground max-w-md mx-auto leading-relaxed mb-6">
                   has been duly commissioned as an active and registered Circle Agent of the
-                  <span className="block text-[#d99c62] font-semibold mt-1">BLANCH NETWORK & BLANCH ONYX DLT</span>
+                  <span className="block text-[#8c5f38] font-semibold mt-1">BLANCH NETWORK & BLANCH ONYX DLT</span>
                 </p>
 
                 {/* Credentials list in Certificate */}

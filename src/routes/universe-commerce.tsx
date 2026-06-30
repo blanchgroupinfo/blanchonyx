@@ -38,6 +38,16 @@ const INFRA = [
   { icon: User, title: "Identity-Verified", desc: "All transactions flow through the ID2X identity layer ensuring trust and regulatory compliance." },
 ];
 
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="eyebrow mb-4 justify-center">
+      <span />
+      {children}
+      <span />
+    </div>
+  );
+}
+
 export default function UniverseCommercePage() {
   const [expanded, setExpanded] = useState(null);
   const [search, setSearch] = useState("");
@@ -60,8 +70,10 @@ export default function UniverseCommercePage() {
       <div className="max-w-7xl mx-auto px-6 py-12 pt-24">
         {/* Hero */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-6">
-          <p className="text-xs tracking-[0.3em] text-primary uppercase mb-3">X2X Transaction Framework</p>
-          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">Universal Commerce Models</h1>
+          <Eyebrow>X2X Transaction Framework</Eyebrow>
+          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">
+            Universal <br /><em>Commerce Models</em>
+          </h1>
           <p className="font-display text-xl text-primary italic mb-2">380+ Commerce Models</p>
           <p className="text-foreground/85 text-sm max-w-3xl mx-auto leading-relaxed">
             Every entity connects to every other entity. 20 primary models × 19 target connections = 380 unique commerce pathways powering the future of global transactions.

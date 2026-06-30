@@ -9,10 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as VisionRouteImport } from './routes/vision'
 import { Route as UniverseCommerceRouteImport } from './routes/universe-commerce'
 import { Route as TradingHubRouteImport } from './routes/trading-hub'
-import { Route as TpsRouteImport } from './routes/tps'
 import { Route as TokensRouteImport } from './routes/tokens'
 import { Route as SocialClubRouteImport } from './routes/social-club'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
@@ -33,20 +31,15 @@ import { Route as ExchangeRouteImport } from './routes/exchange'
 import { Route as DltRouteImport } from './routes/dlt'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CreatorsCalendarRouteImport } from './routes/creators-calendar'
-import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CoinRouteImport } from './routes/coin'
 import { Route as BusinessNetworkRouteImport } from './routes/business-network'
 import { Route as BlackCardRouteImport } from './routes/black-card'
 import { Route as BankingAccountsRouteImport } from './routes/banking-accounts'
 import { Route as BankingRouteImport } from './routes/banking'
-import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as VisionRouteImport } from './routes/vision'
 
-const VisionRoute = VisionRouteImport.update({
-  id: '/vision',
-  path: '/vision',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const UniverseCommerceRoute = UniverseCommerceRouteImport.update({
   id: '/universe-commerce',
   path: '/universe-commerce',
@@ -55,11 +48,6 @@ const UniverseCommerceRoute = UniverseCommerceRouteImport.update({
 const TradingHubRoute = TradingHubRouteImport.update({
   id: '/trading-hub',
   path: '/trading-hub',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TpsRoute = TpsRouteImport.update({
-  id: '/tps',
-  path: '/tps',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TokensRoute = TokensRouteImport.update({
@@ -162,11 +150,6 @@ const CreatorsCalendarRoute = CreatorsCalendarRouteImport.update({
   path: '/creators-calendar',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CoinRoute = CoinRouteImport.update({
   id: '/coin',
   path: '/coin',
@@ -192,9 +175,9 @@ const BankingRoute = BankingRouteImport.update({
   path: '/banking',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const ContactRoute = ContactRouteImport.update({
+  id: '/Contact',
+  path: '/Contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -203,15 +186,21 @@ const IndexRoute = IndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 
+const VisionRoute = VisionRouteImport.update({
+  id: '/vision',
+  path: '/vision',
+  getParentRoute: () => rootRouteImport,
+} as any)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/vision': typeof VisionRoute
+  '/Contact': typeof ContactRoute
   '/banking': typeof BankingRoute
   '/banking-accounts': typeof BankingAccountsRoute
   '/black-card': typeof BlackCardRoute
   '/business-network': typeof BusinessNetworkRoute
   '/coin': typeof CoinRoute
-  '/contact': typeof ContactRoute
   '/creators-calendar': typeof CreatorsCalendarRoute
   '/dashboard': typeof DashboardRoute
   '/dlt': typeof DltRoute
@@ -232,20 +221,18 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/social-club': typeof SocialClubRoute
   '/tokens': typeof TokensRoute
-  '/tps': typeof TpsRoute
   '/trading-hub': typeof TradingHubRoute
   '/universe-commerce': typeof UniverseCommerceRoute
-  '/vision': typeof VisionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/vision': typeof VisionRoute
+  '/Contact': typeof ContactRoute
   '/banking': typeof BankingRoute
   '/banking-accounts': typeof BankingAccountsRoute
   '/black-card': typeof BlackCardRoute
   '/business-network': typeof BusinessNetworkRoute
   '/coin': typeof CoinRoute
-  '/contact': typeof ContactRoute
   '/creators-calendar': typeof CreatorsCalendarRoute
   '/dashboard': typeof DashboardRoute
   '/dlt': typeof DltRoute
@@ -266,21 +253,19 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/social-club': typeof SocialClubRoute
   '/tokens': typeof TokensRoute
-  '/tps': typeof TpsRoute
   '/trading-hub': typeof TradingHubRoute
   '/universe-commerce': typeof UniverseCommerceRoute
-  '/vision': typeof VisionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/vision': typeof VisionRoute
+  '/Contact': typeof ContactRoute
   '/banking': typeof BankingRoute
   '/banking-accounts': typeof BankingAccountsRoute
   '/black-card': typeof BlackCardRoute
   '/business-network': typeof BusinessNetworkRoute
   '/coin': typeof CoinRoute
-  '/contact': typeof ContactRoute
   '/creators-calendar': typeof CreatorsCalendarRoute
   '/dashboard': typeof DashboardRoute
   '/dlt': typeof DltRoute
@@ -301,22 +286,20 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/social-club': typeof SocialClubRoute
   '/tokens': typeof TokensRoute
-  '/tps': typeof TpsRoute
   '/trading-hub': typeof TradingHubRoute
   '/universe-commerce': typeof UniverseCommerceRoute
-  '/vision': typeof VisionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
+    | '/vision'
+    | '/Contact'
     | '/banking'
     | '/banking-accounts'
     | '/black-card'
     | '/business-network'
     | '/coin'
-    | '/contact'
     | '/creators-calendar'
     | '/dashboard'
     | '/dlt'
@@ -337,20 +320,18 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/social-club'
     | '/tokens'
-    | '/tps'
     | '/trading-hub'
     | '/universe-commerce'
-    | '/vision'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
+    | '/vision'
+    | '/Contact'
     | '/banking'
     | '/banking-accounts'
     | '/black-card'
     | '/business-network'
     | '/coin'
-    | '/contact'
     | '/creators-calendar'
     | '/dashboard'
     | '/dlt'
@@ -371,20 +352,18 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/social-club'
     | '/tokens'
-    | '/tps'
     | '/trading-hub'
     | '/universe-commerce'
-    | '/vision'
   id:
     | '__root__'
     | '/'
-    | '/about'
+    | '/vision'
+    | '/Contact'
     | '/banking'
     | '/banking-accounts'
     | '/black-card'
     | '/business-network'
     | '/coin'
-    | '/contact'
     | '/creators-calendar'
     | '/dashboard'
     | '/dlt'
@@ -405,21 +384,19 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/social-club'
     | '/tokens'
-    | '/tps'
     | '/trading-hub'
     | '/universe-commerce'
-    | '/vision'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
+  VisionRoute: typeof VisionRoute
+  ContactRoute: typeof ContactRoute
   BankingRoute: typeof BankingRoute
   BankingAccountsRoute: typeof BankingAccountsRoute
   BlackCardRoute: typeof BlackCardRoute
   BusinessNetworkRoute: typeof BusinessNetworkRoute
   CoinRoute: typeof CoinRoute
-  ContactRoute: typeof ContactRoute
   CreatorsCalendarRoute: typeof CreatorsCalendarRoute
   DashboardRoute: typeof DashboardRoute
   DltRoute: typeof DltRoute
@@ -440,10 +417,8 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SocialClubRoute: typeof SocialClubRoute
   TokensRoute: typeof TokensRoute
-  TpsRoute: typeof TpsRoute
   TradingHubRoute: typeof TradingHubRoute
   UniverseCommerceRoute: typeof UniverseCommerceRoute
-  VisionRoute: typeof VisionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -467,13 +442,6 @@ declare module '@tanstack/react-router' {
       path: '/trading-hub'
       fullPath: '/trading-hub'
       preLoaderRoute: typeof TradingHubRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tps': {
-      id: '/tps'
-      path: '/tps'
-      fullPath: '/tps'
-      preLoaderRoute: typeof TpsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tokens': {
@@ -616,13 +584,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CreatorsCalendarRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/coin': {
       id: '/coin'
       path: '/coin'
@@ -658,11 +619,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BankingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/Contact': {
+      id: '/Contact'
+      path: '/Contact'
+      fullPath: '/Contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -677,13 +638,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
+  VisionRoute: VisionRoute,
+  ContactRoute: ContactRoute,
   BankingRoute: BankingRoute,
   BankingAccountsRoute: BankingAccountsRoute,
   BlackCardRoute: BlackCardRoute,
   BusinessNetworkRoute: BusinessNetworkRoute,
   CoinRoute: CoinRoute,
-  ContactRoute: ContactRoute,
   CreatorsCalendarRoute: CreatorsCalendarRoute,
   DashboardRoute: DashboardRoute,
   DltRoute: DltRoute,
@@ -704,11 +665,16 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SocialClubRoute: SocialClubRoute,
   TokensRoute: TokensRoute,
-  TpsRoute: TpsRoute,
   TradingHubRoute: TradingHubRoute,
   UniverseCommerceRoute: UniverseCommerceRoute,
-  VisionRoute: VisionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+declare module '@tanstack/react-router' {
+  interface Register {
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

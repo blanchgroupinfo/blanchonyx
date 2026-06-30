@@ -119,6 +119,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootHtml({ children }: { children: ReactNode }) {
   const { theme } = useTheme();
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isSubpage = window.location.pathname !== "/";
+      if (isSubpage) {
+        document.body.classList.add("light-cream-onyx-view");
+      } else {
+        document.body.classList.remove("light-cream-onyx-view");
+      }
+    }
+  });
   return (
     <html lang="en" className={theme}>
       <head>

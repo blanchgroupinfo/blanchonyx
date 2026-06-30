@@ -80,7 +80,7 @@ const DLTPage = () => {
       eyebrow="Sovereign Infrastructure"
       title={
         <>
-          <span className="text-gradient-gold">Blanch Onyx DLT</span>
+          Blanch Onyx <br /><em>DLT</em>
         </>
       }
       subtitle="A divinely-architected distributed ledger — 8 layers, 22 Hebrew-anchored nodes, infinite throughput."

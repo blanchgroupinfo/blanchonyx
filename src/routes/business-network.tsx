@@ -28,7 +28,9 @@ import {
   ArrowRight,
   TrendingUp,
   Award,
-  ChevronRight
+  ChevronRight,
+  Plus,
+  X
 } from "lucide-react";
 
 import LOGO_BROWN from "@/assets/b-logo-brown.png";
@@ -79,6 +81,16 @@ const CAT_TABS = [
   { id: "energy", label: "Energy" },
   { id: "legal", label: "Legal" },
   { id: "consulting", label: "Consulting" }
+];
+
+const NETWORK_CATEGORIES = [
+  { id: "all", label: "All Networks" },
+  { id: "Banking & Finance", label: "Banking & Finance" },
+  { id: "Urban Development", label: "Urban Development" },
+  { id: "Digital Assets", label: "Digital Assets" },
+  { id: "Healthcare", label: "Healthcare" },
+  { id: "Energy", label: "Energy" },
+  { id: "Commerce", label: "Commerce" }
 ];
 
 // Default listings populated for List Businesses tab
@@ -185,12 +197,96 @@ const ACTIVE_NETWORKS = [
   }
 ];
 
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="eyebrow mb-4 justify-start">
+      <span />
+      {children}
+    </div>
+  );
+}
+
 export default function BusinessNetwork() {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [mainTab, setMainTab] = useState("membership");
   const [category, setCategory] = useState("all");
   const [search, setSearch] = useState("");
+
+  const [networkSearch, setNetworkSearch] = useState("");
+  const [networkCategory, setNetworkCategory] = useState("all");
+  const [networksList, setNetworksList] = useState(ACTIVE_NETWORKS);
+  const [isCreateNetworkOpen, setIsCreateNetworkOpen] = useState(false);
+  const [isListBusinessOpen, setIsListBusinessOpen] = useState(false);
+
+  // New Network Form State
+  const [newNetTitle, setNewNetTitle] = useState("");
+  const [newNetDesc, setNewNetDesc] = useState("");
+  const [newNetCategory, setNewNetCategory] = useState("Banking & Finance");
+  const [newNetLocation, setNewNetLocation] = useState("Worldwide");
+
+  // New Business Form State
+  const [newBizName, setNewBizName] = useState("");
+  const [newBizDesc, setNewBizDesc] = useState("");
+  const [newBizCategory, setNewBizCategory] = useState("finance");
+  const [newBizLocation, setNewBizLocation] = useState("");
+  const [newBizOwner, setNewBizOwner] = useState("");
+  const [newBizWebsite, setNewBizWebsite] = useState("");
+
+  const handleCreateNetwork = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newNetTitle || !newNetDesc) return;
+    
+    const newNetwork = {
+      title: newNetTitle,
+      desc: newNetDesc,
+      category: newNetCategory,
+      location: newNetLocation,
+      members: "1 Member"
+    };
+    
+    setNetworksList([newNetwork, ...networksList]);
+    setIsCreateNetworkOpen(false);
+    
+    // Reset fields
+    setNewNetTitle("");
+    setNewNetDesc("");
+    setNewNetCategory("Banking & Finance");
+    setNewNetLocation("Worldwide");
+    
+    // Switch to networks tab so user sees it!
+    setMainTab("networks");
+  };
+
+  const handleListBusiness = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newBizName || !newBizDesc) return;
+    
+    const newBiz = {
+      id: `custom-${Date.now()}`,
+      business_name: newBizName,
+      category: newBizCategory,
+      description: newBizDesc,
+      location: newBizLocation || "Online",
+      owner_name: newBizOwner || "Sovereign Partner",
+      website: newBizWebsite || "#",
+      verified: true
+    };
+    
+    setListings([newBiz, ...listings]);
+    setIsListBusinessOpen(false);
+    
+    // Reset fields
+    setNewBizName("");
+    setNewBizDesc("");
+    setNewBizCategory("finance");
+    setNewBizLocation("");
+    setNewBizOwner("");
+    setNewBizWebsite("");
+    
+    // Switch to list-businesses tab so user sees it!
+    setMainTab("list-businesses");
+  };
 
   useEffect(() => {
     supabase
@@ -199,25 +295,29 @@ export default function BusinessNetwork() {
       .order("created_at", { ascending: false })
       .then(({ data, error }) => {
         let fetched = data || [];
-        const combined = [...DEFAULT_BUSINESSES];
-        
-        // Merge Supabase entries avoiding duplicate names
-        fetched.forEach(item => {
-          if (!combined.some(c => c.business_name.toLowerCase() === item.business_name.toLowerCase())) {
-            combined.push({
-              id: item.id.toString(),
-              business_name: item.business_name,
-              category: item.category,
-              description: item.description,
-              location: item.location || "Online",
-              owner_name: item.owner_name || "Sovereign Partner",
-              website: item.website || "#",
-              verified: item.verified || false
-            });
-          }
+        setListings(prev => {
+          const combined = [...DEFAULT_BUSINESSES];
+          prev.forEach(item => {
+            if (item.id.toString().startsWith("custom-")) {
+              combined.push(item);
+            }
+          });
+          fetched.forEach(item => {
+            if (!combined.some(c => c.business_name.toLowerCase() === item.business_name.toLowerCase())) {
+              combined.push({
+                id: item.id.toString(),
+                business_name: item.business_name,
+                category: item.category,
+                description: item.description,
+                location: item.location || "Online",
+                owner_name: item.owner_name || "Sovereign Partner",
+                website: item.website || "#",
+                verified: item.verified || false
+              });
+            }
+          });
+          return combined;
         });
-
-        setListings(combined);
         setLoading(false);
       });
   }, []);
@@ -231,6 +331,15 @@ export default function BusinessNetwork() {
     return matchCat && matchSearch;
   });
 
+  const filteredNetworks = networksList.filter(n => {
+    const matchCat = networkCategory === "all" || n.category === networkCategory;
+    const matchSearch = !networkSearch ||
+      n.title?.toLowerCase().includes(networkSearch.toLowerCase()) ||
+      n.desc?.toLowerCase().includes(networkSearch.toLowerCase()) ||
+      n.location?.toLowerCase().includes(networkSearch.toLowerCase());
+    return matchCat && matchSearch;
+  });
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -238,11 +347,10 @@ export default function BusinessNetwork() {
       <div className="max-w-7xl mx-auto px-6 py-12 pt-24">
         {/* Core Hero Branding */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10 text-center md:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary/20 bg-primary/5 rounded-full mb-4">
-            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-            <span className="text-[10px] tracking-[0.2em] text-primary uppercase font-mono">Sovereign Business Network</span>
-          </div>
-          <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl tracking-[0.08em] text-foreground mb-4">Business Networks</h1>
+          <Eyebrow>Sovereign Business Network</Eyebrow>
+          <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl tracking-[0.08em] text-foreground mb-4">
+            Sovereign Business <br /><em>Networks</em>
+          </h1>
           <p className="font-display text-lg text-muted-foreground italic max-w-2xl leading-relaxed">
             Connect with elite partners, industry leaders, and strategic allies across our global network ecosystem.
           </p>
@@ -330,44 +438,90 @@ export default function BusinessNetwork() {
         {/* Tab 2: Networks Tab */}
         {mainTab === "networks" && (
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {ACTIVE_NETWORKS.map(net => (
-                <article 
-                  key={net.title} 
-                  className="bg-card border border-border/40 p-6 flex flex-col justify-between min-h-[16rem] hover:border-primary/60 hover:shadow-[0_0_20px_rgba(197,165,90,0.15)] hover:bg-primary/[0.02] transition-all duration-300 card-lift"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-[8px] uppercase tracking-[0.2em] font-mono">
-                        <span className="w-1 h-1 bg-emerald-400 rounded-full animate-ping" /> Active
-                      </span>
-                      <Building2 className="w-4 h-4 text-primary/60" />
-                    </div>
-                    <h3 className="font-heading text-lg text-foreground mb-2 tracking-[0.05em]">{net.title}</h3>
-                    <p className="text-xs text-muted-foreground/80 leading-relaxed mb-6">{net.desc}</p>
-                  </div>
+            {/* Search and Action Bar */}
+            <div className="flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center mb-8">
+              <div className="relative flex-1 max-w-xl">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <input 
+                  type="text" 
+                  placeholder="Search networks..." 
+                  value={networkSearch} 
+                  onChange={e => setNetworkSearch(e.target.value)}
+                  className="w-full pl-12 pr-4 py-3 bg-card border border-border/40 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/40" 
+                />
+              </div>
 
-                  <div>
-                    <div className="grid grid-cols-2 gap-2 text-[10px] text-muted-foreground border-t border-border/20 pt-4 mb-4">
-                      <div>
-                        <span className="text-[8px] text-muted-foreground/50 uppercase tracking-[0.1em] block">Category</span>
-                        <span className="font-medium text-foreground">{net.category}</span>
-                      </div>
-                      <div>
-                        <span className="text-[8px] text-muted-foreground/50 uppercase tracking-[0.1em] block">Region</span>
-                        <span className="font-medium text-foreground">{net.location}</span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-[10px] tracking-wider text-primary font-mono">{net.members}</span>
-                      <button className="text-[10px] tracking-[0.15em] font-heading uppercase text-foreground hover:text-primary transition-all flex items-center gap-1">
-                        Learn More <ChevronRight className="w-3 h-3" />
-                      </button>
-                    </div>
-                  </div>
-                </article>
+              <button 
+                onClick={() => setIsCreateNetworkOpen(true)}
+                className="px-6 py-3 bg-primary hover:bg-primary/95 text-primary-foreground font-heading text-xs tracking-[0.15em] uppercase hover:shadow-lg transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+              >
+                <Plus className="w-4 h-4" /> Add a Network
+              </button>
+            </div>
+
+            {/* Network Category Tabs */}
+            <div className="flex gap-1.5 mb-8 overflow-x-auto scrollbar-none pb-2 border-b border-border/10">
+              {NETWORK_CATEGORIES.map(cat => (
+                <button 
+                  key={cat.id} 
+                  onClick={() => setNetworkCategory(cat.id)}
+                  className={`px-4 py-2 text-[10px] tracking-[0.15em] font-heading uppercase border transition-all whitespace-nowrap ${
+                    networkCategory === cat.id 
+                      ? "border-primary text-primary bg-primary/10" 
+                      : "border-border/30 text-muted-foreground hover:border-primary/40 hover:text-foreground"
+                  }`}
+                >
+                  {cat.label}
+                </button>
               ))}
             </div>
+
+            {/* Filtered Networks Grid */}
+            {filteredNetworks.length === 0 ? (
+              <div className="text-center py-20 bg-card border border-border/40">
+                <Building2 className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
+                <p className="text-muted-foreground text-xs">No active networks found matching your criteria.</p>
+              </div>
+            ) : (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredNetworks.map(net => (
+                  <article 
+                    key={net.title} 
+                    className="bg-card border border-border/40 p-6 flex flex-col justify-between min-h-[16rem] hover:border-primary/60 hover:shadow-[0_0_20px_rgba(197,165,90,0.15)] hover:bg-primary/[0.02] transition-all duration-300 card-lift"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-[8px] uppercase tracking-[0.2em] font-mono">
+                          <span className="w-1 h-1 bg-emerald-400 rounded-full animate-ping" /> Active
+                        </span>
+                        <Building2 className="w-4 h-4 text-primary/60" />
+                      </div>
+                      <h3 className="font-heading text-lg text-foreground mb-2 tracking-[0.05em]">{net.title}</h3>
+                      <p className="text-xs text-muted-foreground/80 leading-relaxed mb-6">{net.desc}</p>
+                    </div>
+
+                    <div>
+                      <div className="grid grid-cols-2 gap-2 text-[10px] text-muted-foreground border-t border-border/20 pt-4 mb-4">
+                        <div>
+                          <span className="text-[8px] text-muted-foreground/50 uppercase tracking-[0.1em] block">Category</span>
+                          <span className="font-medium text-foreground">{net.category}</span>
+                        </div>
+                        <div>
+                          <span className="text-[8px] text-muted-foreground/50 uppercase tracking-[0.1em] block">Region</span>
+                          <span className="font-medium text-foreground">{net.location}</span>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-[10px] tracking-wider text-primary font-mono">{net.members}</span>
+                        <button className="text-[10px] tracking-[0.15em] font-heading uppercase text-foreground hover:text-primary transition-all flex items-center gap-1">
+                          Learn More <ChevronRight className="w-3 h-3" />
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            )}
           </motion.div>
         )}
 
@@ -387,8 +541,23 @@ export default function BusinessNetwork() {
                   <button className="px-8 py-3 bg-primary hover:bg-primary/95 text-primary-foreground font-heading text-xs tracking-[0.15em] uppercase hover:shadow-lg hover:shadow-primary/20 transition-all">
                     Join the Network
                   </button>
-                  <button className="px-8 py-3 border border-border hover:bg-muted text-foreground font-heading text-xs tracking-[0.15em] uppercase transition-all">
+                  <button 
+                    onClick={() => setMainTab("list-businesses")}
+                    className="px-8 py-3 border border-border hover:bg-muted text-foreground font-heading text-xs tracking-[0.15em] uppercase transition-all"
+                  >
                     Explore Partners
+                  </button>
+                  <button 
+                    onClick={() => setIsCreateNetworkOpen(true)}
+                    className="px-8 py-3 border border-primary/30 hover:bg-primary/5 hover:border-primary text-primary font-heading text-xs tracking-[0.15em] uppercase transition-all"
+                  >
+                    Create a Network
+                  </button>
+                  <button 
+                    onClick={() => setIsListBusinessOpen(true)}
+                    className="px-8 py-3 border border-primary/30 hover:bg-primary/5 hover:border-primary text-primary font-heading text-xs tracking-[0.15em] uppercase transition-all"
+                  >
+                    List a Business
                   </button>
                 </div>
               </div>
@@ -609,16 +778,25 @@ export default function BusinessNetwork() {
               ))}
             </div>
 
-            {/* Search Bar Input */}
-            <div className="relative mb-8 max-w-xl">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <input 
-                type="text" 
-                placeholder="Search businesses..." 
-                value={search} 
-                onChange={e => setSearch(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-card border border-border/40 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/40" 
-              />
+            {/* Search and Action Bar */}
+            <div className="flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center mb-8">
+              <div className="relative flex-1 max-w-xl">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <input 
+                  type="text" 
+                  placeholder="Search businesses..." 
+                  value={search} 
+                  onChange={e => setSearch(e.target.value)}
+                  className="w-full pl-12 pr-4 py-3 bg-card border border-border/40 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/40" 
+                />
+              </div>
+
+              <button 
+                onClick={() => setIsListBusinessOpen(true)}
+                className="px-6 py-3 bg-primary hover:bg-primary/95 text-primary-foreground font-heading text-xs tracking-[0.15em] uppercase hover:shadow-lg transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+              >
+                <Plus className="w-4 h-4" /> Add a Business
+              </button>
             </div>
 
             {/* Directory Grid */}
@@ -685,6 +863,231 @@ export default function BusinessNetwork() {
         )}
       </div>
       <Footer />
+
+      {/* Create Network Modal */}
+      <AnimatePresence>
+        {isCreateNetworkOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsCreateNetworkOpen(false)}
+              className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+            />
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="bg-card border border-border/45 w-full max-w-lg p-6 md:p-8 relative z-10 shadow-2xl rounded-sm"
+            >
+              <button 
+                onClick={() => setIsCreateNetworkOpen(false)}
+                className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              
+              <div className="mb-6">
+                <p className="text-[10px] tracking-[0.3em] text-primary uppercase font-mono mb-1">Add to Ecosystem</p>
+                <h3 className="font-heading text-2xl text-foreground">Create a Network</h3>
+              </div>
+              
+              <form onSubmit={handleCreateNetwork} className="space-y-4">
+                <div>
+                  <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Network Title</label>
+                  <input 
+                    type="text" 
+                    required
+                    value={newNetTitle}
+                    onChange={e => setNewNetTitle(e.target.value)}
+                    placeholder="e.g. Sovereign Agriculture Alliance"
+                    className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm"
+                  />
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Category</label>
+                    <select 
+                      value={newNetCategory}
+                      onChange={e => setNewNetCategory(e.target.value)}
+                      className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm cursor-pointer"
+                    >
+                      {NETWORK_CATEGORIES.filter(c => c.id !== "all").map(c => (
+                        <option key={c.id} value={c.id}>{c.label}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Region / Location</label>
+                    <input 
+                      type="text" 
+                      value={newNetLocation}
+                      onChange={e => setNewNetLocation(e.target.value)}
+                      placeholder="e.g. Global"
+                      className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Description</label>
+                  <textarea 
+                    required
+                    rows={3}
+                    value={newNetDesc}
+                    onChange={e => setNewNetDesc(e.target.value)}
+                    placeholder="Describe the network objectives, target partners, and dynamic opportunities..."
+                    className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm resize-none"
+                  />
+                </div>
+                
+                <div className="flex gap-3 pt-4">
+                  <button 
+                    type="button"
+                    onClick={() => setIsCreateNetworkOpen(false)}
+                    className="flex-1 py-3 border border-border hover:bg-muted text-foreground font-heading text-xs tracking-[0.15em] uppercase transition-all rounded-sm"
+                  >
+                    Cancel
+                  </button>
+                  <button 
+                    type="submit"
+                    className="flex-1 py-3 bg-primary hover:bg-primary/95 text-primary-foreground font-heading text-xs tracking-[0.15em] uppercase transition-all rounded-sm"
+                  >
+                    Launch Network
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* List Business Modal */}
+      <AnimatePresence>
+        {isListBusinessOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsListBusinessOpen(false)}
+              className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+            />
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="bg-card border border-border/45 w-full max-w-lg p-6 md:p-8 relative z-10 shadow-2xl rounded-sm"
+            >
+              <button 
+                onClick={() => setIsListBusinessOpen(false)}
+                className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              
+              <div className="mb-6">
+                <p className="text-[10px] tracking-[0.3em] text-primary uppercase font-mono mb-1">Add Your Enterprise</p>
+                <h3 className="font-heading text-2xl text-foreground">List a Business</h3>
+              </div>
+              
+              <form onSubmit={handleListBusiness} className="space-y-4">
+                <div>
+                  <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Business Name</label>
+                  <input 
+                    type="text" 
+                    required
+                    value={newBizName}
+                    onChange={e => setNewBizName(e.target.value)}
+                    placeholder="e.g. Blanch Premium Logistics"
+                    className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm"
+                  />
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Category</label>
+                    <select 
+                      value={newBizCategory}
+                      onChange={e => setNewBizCategory(e.target.value)}
+                      className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm cursor-pointer"
+                    >
+                      {Object.keys(CAT_LABELS).map(key => (
+                        <option key={key} value={key}>{CAT_LABELS[key]}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Location / Headquarters</label>
+                    <input 
+                      type="text" 
+                      value={newBizLocation}
+                      onChange={e => setNewBizLocation(e.target.value)}
+                      placeholder="e.g. Atlanta, GA or Online"
+                      className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Owner / Contact</label>
+                    <input 
+                      type="text" 
+                      value={newBizOwner}
+                      onChange={e => setNewBizOwner(e.target.value)}
+                      placeholder="e.g. Blanch Group"
+                      className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Website URL</label>
+                    <input 
+                      type="text" 
+                      value={newBizWebsite}
+                      onChange={e => setNewBizWebsite(e.target.value)}
+                      placeholder="e.g. https://domain.com"
+                      className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-[10px] tracking-widest uppercase font-mono text-muted-foreground mb-1.5">Description</label>
+                  <textarea 
+                    required
+                    rows={3}
+                    value={newBizDesc}
+                    onChange={e => setNewBizDesc(e.target.value)}
+                    placeholder="Provide a clear overview of products, services, and Kingdom value proposition..."
+                    className="w-full px-4 py-2.5 bg-background border border-border/40 text-sm text-foreground focus:outline-none focus:border-primary/40 rounded-sm resize-none"
+                  />
+                </div>
+                
+                <div className="flex gap-3 pt-4">
+                  <button 
+                    type="button"
+                    onClick={() => setIsListBusinessOpen(false)}
+                    className="flex-1 py-3 border border-border hover:bg-muted text-foreground font-heading text-xs tracking-[0.15em] uppercase transition-all rounded-sm"
+                  >
+                    Cancel
+                  </button>
+                  <button 
+                    type="submit"
+                    className="flex-1 py-3 bg-primary hover:bg-primary/95 text-primary-foreground font-heading text-xs tracking-[0.15em] uppercase transition-all rounded-sm"
+                  >
+                    List Enterprise
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

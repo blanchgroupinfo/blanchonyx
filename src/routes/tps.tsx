@@ -32,6 +32,16 @@ const INITIAL_DATA = Array.from({ length: 30 }, (_, i) => {
   return { t: i, tps: getScaledTPS() };
 });
 
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="eyebrow mb-4 justify-center">
+      <span />
+      {children}
+      <span />
+    </div>
+  );
+}
+
 export default function TPSPage() {
   const [data, setData] = useState(INITIAL_DATA);
   const [blockHeight, setBlockHeight] = useState(1422704);
@@ -61,14 +71,16 @@ export default function TPSPage() {
 
       <div className="max-w-7xl mx-auto px-6 py-12 pt-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
-          <p className="text-xs tracking-[0.3em] text-primary uppercase mb-3">Live Network Performance</p>
-          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">TPS Throughput</h1>
+          <Eyebrow>Live Network Performance</Eyebrow>
+          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">
+            TPS <br /><em>Throughput</em>
+          </h1>
           <p className="font-display text-lg text-muted-foreground italic">Real-time transactions per second on the Blanch Onyx DLT</p>
         </motion.div>
 
         {/* Live TPS hero */}
         <motion.div
-          className="text-center py-16 border border-primary/20 bg-primary/5 mb-10 relative overflow-hidden"
+          className="text-center py-16 border border-primary/25 bg-primary/5 mb-10 relative overflow-hidden"
           animate={{ boxShadow: ["0 0 20px rgba(197,165,90,0.1)", "0 0 50px rgba(197,165,90,0.25)", "0 0 20px rgba(197,165,90,0.1)"] }}
           transition={{ duration: 3, repeat: Infinity }}
         >
@@ -94,7 +106,7 @@ export default function TPSPage() {
             { label: "Block Height", value: blockHeight.toLocaleString(), icon: Database, color: "text-green-400" },
             { label: "Total Transactions", value: txTotal.toLocaleString().slice(0, 10) + "+", icon: Activity, color: "text-blue-400" },
           ].map((s, i) => (
-            <div key={i} className="bg-card border border-border/30 p-5 text-center">
+            <div key={i} className="bg-card border border-border p-5 text-center card-lift">
               <s.icon className={`w-5 h-5 ${s.color} mx-auto mb-2`} />
               <p className={`font-heading text-lg ${s.color} tabular-nums`}>{s.value}</p>
               <p className="text-[10px] tracking-wider text-muted-foreground uppercase">{s.label}</p>

@@ -24,6 +24,16 @@ const SCRIPTURES = [
   { ref: "Song of Solomon 1:5", text: "I am black, but comely, O ye daughters of Jerusalem, as the tents of Kedar, as the curtains of Solomon." },
 ];
 
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="eyebrow mb-4 justify-center">
+      <span />
+      {children}
+      <span />
+    </div>
+  );
+}
+
 export default function RoyalPriesthoodPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -32,8 +42,10 @@ export default function RoyalPriesthoodPage() {
       <div className="max-w-6xl mx-auto px-6 py-12 pt-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
           <Crown className="w-10 h-10 text-primary/60 mx-auto mb-4" />
-          <p className="text-xs tracking-[0.3em] text-primary uppercase mb-4">Our Heritage & Identity</p>
-          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">The Royal Priesthood</h1>
+          <Eyebrow>Our Heritage & Identity</Eyebrow>
+          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">
+            The Royal <br /><em>Priesthood</em>
+          </h1>
           <p className="text-xs tracking-[0.2em] text-primary/60 uppercase mb-6">Royal House of Judah · Levitical Priesthood</p>
           <p className="font-display text-lg text-muted-foreground italic max-w-3xl mx-auto">
             We are the Aboriginal Descendants of the Royal House of Tribe of Judah (Yadah), Royal Priesthood of the Tribe of Levi (Lawaya), serving as a Sovereign Divine Law Non-Profit Trustee.
@@ -47,7 +59,7 @@ export default function RoyalPriesthoodPage() {
             <p className="text-xs tracking-[0.3em] text-primary uppercase mb-6">Royal House of Judah</p>
             <div className="space-y-4">
               {ANCESTRY.map((a, i) => (
-                <div key={a.name} className="flex gap-4 p-5 border border-border/30 hover:border-primary/20 transition-colors">
+                <div key={a.name} className="flex gap-4 p-5 border border-border bg-card card-lift">
                   <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
                     <Crown className="w-4 h-4 text-primary" />
                   </div>

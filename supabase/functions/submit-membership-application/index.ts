@@ -63,17 +63,17 @@ Deno.serve(async (req) => {
 
     if (error) throw error;
 
-    // Send a confirmation email (best-effort — does not block success response).
+    // Send a confirmation email (best-effort – does not block success response).
     let emailQueued = false;
     try {
       const html = `
         <div style="font-family:Georgia,serif;background:#0b0b0c;color:#f5e9c8;padding:32px;border-radius:12px;max-width:600px;margin:auto">
           <h1 style="color:#c9a24b;margin-top:0">Blessings upon you, ${escape(fullName)}</h1>
-          <p>Your application to <strong>Blanch Onyx</strong> — the Royal Priesthood Social Club — has been received in honor.</p>
-          <p style="border-left:3px solid #c9a24b;padding-left:14px;color:#e8d9a8"><em>"But ye are a chosen generation, a royal priesthood, an holy nation…"</em><br/>— 1 Peter 2:9</p>
+          <p>Your application to <strong>Blanch Onyx</strong> – the Royal Priesthood Social Club – has been received in honor.</p>
+          <p style="border-left:3px solid #c9a24b;padding-left:14px;color:#e8d9a8"><em>"But ye are a chosen generation, a royal priesthood, an holy nation…"</em><br/>– 1 Peter 2:9</p>
           <p>The Council of the Royal House will review your sacred intent. You will be contacted as your application advances through review.</p>
           <p style="font-size:13px;color:#9a8a5c">Tier requested: <strong>${escape(tier ?? "onyx")}</strong></p>
-          <p style="font-size:12px;color:#7a6a4c;margin-top:32px">Blanch Group — a Sovereign Trust</p>
+          <p style="font-size:12px;color:#7a6a4c;margin-top:32px">Blanch Group – a Sovereign Trust</p>
         </div>`;
 
       const { error: emailErr } = await supabase.functions.invoke("send-transactional-email", {
@@ -89,7 +89,7 @@ Deno.serve(async (req) => {
       });
       emailQueued = !emailErr;
     } catch (_e) {
-      // Email infrastructure may not be configured yet — application is still safely stored.
+      // Email infrastructure may not be configured yet – application is still safely stored.
       emailQueued = false;
     }
 

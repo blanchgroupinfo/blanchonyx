@@ -20,6 +20,11 @@ import {
   CheckCircle2,
   Gem,
   Building2,
+  ShoppingBag,
+  Utensils,
+  Home,
+  Coins,
+  Hotel,
 } from "lucide-react";
 import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/Footer";
@@ -28,10 +33,11 @@ import { Button } from "../components/ui/button";
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="eyebrow flex items-center justify-center gap-2">
-      <span className="w-2 h-2 rounded-full bg-primary animate-ping" />
+    <div className="eyebrow mb-4 justify-center">
+      <span />
       {children}
-    </p>
+      <span />
+    </div>
   );
 }
 
@@ -102,43 +108,56 @@ interface FloorSection {
 
 const floorSections: FloorSection[] = [
   {
-    floors: "Floors 1-20",
-    title: "Luxury Retail & Commercial District",
-    size: "1,500,000 sq ft",
-    icon: Gem,
+    floors: "Floors 1-10",
+    title: "Mall & Sovereign Retail Hub",
+    size: "1,200,000 sq ft",
+    icon: ShoppingBag,
     items: [
-      "Luxury Boutiques & Flagship Retailers",
-      "Crypto Banking Lounges & Vaults",
-      "Premium Restaurants & Hospitality Suites",
+      "High-end Sovereign Boutiques & Flagship Retailers",
+      "Interactive Tech Showrooms & Product Showcases",
+      "Sovereign Currency Unified Payment Systems",
+      "Experiential Media & Cultural Exhibitions",
     ],
   },
   {
-    floors: "Floors 21-40",
+    floors: "Floors 11-20",
+    title: "Restaurant & Culinary District",
+    size: "600,000 sq ft",
+    icon: Utensils,
+    items: [
+      "World-class Fine Dining & Gastronomy Suites",
+      "Artisanal Bakeries & Organic Kingdom Cafés",
+      "Rooftop Dining & Skyline Lounges",
+      "Levitical Clean Food & Sovereign Kitchen Networks",
+    ],
+  },
+  {
+    floors: "Floors 21-35",
+    title: "Banking & Trading District",
+    size: "1,500,000 sq ft",
+    icon: Coins,
+    items: [
+      "Sovereign Asset & Cryptographic Vaults",
+      "Decentralized Trading Floors & OTC Desks",
+      "Private Wealth Management Consultancies",
+      "Digital Token Settlement Stations",
+    ],
+  },
+  {
+    floors: "Floors 36-50",
     title: "Startup & Enterprise Innovation Center",
     size: "1,200,000 sq ft",
     icon: Building,
     items: [
       "Startup Accelerators & Scale-up Hubs",
       "Venture Capital & Private Equity Offices",
-      "Blockchain & Fintech Enterprises",
+      "Blockchain & Fintech Enterprise Suites",
     ],
   },
   {
-    floors: "Floors 41-60",
-    title: "Crypto Incubators & Innovation Labs",
-    size: "1,000,000 sq ft",
-    icon: Cpu,
-    items: [
-      "Web3 R&D Laboratories",
-      "Smart Contract Auditing Units",
-      "Tokenization Development Suites",
-      "Digital Asset Research Centers",
-    ],
-  },
-  {
-    floors: "Floors 61-80",
+    floors: "Floors 51-65",
     title: "S.H.I.E.L.D. AI Headquarters",
-    size: "1,400,000 sq ft",
+    size: "1,000,000 sq ft",
     icon: Shield,
     items: [
       "AI Deep Learning & Research Labs",
@@ -148,7 +167,31 @@ const floorSections: FloorSection[] = [
     ],
   },
   {
+    floors: "Floors 66-80",
+    title: "Sovereign Hotel & Luxury Suites",
+    size: "950,000 sq ft",
+    icon: Hotel,
+    items: [
+      "Ultra-luxury Sovereign Rooms & Designer Penthouses",
+      "Executive Wellness Centers & Advanced Spas",
+      "VIP Concierge & Butler Signature Services",
+      "International Diplomatic Guest Suites",
+    ],
+  },
+  {
     floors: "Floors 81-95",
+    title: "Residential & Sovereign Living",
+    size: "1,100,000 sq ft",
+    icon: Home,
+    items: [
+      "Sovereign-owned Smart Penthouses",
+      "Private Resident Gardens & Sky Decks",
+      "Closed-loop Water & Air Purification Systems",
+      "Executive Lounge & Co-living Spaces",
+    ],
+  },
+  {
+    floors: "Floors 96-105",
     title: "Global Convention & Digital Arena",
     size: "750,000 sq ft",
     icon: Tv2,
@@ -160,7 +203,7 @@ const floorSections: FloorSection[] = [
     ],
   },
   {
-    floors: "Floors 96-110",
+    floors: "Floors 106-115",
     title: "Executive Offices & Corporate Suites",
     size: "850,000 sq ft",
     icon: Building2,
@@ -171,7 +214,7 @@ const floorSections: FloorSection[] = [
     ],
   },
   {
-    floors: "Floors 111-118",
+    floors: "Floors 116-118",
     title: "Blanch Onyx Private Club",
     size: "400,000 sq ft",
     icon: Sparkles,
@@ -316,8 +359,8 @@ function VisionPage() {
               </h2>
               <div className="w-16 h-0.5 bg-primary" />
               <p className="text-black dark:text-white text-base md:text-lg font-display leading-relaxed">
-                Welcome to Blanch Corridor and Center Headquarters Commerce, Court, Digital Futuristic Museum: the{" "}
-                <span className="text-primary font-medium">Blanch Colonnade</span>.
+                Welcome to Blanch Corridor Smart City and Center Headquarters Commerce, Court, Digital Futuristic Museum: in {" "}
+                <span className="text-primary font-medium"> the Blanch Colonnade</span>.
               </p>
               <p className="text-neutral-700 dark:text-muted-foreground text-sm leading-relaxed">
                 The flagship destination within the Blanch Corridor Smart City—a world-class innovation ecosystem

@@ -29,6 +29,15 @@ const SPECS = [
   { label: "Standard", value: "Sovereign Native" },
 ];
 
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="eyebrow mb-4 justify-start">
+      <span />
+      {children}
+    </div>
+  );
+}
+
 export default function OnyxCoinPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -37,8 +46,10 @@ export default function OnyxCoinPage() {
       <div className="max-w-6xl mx-auto px-6 py-12 pt-24">
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-            <p className="text-xs tracking-[0.3em] text-primary uppercase mb-4">Sovereign Native Currency</p>
-            <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">Blanch Onyx Coin</h1>
+            <Eyebrow>Sovereign Native Currency</Eyebrow>
+            <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">
+              Blanch Onyx <br /><em>Coin</em>
+            </h1>
             <div className="flex flex-col items-center lg:items-start mb-6">
               <img src={LOGO_BROWN} alt="Blanch Onyx Logo" className="h-16 w-auto mb-3 object-contain" referrerPolicy="no-referrer" />
               <p className="text-primary text-3xl font-heading tracking-[0.05em]">BOX</p>

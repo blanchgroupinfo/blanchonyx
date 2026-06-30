@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, CreditCard, Shield, Wallet, Globe, Lock, Zap, CheckCircle, Building2, Activity, Wifi, X, ChevronRight } from "lucide-react";
+import { ArrowLeft, CreditCard, Shield, Wallet, Globe, Lock, Zap, CheckCircle, Building2, Activity, Wifi, X, ChevronRight, BookOpen, Fingerprint, Key, Sparkles, Network, Cpu, HardDrive, Gift, Heart, Database, Radio, Laptop } from "lucide-react";
 
 import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/Footer";
@@ -64,11 +64,11 @@ const CARD_TIERS = [
     price: "5,000 BOX/yr",
   },
   {
-    name: "Partner",
+    name: "Onyx Partner",
     tier: "Partner",
     color: "from-zinc-900 via-stone-900 to-neutral-900",
-    accent: "text-primary/70",
-    border: "border-primary/20",
+    accent: "text-blue-400",
+    border: "border-blue-400/30",
     logo: LOGO_BLACK,
     tagline: "The Commerce Card — Kingdom Business",
     features: ["Business Network Listing", "Commerce Partnerships", "Annual Summit Access", "Investment Opportunities"],
@@ -79,9 +79,9 @@ const CARD_TIERS = [
   {
     name: "Onyx Executive",
     tier: "Executive",
-    color: "from-zinc-900 to-stone-950",
-    accent: "text-blue-400",
-    border: "border-blue-400/30",
+    color: "from-stone-900 to-neutral-950",
+    accent: "text-stone-300",
+    border: "border-stone-500/20",
     logo: LOGO_BROWN,
     tagline: "The Professional Card — Executive Power",
     features: ["Executive Networking Events", "Educational Resources", "Cultural Event Access", "Community Investment Access"],
@@ -92,9 +92,9 @@ const CARD_TIERS = [
   {
     name: "Onyx Associate",
     tier: "Associate",
-    color: "from-zinc-900 to-zinc-950",
-    accent: "text-primary/80",
-    border: "border-primary/20",
+    color: "from-stone-900 to-neutral-950",
+    accent: "text-stone-300",
+    border: "border-stone-500/20",
     logo: LOGO_BROWN,
     tagline: "The Access Card — Member Identity",
     features: ["Member Directory Access", "Digital Marketplace Access", "Cultural Events", "Social Feed Participation"],
@@ -215,6 +215,112 @@ function CardVisual({ tier, onClick }) {
   );
 }
 
+function HardwareDeviceVisual({ tier, onClick }) {
+  const isObsidian = tier.name === "Obsidian";
+  const isRoyal = tier.name === "Royal Black Gold";
+  const isSardonyx = tier.name === "Sardonyx";
+  const isExecutive = tier.name === "Onyx Executive";
+
+  let led = "bg-primary";
+  let deviceBorder = "border-primary/25";
+  let deviceBg = "from-zinc-900 to-stone-950";
+
+  if (isObsidian) {
+    led = "bg-yellow-400";
+    deviceBorder = "border-yellow-400/40";
+    deviceBg = "from-black via-zinc-950 to-neutral-900";
+  } else if (isRoyal) {
+    led = "bg-amber-400";
+    deviceBorder = "border-amber-400/50";
+    deviceBg = "from-black via-yellow-950/40 to-stone-950";
+  } else if (isSardonyx) {
+    led = "bg-orange-600";
+    deviceBorder = "border-orange-900/40";
+    deviceBg = "from-stone-900 via-orange-950/20 to-neutral-950";
+  } else if (isExecutive) {
+    led = "bg-blue-400";
+    deviceBorder = "border-blue-400/35";
+    deviceBg = "from-zinc-900 to-slate-950";
+  }
+
+  return (
+    <motion.div
+      whileHover={{ scale: 1.05, y: -4, rotateY: 5 }}
+      whileTap={{ scale: 0.98 }}
+      className={`relative w-full aspect-[1/1.65] rounded-2xl bg-gradient-to-b ${deviceBg} border ${deviceBorder} p-4 flex flex-col justify-between overflow-hidden cursor-pointer group`}
+      style={{ 
+        boxShadow: `0 12px 35px rgba(0,0,0,0.85), inset 0 1px 1px rgba(255,255,255,0.05)`,
+        perspective: 600
+      }}
+      onClick={onClick}
+    >
+      {/* Circuit board accent */}
+      <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-xl pointer-events-none" />
+
+      {/* Top Bar: Device Status */}
+      <div className="flex justify-between items-center relative z-10">
+        <span className="text-[7px] text-white/30 tracking-[0.25em] font-mono">B-HARDWARE v1.08</span>
+        {/* Breathing LED */}
+        <div className="flex items-center gap-1 relative">
+          <span className={`w-1.5 h-1.5 rounded-full ${led} animate-ping absolute opacity-70`} />
+          <span className={`w-1.5 h-1.5 rounded-full ${led} relative z-10`} />
+        </div>
+      </div>
+
+      {/* Micro LCD Monitor */}
+      <div className="bg-black/95 rounded-lg p-2.5 font-mono text-[9px] relative overflow-hidden border border-border/40 select-none z-10 my-2">
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-15"
+          style={{
+            backgroundImage: "linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%)",
+            backgroundSize: "100% 4px",
+          }}
+        />
+        <div className="flex justify-between text-white/40 text-[6.5px] mb-1">
+          <span>BLANCH SECURE OS</span>
+          <span className="animate-pulse text-emerald-400">● LIVE</span>
+        </div>
+        <div className={`${tier.accent} font-semibold font-heading text-[10px] tracking-wide truncate mt-0.5`}>
+          {tier.name.toUpperCase()}
+        </div>
+        <div className="text-white/60 text-[7.5px]">{tier.tier}</div>
+        <div className="mt-2 flex justify-between items-center text-[6.5px] text-white/35 border-t border-white/5 pt-1">
+          <span>DLT WALLET ACTIVE</span>
+          <span className="text-emerald-400">100% OK</span>
+        </div>
+      </div>
+
+      {/* Chip & NFC Antenna */}
+      <div className="flex justify-between items-center px-1 z-10">
+        <div className="w-6 h-5 rounded-sm border border-yellow-400/30 bg-gradient-to-br from-yellow-500/20 to-amber-700/10 p-0.5">
+          <div className="w-full h-full grid grid-cols-2 gap-px bg-yellow-400/20 rounded-sm" />
+        </div>
+        <div className="text-white/20">
+          <WifiIcon accent="text-white/20" />
+        </div>
+      </div>
+
+      {/* Keypad Grid */}
+      <div className="grid grid-cols-3 gap-1 px-1 mt-2 z-10">
+        {Array(12).fill(0).map((_, idx) => (
+          <div 
+            key={idx} 
+            className="w-full aspect-square max-h-[1.4rem] max-w-[1.4rem] rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[7px] text-white/40 font-mono group-hover:bg-white/10 group-hover:text-white/80 transition-all duration-150 mx-auto"
+          >
+            {idx === 9 ? "*" : idx === 10 ? "0" : idx === 11 ? "#" : idx + 1}
+          </div>
+        ))}
+      </div>
+
+      {/* Hardware identifier */}
+      <div className="text-center mt-3 z-10 border-t border-white/5 pt-2">
+        <p className={`text-[8px] uppercase tracking-widest font-heading ${tier.accent}`}>{tier.name} Wallet</p>
+      </div>
+    </motion.div>
+  );
+}
+
 function CardModal({ tier, onClose }) {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -287,6 +393,16 @@ function CardModal({ tier, onClose }) {
   );
 }
 
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="eyebrow mb-4 justify-center">
+      <span />
+      {children}
+      <span />
+    </div>
+  );
+}
+
 export default function BlackCardPage() {
   const [selectedCard, setSelectedCard] = useState(null);
 
@@ -296,8 +412,10 @@ export default function BlackCardPage() {
 
       <div className="max-w-6xl mx-auto px-6 py-12 pt-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
-          <p className="text-xs tracking-[0.3em] text-primary uppercase mb-4">Sovereign Financial Identity</p>
-          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">Blanch Onyx Black Card</h1>
+          <Eyebrow>Sovereign Financial Identity</Eyebrow>
+          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">
+            Blanch Onyx <br /><em>Black Card</em>
+          </h1>
           <p className="font-display text-lg text-foreground/85 italic max-w-2xl mx-auto">
             An exclusive sovereign Business Card, Debit Card, Standalone Electronic Wallet, and Hardware Ledger Device — all in one.
           </p>
@@ -332,15 +450,285 @@ export default function BlackCardPage() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="text-center border border-primary/20 bg-primary/5 p-12">
-          <p className="font-heading text-xl text-foreground mb-3">Ready to Carry Your Sovereignty?</p>
-          <p className="text-foreground/80 text-sm mb-6 max-w-xl mx-auto">
-            The Blanch Onyx Black Card is issued exclusively to verified members. Apply for membership to receive your card.
-          </p>
-          <Link to="/membership" className="px-10 py-4 bg-primary text-primary-foreground font-heading text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-all inline-block">
-            Apply for Membership
-          </Link>
+        {/* Standalone Electronic Wallet & Debit Card Section */}
+        <div className="mt-24 mb-20">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
+            <p className="text-xs tracking-[0.3em] text-primary uppercase mb-3">All-in-One Hardware Innovation</p>
+            <h2 className="font-heading text-2xl md:text-3xl tracking-[0.1em] text-foreground mb-4">Standalone Electronic Wallet & Debit Card</h2>
+            <div className="w-20 h-px bg-primary/40 mx-auto mb-6" />
+            <p className="text-foreground/70 text-sm max-w-2xl mx-auto leading-relaxed">
+              Discover the absolute convergence of digital identity, universal access control, and infinite financial freedom. The <strong className="text-primary font-heading">Blanch Onyx Black Card</strong> is not a simple plastic card—it is a standalone micro-computer operating within the <strong className="text-foreground font-heading">Blanch Onyx DLT</strong> on the <strong className="text-foreground font-heading">Blanch Network</strong> ecosystem.
+            </p>
+          </motion.div>
+
+          {/* New Paragraph */}
+          <div className="text-center mb-10 max-w-3xl mx-auto border-t border-b border-border/10 py-6 my-8">
+            <p className="text-foreground text-sm md:text-base font-semibold tracking-wide">
+              Your membership Includes Stock Standalone Electronic Wallet
+            </p>
+            <p className="text-primary text-[10px] md:text-xs tracking-wider mt-1.5 uppercase font-heading">
+              Click any Stock Standalone Electronic Wallet Hardware Device to view full details & benefits
+            </p>
+          </div>
+
+          {/* Hardware Devices visual grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 max-w-5xl mx-auto">
+            {CARD_TIERS.map((tier, i) => (
+              <motion.div key={tier.name + "-hardware"} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
+                <HardwareDeviceVisual tier={tier} onClick={() => setSelectedCard(tier)} />
+                <div className="mt-3 text-center">
+                  <p className="font-heading text-xs text-foreground">{tier.name}</p>
+                  <p className="text-[10px] text-foreground/60">{tier.tier}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Column 1: Ecosystem & Kingdom Applications */}
+            <motion.div 
+              initial={{ opacity: 0, y: 25 }} 
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="border border-border/30 bg-card/60 p-8 hover:border-primary/20 transition-all backdrop-blur-sm relative group"
+            >
+              <div className="absolute top-0 left-0 w-1 h-12 bg-primary group-hover:h-full transition-all duration-300" />
+              
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2.5 bg-primary/10 border border-primary/25 rounded-md text-primary">
+                  <BookOpen className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-heading text-sm text-foreground tracking-wide">The Unified Platform</h3>
+                  <p className="text-[9px] text-primary uppercase tracking-widest font-heading mt-0.5">Kingdom & AI Apps</p>
+                </div>
+              </div>
+              
+              <div className="space-y-5 text-xs text-foreground/80 leading-relaxed">
+                <p>
+                  The <strong className="text-foreground font-heading">Blanch Onyx Black Card</strong> operates as an all-in-one digital identity, access key, and financial device, bringing the entire Blanch Network suite straight to your hands.
+                </p>
+
+                {/* Bible App Embedded Panel */}
+                <div className="bg-primary/5 border border-primary/15 p-4 rounded space-y-2">
+                  <p className="font-heading text-[10px] text-primary uppercase tracking-wider flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-primary" /> AHAYAH & YASHAYA Bible App
+                  </p>
+                  <p className="text-[11px] text-foreground/75 leading-relaxed">
+                    Featuring the <span className="text-primary font-medium">Verse of the Day</span>, <span className="text-primary font-medium">Gospel of the Day</span>, and <span className="text-primary font-medium">Law of the Day</span>, synchronized directly to your device screen.
+                  </p>
+                </div>
+
+                <p>
+                  Features native integration with the <strong className="text-foreground">Blanch S.H.I.E.L.D. AI App</strong> to access autonomous security services, real-time secure community chats, and immediate alerts.
+                </p>
+
+                <p>
+                  Cardholders receive exclusive discounts on products and services across the entire sovereign network, with direct links mapping your physical card to your secure virtual profile.
+                </p>
+
+                <div className="bg-primary/5 border border-primary/15 p-4 rounded space-y-2">
+                  <p className="font-heading text-[10px] text-primary uppercase tracking-wider flex items-center gap-1.5">
+                    <Gift className="w-3.5 h-3.5 text-primary" /> Circle Agent Referrals
+                  </p>
+                  <p className="text-[11px] text-foreground/75 leading-relaxed">
+                    Each card holds your custom <strong className="text-foreground">Circle Agent ID Number</strong>, serving as your affiliate referral key for automated Referral Commissions, Blessings, Rewards, Bonuses, and Charity allocations.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Column 2: Sovereign Back of the Card & Universal Access */}
+            <motion.div 
+              initial={{ opacity: 0, y: 25 }} 
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="border border-border/30 bg-card/60 p-8 hover:border-primary/20 transition-all backdrop-blur-sm relative group"
+            >
+              <div className="absolute top-0 left-0 w-1 h-12 bg-primary group-hover:h-full transition-all duration-300" />
+              
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2.5 bg-primary/10 border border-primary/25 rounded-md text-primary">
+                  <Fingerprint className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-heading text-sm text-foreground tracking-wide">Back of the Card Credentials</h3>
+                  <p className="text-[9px] text-primary uppercase tracking-widest font-heading mt-0.5">Physical & Digital Fingerprint</p>
+                </div>
+              </div>
+
+              <div className="space-y-5 text-xs text-foreground/80 leading-relaxed">
+                <div className="bg-primary/5 border border-primary/15 p-4 rounded space-y-3">
+                  <p className="font-heading text-[10px] text-primary uppercase tracking-wider flex items-center gap-1.5">
+                    <Fingerprint className="w-3.5 h-3.5 text-primary" /> Back of the Card Credentials
+                  </p>
+                  <div className="space-y-2 font-mono text-[9.5px]">
+                    <div className="flex justify-between items-center border-b border-white/5 pb-1.5">
+                      <span className="text-foreground/45 text-[8.5px] uppercase tracking-wider">CIRCLE AGENT ID</span> 
+                      <span className="text-primary font-bold tracking-wide">BN-BOX-CA-XXXXX-XXXX</span>
+                    </div>
+                    <div className="flex justify-between items-center border-b border-white/5 pb-1.5">
+                      <span className="text-foreground/45 text-[8.5px] uppercase tracking-wider">LEI NUMBER</span> 
+                      <span className="text-foreground/80 font-medium tracking-wide">549300XXXXXXXXXXXX88</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-foreground/45 text-[8.5px] uppercase tracking-wider">BUSINESS CARD ID</span> 
+                      <span className="text-foreground font-medium tracking-wide">BN-BOX-BC-XXXXX-XXXX</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p>
+                  The <strong className="text-foreground">Business Card ID</strong> acts as your centralized, secure digital credential within the standalone electronic wallet. By linking key identifiers like the <strong className="text-foreground">Legal Entity Identifier (LEI)</strong> and Merchant Identification Number (MID), it acts as a comprehensive "digital fingerprint" for secure, high-security networking, facility access, Transactions, Cyber Security, your AI Personal Driver, and client safety.
+                </p>
+
+                <div className="bg-primary/5 border border-primary/15 p-4 rounded space-y-2">
+                  <p className="font-heading text-[10px] text-primary uppercase tracking-wider flex items-center gap-1.5">
+                    <Key className="w-3.5 h-3.5 text-primary" /> Universal Access Key (NFC)
+                  </p>
+                  <p className="text-[11px] text-foreground/75 leading-relaxed">
+                    Tap-and-enter access to secure homes, private businesses, major events, smart cities, and partner smart infrastructures. Seamlessly links to <strong className="text-foreground">Blanch Automotive</strong> vehicles (cars, planes, boats, buses, trains, shuttles, spacecraft) and your personal E-Car Wallet.
+                  </p>
+                </div>
+
+                <p>
+                  Integrated <strong className="text-primary">Blanch S.H.I.E.L.D. AI</strong> technology enables advanced holographic projection, projecting interactive functions, transaction confirmations, and serving as your primary identity and access credential within the immersive Metaverse.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Column 3: High-Tech Hardware Specifications */}
+            <motion.div 
+              initial={{ opacity: 0, y: 25 }} 
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="border border-border/30 bg-card/60 p-8 hover:border-primary/20 transition-all backdrop-blur-sm relative group"
+            >
+              <div className="absolute top-0 left-0 w-1 h-12 bg-primary group-hover:h-full transition-all duration-300" />
+              
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2.5 bg-primary/10 border border-primary/25 rounded-md text-primary">
+                  <Cpu className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-heading text-sm text-foreground tracking-wide">Standalone Micro-Computer</h3>
+                  <p className="text-[9px] text-primary uppercase tracking-widest font-heading mt-0.5">Hardware Specifications</p>
+                </div>
+              </div>
+
+              <div className="space-y-4 text-xs text-foreground/80 leading-relaxed">
+                <p>
+                  Unlike legacy debit cards, the Black Card is a standalone physical computer. It is armed with a secure <strong className="text-foreground">CPU, RFID, NFC, a secure graphics display, a Touch Screen keypad</strong>, and multi-protocol wireless connectivity.
+                </p>
+
+                {/* Mesh Networking Highlight */}
+                <div className="bg-primary/5 border border-primary/15 p-4 rounded space-y-2">
+                  <p className="font-heading text-[10px] text-primary uppercase tracking-wider flex items-center gap-1.5">
+                    <Network className="w-3.5 h-3.5 text-primary" /> RF Mesh Networking
+                  </p>
+                  <p className="text-[11px] text-foreground/75 leading-relaxed">
+                    Cards communicate directly via radio frequency (RF) without requiring cellular towers or internet access—enabling secure peer-to-peer transactions and local community currencies anywhere on earth.
+                  </p>
+                </div>
+
+                <p>
+                  Engineered with an optimized <strong className="text-foreground">LCD screen and long-life primary battery</strong> (refined from Flex solar/e-paper blueprints) for maximum reliability. The device functions as a <strong className="text-primary font-medium">Portable Satellite Internet Device</strong>.
+                </p>
+
+                <p>
+                  Functions as a highly secure <strong className="text-foreground">Portable SSD (NTFS format)</strong>. Safely upload and carry files synced with Blanch Cloud, Blanch Drive, Blanch Network Cloud, Blanch Network Drive, and Blanch S.H.I.E.L.D. AI Cloud services. Check your email and manage your virtual marketplace securely.
+                </p>
+
+                <div className="bg-primary/5 p-4 border-l-2 border-primary font-mono text-[11px] text-foreground/90 space-y-1">
+                  <p className="font-heading font-sans text-primary text-[10px] uppercase tracking-widest">Super Cross-Border Wallet</p>
+                  <p className="leading-normal">
+                    One single device supports all digital wallets and multiple accounts, granting unlimited authority over cryptocurrencies, digital fiat, tokens, CBDCs, BRICS financial systems, and hybrid banknotes.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Bottom Three CTA Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 mb-20">
+          {/* Card 1: Ready to Carry Your Sovereignty? */}
+          <motion.div 
+            initial={{ opacity: 0, y: 25 }} 
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="border border-primary/20 bg-card/60 p-8 flex flex-col justify-between hover:border-primary/40 transition-all backdrop-blur-sm relative group rounded-lg"
+          >
+            <div className="absolute top-0 left-0 w-1 h-12 bg-primary group-hover:h-full transition-all duration-300" />
+            <div className="space-y-4 mb-6">
+              <div className="p-2.5 bg-primary/10 border border-primary/25 rounded-md text-primary w-fit">
+                <Shield className="w-5 h-5" />
+              </div>
+              <h3 className="font-heading text-lg text-foreground tracking-wide leading-snug">Ready to Carry Your Sovereignty?</h3>
+              <p className="text-xs text-foreground/75 leading-relaxed">
+                The Blanch Onyx Black Card is issued exclusively to verified members. Apply for membership to receive your card.
+              </p>
+            </div>
+            <Link to="/membership" className="w-full py-3.5 bg-primary text-primary-foreground font-heading text-[10px] tracking-[0.2em] uppercase hover:bg-primary/90 transition-all text-center flex items-center justify-center gap-2 rounded">
+              Apply for Membership <ChevronRight className="w-3.5 h-3.5" />
+            </Link>
+          </motion.div>
+
+          {/* Card 2: Customization & Standalone Electronic Wallet */}
+          <motion.div 
+            initial={{ opacity: 0, y: 25 }} 
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="border border-primary/20 bg-card/60 p-8 flex flex-col justify-between hover:border-primary/40 transition-all backdrop-blur-sm relative group rounded-lg"
+          >
+            <div className="absolute top-0 left-0 w-1 h-12 bg-primary group-hover:h-full transition-all duration-300" />
+            <div className="space-y-4 mb-6">
+              <div className="p-2.5 bg-primary/10 border border-primary/25 rounded-md text-primary w-fit">
+                <Laptop className="w-5 h-5" />
+              </div>
+              <h3 className="font-heading text-lg text-foreground tracking-wide leading-snug">Customization Blanch Onyx Black Card & Standalone Electronic Wallet</h3>
+              <p className="text-xs text-foreground/75 leading-relaxed">
+                Generate, Customize, Make and Order your bespoke physical device configured to your sovereign requirements.
+              </p>
+            </div>
+            <Link to="/profile" className="w-full py-3.5 border border-primary text-primary font-heading text-[10px] tracking-[0.2em] uppercase hover:bg-primary hover:text-primary-foreground transition-all text-center flex items-center justify-center gap-2 rounded">
+              Learn More and Go to Portal <ChevronRight className="w-3.5 h-3.5" />
+            </Link>
+          </motion.div>
+
+          {/* Card 3: Upgrade & Marketplace */}
+          <motion.div 
+            initial={{ opacity: 0, y: 25 }} 
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="border border-primary/20 bg-card/60 p-8 flex flex-col justify-between hover:border-primary/40 transition-all backdrop-blur-sm relative group rounded-lg"
+          >
+            <div className="absolute top-0 left-0 w-1 h-12 bg-primary group-hover:h-full transition-all duration-300" />
+            <div className="space-y-4 mb-6">
+              <div className="p-2.5 bg-primary/10 border border-primary/25 rounded-md text-primary w-fit">
+                <Gift className="w-5 h-5" />
+              </div>
+              <h3 className="font-heading text-lg text-foreground tracking-wide leading-snug">Upgrade your Standalone Electronic Wallet & Debit Card</h3>
+              <p className="text-xs text-foreground/75 leading-relaxed">
+                Once you place your order it is Ready to be Assigned to you from the Marketplace. Select your specific upgraded models and features.
+              </p>
+              <div className="bg-primary/5 border border-primary/15 p-4 rounded space-y-2">
+                <p className="font-heading text-[10px] text-primary uppercase tracking-wider flex items-center gap-1.5">
+                  <Gift className="w-3.5 h-3.5 text-primary" /> Shop and Ship
+                </p>
+                <p className="text-[11px] text-foreground/75 leading-relaxed">
+                  Sovereign logistics and delivery to your physical coordination point.
+                </p>
+              </div>
+            </div>
+            <Link to="/marketplace" className="w-full py-3.5 bg-primary/10 border border-primary/30 text-foreground font-heading text-[10px] tracking-[0.2em] uppercase hover:bg-primary hover:text-primary-foreground transition-all text-center flex items-center justify-center gap-2 rounded">
+              Shop <ChevronRight className="w-3.5 h-3.5" />
+            </Link>
+          </motion.div>
         </div>
       </div>
 

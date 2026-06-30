@@ -44,7 +44,7 @@ function PairChart({ pair }) {
   const up = current >= prev;
 
   return (
-    <div className="border border-border/30 bg-card p-5">
+    <div className="border border-border bg-card p-5 card-lift">
       <div className="flex items-center justify-between mb-3">
         <div>
           <h3 className="font-heading text-base text-foreground">{pair.pair}</h3>
@@ -73,6 +73,16 @@ function PairChart({ pair }) {
   );
 }
 
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="eyebrow mb-4 justify-center">
+      <span />
+      {children}
+      <span />
+    </div>
+  );
+}
+
 export default function TradingHubPage() {
   const [activePair, setActivePair] = useState(PAIRS[0]);
   const mainData = useLiveCandles(activePair.base, 60);
@@ -88,6 +98,16 @@ export default function TradingHubPage() {
       <Navbar />
 
       <div className="max-w-7xl mx-auto px-6 py-10 pt-24">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-10">
+          <Eyebrow>Sovereign Capital Markets</Eyebrow>
+          <h1 className="font-heading text-3xl md:text-5xl tracking-[0.1em] text-foreground mb-4">
+            Trading <br /><em>Hub</em>
+          </h1>
+          <p className="font-display text-lg text-muted-foreground italic max-w-2xl mx-auto">
+            Real-time sovereign exchange pricing and non-custodial limit trading on the Blanch Onyx DLT
+          </p>
+        </motion.div>
+
         <div className="flex gap-2 flex-wrap mb-6">
           {PAIRS.map(p => (
             <button
@@ -102,7 +122,7 @@ export default function TradingHubPage() {
 
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Main chart */}
-          <div className="lg:col-span-2 border border-border/30 bg-card p-6">
+          <div className="lg:col-span-2 border border-border bg-card p-6 card-lift">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h2 className="font-heading text-xl text-foreground">{activePair.pair}</h2>
@@ -134,7 +154,7 @@ export default function TradingHubPage() {
           </div>
 
           {/* Order panel */}
-          <div className="border border-border/30 bg-card p-6 space-y-5">
+          <div className="border border-border bg-card p-6 space-y-5 card-lift">
             <h3 className="font-heading text-sm tracking-[0.1em] text-foreground">Place Order</h3>
             <div className="flex gap-1">
               {["buy", "sell"].map(s => (

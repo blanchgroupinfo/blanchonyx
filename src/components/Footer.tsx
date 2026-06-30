@@ -11,12 +11,12 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <Link to="/" className="flex items-center gap-2">
               <img src={logoBrown} alt="Blanch Onyx" className="h-10 w-auto object-contain" />
-              <span className="font-display font-medium text-lg tracking-[0.1em] text-gradient-silver">BLANCH ONYX</span>
+              <span className="font-display font-medium text-lg tracking-[0.1em] text-white">BLANCH ONYX</span>
             </Link>
-            <p className="text-[#8c5f38] max-w-md leading-relaxed">
+            <p className="text-[#d99c62] max-w-md leading-relaxed">
               “Together, we inspire life, hope, and love through faith, unity, and divine purpose.”
             </p>
-            <span className="text-xs text-white tracking-wider">
+            <span className="text-xs text-white/40 tracking-wider">
               — Praise Most High AHAYAH BA SHAM YASHAYA
             </span>
           </div>
@@ -24,16 +24,16 @@ export default function Footer() {
           {/* Links & Copyright */}
           <div className="flex flex-col md:items-end gap-6 h-full justify-between">
             <div className="flex flex-wrap gap-x-8 gap-y-2 font-heading uppercase text-xs tracking-wider">
-              <Link to="/" className="text-[#b87d4b] hover:text-[#8c5f38] transition-colors">Home</Link>
-              <Link to="/about" className="text-[#b87d4b] hover:text-[#8c5f38] transition-colors">About</Link>
-              <Link to="/membership" className="text-[#b87d4b] hover:text-[#8c5f38] transition-colors">Membership</Link>
-              <Link to="/contact" className="text-[#b87d4b] hover:text-[#8c5f38] transition-colors">Contact</Link>
-              <Link to="/dlt" className="text-[#b87d4b] hover:text-[#8c5f38] transition-colors">DLT Network</Link>
+              <Link to="/" className="text-[#b87d4b] hover:text-[#d99c62] transition-colors">Home</Link>
+              <Link to="/about" className="text-[#b87d4b] hover:text-[#d99c62] transition-colors">About</Link>
+              <Link to="/membership" className="text-[#b87d4b] hover:text-[#d99c62] transition-colors">Membership</Link>
+              <Link to="/contact" className="text-[#b87d4b] hover:text-[#d99c62] transition-colors">Contact</Link>
+              <Link to="/dlt" className="text-[#b87d4b] hover:text-[#d99c62] transition-colors">DLT Network</Link>
             </div>
             
-            <div className="md:text-right text-xs text-white flex flex-col gap-1">
+            <div className="md:text-right text-xs text-neutral-500 flex flex-col gap-1">
               <span>Copyright © {new Date().getFullYear()} Blanch Group — Sovereign Trust</span>
-              <span>All Rights Reserved.</span>
+              <span>All Rights Reserved</span>
             </div>
           </div>
         </div>

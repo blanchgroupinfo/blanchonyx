@@ -147,7 +147,7 @@ export default function Navbar() {
           <button onClick={() => scrollTo("#hero")} className="flex items-center gap-3 group shrink-0">
             <img src={logoBrown} alt="Blanch Onyx" className="w-10 h-12 object-contain group-hover:scale-105 transition-transform duration-300" />
             <div className="hidden sm:block">
-              <p className="font-heading text-xs tracking-[0.35em] text-gradient-silver leading-tight">BLANCH ONYX</p>
+              <p className="font-heading text-xs tracking-[0.35em] text-primary leading-tight">BLANCH ONYX</p>
               <p className="text-[9px] tracking-[0.2em] text-muted-foreground/70 leading-tight">SOVEREIGN SOCIAL CLUB</p>
             </div>
           </button>

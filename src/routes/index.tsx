@@ -391,7 +391,7 @@ function Index() {
     [query],
   );
   return (
-    <main id="home-root" className="overflow-hidden bg-background">
+    <main className="overflow-hidden bg-background">
       <Navbar />
 
       <section id="hero" className="hero section-shell">
@@ -540,11 +540,11 @@ function Index() {
           <div className="section-intro light">
             <Eyebrow>The H.E.E.D. Program</Eyebrow>
             <h2>
-              <span className="text-white">Four Pillars.</span>
+              Four Pillars.
               <br />
-              <em className="text-[#8c5f38] not-italic">One Purpose.</em>
+              <em>One Purpose.</em>
             </h2>
-            <p className="text-white">
+            <p>
               A framework designed to stabilize global communities through digital currencies,
               emerging ventures, and sustainable development.
             </p>
@@ -624,29 +624,14 @@ function Index() {
           </div>
           <ul>
             {[
-              {
-                title: "No alcohol, tobacco, or illegal substances",
-                cite: "Deuteronomy 32:33 · Leviticus 10:9 · Ephesians 5:18 · Galations 5:19-21 · Proverbs 4:17"
-              },
-              {
-                title: "No violence, war, or weapons",
-                cite: "Exodus 20:13 · Revelation 21:8"
-              },
-              {
-                title: "No biological confusion or species mixing",
-                cite: "Deuteronomy 22:10 · 1 Corinthians 15:39 · Daniel 2:43 · Leviticus 11:44"
-              },
-              {
-                title: "Clean foods and non-GMO only",
-                cite: "Leviticus 11:1-47 · Judges 13:4 · 2 Corinthians 6:17."
-              }
-            ].map((item, index) => (
-              <li key={index} className="flex items-start gap-4 py-4 border-b border-white/10">
-                <CircleCheck className="w-5 h-5 text-[#8c5f38] shrink-0 mt-0.5" />
-                <div className="flex flex-col gap-1">
-                  <span className="text-white text-base font-medium">{item.title}</span>
-                  <span className="text-[#8c5f38] text-[11px] tracking-wider uppercase font-sans">{item.cite}</span>
-                </div>
+              "No alcohol, tobacco, or illegal substances - Deuteronomy 32:33, Leviticus 10:9, Ephesians 5:18, Galatians 5:19-21, 1 John 2:1, Judges 13:4, Proverbs 4:17, 2 Esdras 13:37",
+              "No violence, war, or weapons - Exodus 20:13, Revelation 21:8 ",
+              "No biological confusion or species mixing - Deuteronomy 22:10, 1 Corinthians 15:39, Daniel 2:43, Leviticus 11:44",
+              "Clean foods and non-GMO only - Leviticus 11:1-47, Judges 13:4, 2 Corinthians 6:17",
+            ].map((x) => (
+              <li key={x}>
+                <CircleCheck />
+                {x}
               </li>
             ))}
           </ul>
@@ -721,16 +706,11 @@ function Index() {
       </section>
 
     <section id="vision" className="vision-section section-block">
-      <div className="section-shell">
-        <div className="vision-heading">
-          <Eyebrow>Vision in Motion</Eyebrow>
-          <h2>
-            <span className="text-white">Smart City &</span>
-            <br />
-            <em className="text-[#8c5f38] not-italic">the Blanch Corridor</em>
-          </h2>
-          <p className="text-white">A sovereign network of sacred, sustainable cities for the Royal Priesthood and global communities.</p>
-        </div>
+      <div className="section-shell"><div className="vision-heading">
+        <Eyebrow>Vision in Motion</Eyebrow>
+        <h2>Smart City &<br/><em>the Blanch Corridor</em></h2>
+        <p>A sovereign network of sacred, sustainable cities for the Royal Priesthood and global communities.</p>
+      </div>
         <div className="vision-grid">{visions.map(([label,title,text],i)=><article key={title} className="card-lift"><span>0{i+1}</span>
         <p className="mini-label">{label}</p><h3>{title}</h3><p>{text}</p><ArrowDownRight/></article>)}</div>
         </div>
@@ -740,60 +720,7 @@ function Index() {
         verse="Proverbs 13:22"
       />
 
-      <section id="commerce" className="section-shell section-block commerce-section">
-        <div className="commerce-heading">
-          <div>
-            <Eyebrow>Universal Commerce Models</Eyebrow>
-            <h2>X2X Transaction<br /><em>Framework</em></h2>
-          </div>
-          <div className="commerce-stat">
-            <strong>380<span>+</span></strong>
-            <p>Unique commerce pathways powering the future of global transactions.</p>
-          </div>
-        </div>
-        <div className="commerce-features">
-          {[
-            ["Instant Settlement", "Sub-second finality"],
-            ["Cross-Border Native", "Multi-currency commerce"],
-            ["AI-Orchestrated", "Optimized routing & risk"],
-            ["Identity-Verified", "Trust at every layer"]
-          ].map(([a, b]) => (
-            <div key={a}>
-              <ShieldCheck />
-              <strong>{a}</strong>
-              <span>{b}</span>
-            </div>
-          ))}
-        </div>
-        <div className="models-panel">
-          <div className="models-top">
-            <div>
-              <p className="mini-label">20 Primary X2X Models</p>
-              <h3 className="text-white">Everything connects of everything.</h3>
-            </div>
-            <label>
-              <Search />
-              <input
-                value={query}
-                onChange={e => setQuery(e.target.value)}
-                placeholder="Search models…"
-                className="text-white placeholder:text-white"
-                aria-label="Search commerce models"
-              />
-            </label>
-          </div>
-          <div className="model-grid">
-            {filteredModels.map(([code, name]) => (
-              <article key={code} className="card-lift">
-                <strong>{code}</strong>
-                <span>{name}</span>
-                <small>{name} to Everything</small>
-                <ChevronDown />
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section id="commerce" className="section-shell section-block commerce-section"><div className="commerce-heading"><div><Eyebrow>Universal Commerce Models</Eyebrow><h2>X2X Transaction<br/><em>Framework</em></h2></div><div className="commerce-stat"><strong>380<span>+</span></strong><p>Unique commerce pathways powering the future of global transactions.</p></div></div><div className="commerce-features">{[["Instant Settlement","Sub-second finality"],["Cross-Border Native","Multi-currency commerce"],["AI-Orchestrated","Optimized routing & risk"],["Identity-Verified","Trust at every layer"]].map(([a,b])=><div key={a}><ShieldCheck/><strong>{a}</strong><span>{b}</span></div>)}</div><div className="models-panel"><div className="models-top"><div><p className="mini-label">20 Primary X2X Models</p><h3>Everything connects<br/>to everything.</h3></div><label><Search/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search models…" aria-label="Search commerce models"/></label></div><div className="model-grid">{filteredModels.map(([code,name])=><article key={code} className="card-lift"><strong>{code}</strong><span>{name}</span><small>{name} to Everything</small><ChevronDown/></article>)}</div></div></section>
 
     <section id="library" className="library-section section-block"><div className="section-shell library-inner"><div><Eyebrow>Sovereign Library</Eyebrow><h2>Document<br/><em>Library</em></h2><p>Search, browse, and download official documents of the Blanch Group Sovereign Trust.</p></div><div className="document-card card-lift"><BookOpen/><div><p className="mini-label">Official Collection</p><h3>Foundational Documents</h3><span>Charters · Trust Records · Network Protocols</span></div><Button variant="outline" size="icon" aria-label="Download document"><Download/></Button></div></div></section>
 
